@@ -1,11 +1,11 @@
 
 <template>
-  <div >
-    <Header />
+  <div>
+    <Header/>
     <h1>Bienvenue sur notre boutique</h1>
     <Products />
+    <Footer/>
   </div>
-  <Footer />
 </template>
 
 <script setup>
