@@ -30,6 +30,8 @@
 
           <p class="font-semibold text-gray-800 mb-1">{{ product.title }}</p>
           <p class="text-green-600 font-bold mb-2">{{ product.price }} $</p>
+          <p class="text-red-900">Note : {{ product.rating.rate }}</p>
+          <p>({{ product.rating.count }}) Avis </p>
         </NuxtLink>
       </div>
     </div>
@@ -40,5 +42,14 @@
 const { data: products, error, pending } = await useAsyncData('products', () =>
   $fetch('/api/products')
 )
+import { computed } from 'vue'
+
+const rating = computed(() => {
+  if (product && product.rating) {
+    return product.rating
+  }
+  return { rate: 'N/A', count: 0 }
+})
+
 </script>
 

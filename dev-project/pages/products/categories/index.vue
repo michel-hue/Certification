@@ -22,7 +22,7 @@
           :to="`/products/categories/${category}`"
           class="group block bg-white rounded-xl p-6 shadow hover:shadow-xl hover:scale-105 transition-all text-center"
         >
-          <div class="flex items-center justify-center h-16 w-16 mx-auto mb-4 bg-blue-100 text-blue-600 rounded-full group-hover:bg-gray-900 group-hover:text-white transition">
+          <div class="flex items-center justify-center h-16 w-16 mx-auto mb-4 bg-blue-100 text-blue-600 rounded-full group-hover:bg-green-600 group-hover:text-white transition">
             <!-- Icône (facultatif) -->
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
               viewBox="0 0 24 24">
