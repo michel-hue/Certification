@@ -19,6 +19,7 @@
           class="bg-white shadow rounded-[15%] p-4 text-center hover:shadow-lg transition hover:scale-105 transition-all text-center"
         >
           <button class="inline-block text-xs text-blue-500 mb-2 border rounded-xl p-2 bg-gray-300">
+            <i class="fas fa-tag mr-1"></i>
             {{ product.category }}
           </button>
 
@@ -29,9 +30,19 @@
           />
 
           <p class="font-semibold text-gray-800 mb-1">{{ product.title }}</p>
-          <p class="text-green-600 font-bold mb-2">{{ product.price }} $</p>
-          <p class="text-red-900">Note : {{ product.rating.rate }}</p>
-          <p>({{ product.rating.count }}) Avis </p>
+         <p class="text-green-600 font-bold mb-2">
+  <i class="fas fa-dollar-sign mr-1"></i>{{ product.price }} 
+</p>
+<!-- Note avec étoile -->
+<p class="text-yellow-500 font-semibold text-center">
+  <i class="fas fa-star mr-1"></i> Note : {{ product.rating.rate }}
+</p>
+
+<!-- Nombre d’avis avec une icône de commentaire -->
+<p class="text-gray-700  text-center">
+  <i class="fas fa-comment-alt mr-1 text-gray-500"></i> ({{ product.rating.count }}) Avis
+</p>
+
         </NuxtLink>
       </div>
     </div>

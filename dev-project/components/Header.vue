@@ -5,7 +5,7 @@
     <!-- Nom de la boutique -->
     <h1 class="flex items-center gap-2 text-2xl font-bold text-white">
       Ma Boutique
-      <i class="fa-solid fa-bag-shopping text-blue-500"></i>
+      <i class="fa-solid fa-cart-shopping text-blue-500"></i>
     </h1>
 
     <!-- Barre de recherche -->
@@ -16,36 +16,52 @@
         placeholder="Rechercher un produit..."
         class="w-full px-3 py-2 border rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <button class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-gray-600">
+      <button class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-green-500">
         Rechercher
       </button>
     </form>
 
     <!-- Navigation -->
-    <nav>
-      <ul class="flex gap-4 text-white font-medium">
-        <li>
-          <a href="/users" class="flex items-center gap-2 hover:text-gray-600">
-            <i class="fa-solid fa-user text-blue-400"></i> Se connecter
-          </a>
-        </li>
-        <li>
-          <a href="/carts" class="flex items-center gap-2 hover:text-gray-600">
-            <i class="fa-solid fa-bag-shopping text-blue-400"></i> Panier
-          </a>
-        </li>
-        <li>
-          <a href="/products/categories" class="flex items-center gap-2 hover:text-gray-600">
-            <i class="fa-solid fa-layer-group text-blue-500"></i> Catégories
-          </a>
-        </li>
-        <li>
-          <a href="#" class="flex items-center gap-2 hover:text-gray-600">
-            <i class="fa-solid fa-envelope text-blue-500"></i> Contact
-          </a>
-        </li>
-      </ul>
-    </nav>
+<nav>
+  <ul class="flex gap-6 text-white font-medium">
+    <li>
+      <a href="/products" class="flex items-center gap-2 hover:text-green-500 transition">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-600 hover:text-white transition">
+          <i class="fas fa-bag-shopping"></i>
+        </div>
+        Products
+      </a>
+    </li>
+
+    <li>
+      <a href="/carts" class="flex items-center gap-2 hover:text-green-500 transition">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-400 hover:text-white transition">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        Panier
+      </a>
+    </li>
+
+    <li>
+      <a href="/products/categories" class="flex items-center gap-2 hover:text-green-500 transition">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-500 hover:text-white transition">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+        Catégories
+      </a>
+    </li>
+
+    <li>
+      <a href="/" class="flex items-center gap-2 hover:text-green-500 transition">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-500 hover:text-white transition">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        Tableau de Bords
+      </a>
+    </li>
+  </ul>
+</nav>
+
 
   </div>
 </header>
