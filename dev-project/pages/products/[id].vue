@@ -1,3 +1,4 @@
+
 <template>
   <section class="p-6 bg-gray-100 min-h-screen font-sans">
 
@@ -8,7 +9,7 @@
           class="inline-flex items-center text-sm font-semibold text-gray-700 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 transition"
           aria-label="Retour aux produits"
         >
-          <font-awesome-icon :icon="['fas', 'arrow-left']" class="mr-2" /> Retour
+          <i class="fas fa-arrow-left mr-2"></i> Retour
         </button>
       </NuxtLink>
     </div>
@@ -19,7 +20,7 @@
       <!-- Catégorie -->
       <div class="mb-4">
         <span class="inline-flex items-center gap-2 text-sm text-blue-600 font-semibold bg-gray-200 px-3 py-1 rounded-full">
-          <font-awesome-icon :icon="['fas', 'tag']" />
+          <i class="fas fa-tag"></i>
           {{ product.category }}
         </span>
       </div>
@@ -34,14 +35,14 @@
 
           <div v-if="product.rating" class="text-sm text-gray-600 flex flex-col items-start gap-2 mb-2">
             <p>
-              <font-awesome-icon :icon="['fas', 'star']" class="text-yellow-400" />
+              <i class="fas fa-star text-yellow-400"></i>
               {{ product.rating.rate }} / 5
             </p>
             <p>({{ product.rating.count }} avis)</p>
           </div>
 
           <p class="text-xl font-semibold text-green-600 flex items-center gap-2">
-            <font-awesome-icon :icon="['fas', 'dollar-sign']" />
+            <i class="fas fa-dollar-sign"></i>
             {{ product.price }}
           </p>
         </div>
@@ -57,13 +58,13 @@
         @click="ajouterAuPanier"
         class="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition flex items-center gap-2 mt-6"
       >
-        <font-awesome-icon :icon="['fas', 'cart-plus']" />
+        <i class="fas fa-cart-plus"></i>
         Ajouter au panier
       </button>
 
       <!-- Message d'alerte si non connecté -->
       <div v-if="showMessage" class="mt-4 text-red-600 font-medium flex items-center gap-2">
-        <font-awesome-icon :icon="['fas', 'lock']" />
+        <i class="fas fa-lock"></i>
         Veuillez vous connecter pour ajouter ce produit au panier.
       </div>
     </div>
@@ -71,7 +72,7 @@
     <!-- Description -->
     <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6">
       <h3 class="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
-        <font-awesome-icon :icon="['fas', 'align-left']" class="text-blue-600" />
+        <i class="fas fa-align-left text-blue-600"></i>
         Description du produit
       </h3>
       <p class="text-gray-700 leading-relaxed text-justify">
@@ -81,6 +82,7 @@
 
   </section>
 </template>
+
 
 <script setup>
 import { ref } from 'vue'

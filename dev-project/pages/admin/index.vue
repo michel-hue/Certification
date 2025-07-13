@@ -50,7 +50,7 @@
         <font-awesome-icon :icon="['fas', 'shopping-cart']" />
         Gérer les Commandes
       </NuxtLink>
-      <NuxtLink to="/admin/categories" class="bg-gray-900 hover:bg-green-600 transition text-white p-6 rounded-xl shadow flex items-center justify-center gap-3 text-lg font-semibold">
+      <NuxtLink to="/admin/products/categories" class="bg-gray-900 hover:bg-green-600 transition text-white p-6 rounded-xl shadow flex items-center justify-center gap-3 text-lg font-semibold">
         <font-awesome-icon :icon="['fas', 'tags']" />
         Gérer les Catégories
       </NuxtLink>

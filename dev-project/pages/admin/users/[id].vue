@@ -60,7 +60,7 @@
           Supprimer
         </button>
 
-        <NuxtLink :to="`/users/${user.id}/edit`">
+        <NuxtLink :to="`/admin/users/edit/${user.id}`">
           <button
             class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition flex items-center gap-2"
           >
@@ -94,7 +94,7 @@ async function deleteUser(id) {
   try {
     await fetch(`/api/users/${id}`, { method: 'DELETE' })
     alert('Utilisateur supprimé avec succès')
-    router.push('/users')
+    router.push('/admin/users')
   } catch (error) {
     alert('Erreur lors de la suppression')
     console.error(error)
