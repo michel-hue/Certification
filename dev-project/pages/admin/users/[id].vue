@@ -74,6 +74,41 @@
     <div v-else class="text-center text-gray-500 italic">
       Chargement de l'utilisateur…
     </div>
+
+    <!-- Section des paniers utilisateur -->
+    <section class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow mt-10">
+      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-boxes-stacked text-green-600"></i>
+        Paniers de l'utilisateur
+      </h3>
+
+      <div v-if="loadingCarts" class="text-gray-500 italic flex items-center gap-2">
+        <i class="fa-solid fa-spinner fa-spin"></i> Chargement des paniers…
+      </div>
+
+      <div v-else-if="errorCarts" class="text-red-600 font-semibold">
+        Erreur lors du chargement des paniers.
+      </div>
+
+      <div v-else-if="carts.length === 0" class="text-gray-500 italic">
+        Aucun panier trouvé pour cet utilisateur.
+      </div>
+
+      <div v-else class="space-y-4">
+        <div
+          v-for="cart in carts"
+          :key="cart.id"
+          class="border border-gray-200 rounded-xl p-4"
+        >
+          <p><strong>ID panier :</strong> {{ cart.id }}</p>
+          <p><strong>Date :</strong> {{ new Date(cart.date).toLocaleString() }}</p>
+          <p><strong>Nombre de produits :</strong> {{ cart.products?.length || 0 }}</p>
+          <NuxtLink :to="`/admin/carts/${cart.id}`" class="text-blue-600 hover:underline">
+            Voir détails
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
   </section>
 </template>
 
@@ -82,17 +117,39 @@ import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const user = ref(null)
+const carts = ref([])
+const loadingCarts = ref(true)
+const errorCarts = ref(null)
+
 const route = useRoute()
 const router = useRouter()
 const id = route.params.id
 
-user.value = await $fetch(`/api/users/${id}`)
+// Récupération de l'utilisateur
+try {
+  user.value = await $fetch(`/api/users/${id}`)
+} catch (err) {
+  console.error('Erreur chargement utilisateur :', err)
+}
 
-async function deleteUser(id) {
+// Récupération des paniers de l'utilisateur
+try {
+  const allCarts = await $fetch('/api/carts')
+  carts.value = allCarts.filter(cart => cart.userId === id)
+} catch (err) {
+  console.error('Erreur chargement paniers utilisateur :', err)
+  errorCarts.value = err
+} finally {
+  loadingCarts.value = false
+}
+
+
+// Suppression utilisateur
+async function deleteUser(userId) {
   if (!confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) return
 
   try {
-    await fetch(`/api/users/${id}`, { method: 'DELETE' })
+    await fetch(`/api/users/${userId}`, { method: 'DELETE' })
     alert('Utilisateur supprimé avec succès')
     router.push('/admin/users')
   } catch (error) {

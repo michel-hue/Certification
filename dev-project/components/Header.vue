@@ -25,7 +25,7 @@
 <nav>
   <ul class="flex gap-6 text-white font-medium">
     <li>
-      <a href="/products" class="flex items-center gap-2 hover:text-green-500 transition">
+      <a href="/users/products" class="flex items-center gap-2 hover:text-green-500 transition">
         <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-600 hover:text-white transition">
           <i class="fas fa-bag-shopping"></i>
         </div>
@@ -34,7 +34,7 @@
     </li>
 
     <li>
-      <a href="/carts" class="flex items-center gap-2 hover:text-green-500 transition">
+      <a href="/users/carts" class="flex items-center gap-2 hover:text-green-500 transition">
         <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-400 hover:text-white transition">
           <i class="fa-solid fa-cart-shopping"></i>
         </div>
@@ -43,7 +43,7 @@
     </li>
 
     <li>
-      <a href="/products/categories" class="flex items-center gap-2 hover:text-green-500 transition">
+      <a href="/users/products/categories" class="flex items-center gap-2 hover:text-green-500 transition">
         <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-500 hover:text-white transition">
           <i class="fa-solid fa-layer-group"></i>
         </div>
@@ -52,11 +52,11 @@
     </li>
 
     <li>
-      <a href="/" class="flex items-center gap-2 hover:text-green-500 transition">
+      <a href="/users/users/dashoard" class="flex items-center gap-2 hover:text-green-500 transition">
         <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-500 hover:text-white transition">
           <i class="fa-solid fa-user"></i>
         </div>
-        Tableau de Bords
+        Profil
       </a>
     </li>
   </ul>

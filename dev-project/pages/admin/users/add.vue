@@ -51,17 +51,6 @@
       </label>
 
       <label class="block text-gray-700 font-semibold">
-        <i class="fas fa-lock mr-2"></i> Mot de passe
-        <input
-          v-model="form.password"
-          type="password"
-          placeholder="Mot de passe"
-          class="w-full mt-1 p-2 border rounded"
-          required
-        />
-      </label>
-
-      <label class="block text-gray-700 font-semibold">
         <i class="fas fa-phone mr-2"></i> Téléphone
         <input
           v-model="form.phone"
@@ -135,11 +124,6 @@ const messageClass = ref('')
 
 async function ajouterUser() {
   try {
-    // Formatage possible de l'adresse pour API plus complexe
-    // Par exemple, si l’API attend un objet `address` :
-    // const payload = { ...form.value, address: { /* parser form.address */ } }
-
-    // Ici on envoie tel quel, adapte selon ton API
     await $fetch('/api/users', {
       method: 'POST',
       body: form.value

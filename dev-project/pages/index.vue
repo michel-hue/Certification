@@ -27,29 +27,13 @@
     <main class="flex flex-1 overflow-hidden rounded-t-lg shadow-lg">
       
       <!-- Formulaire à gauche -->
-      <div class="w-full md:w-1/2 flex items-center justify-center bg-gray-300">
-        <form class="w-full max-w-md px-8 space-y-6">
-          <h2 class="text-2xl font-semibold">Crée ton compte</h2>
-          <p class="text-sm text-gray-600">On est content de t’avoir ici 🎉</p>
+  <div class="w-full md:w-1/2 flex items-center justify-center bg-gray-300 animate-zoom-in">
+  <RegisterForm />
+ </div>
 
-          <input type="text" placeholder="Nom" class="w-full bg-white border border-gray-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 placeholder-gray-500" />
-          <input type="email" placeholder="Email" class="w-full bg-white border border-gray-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 placeholder-gray-500" />
-          <input type="password" placeholder="Mot de passe" class="w-full bg-white border border-gray-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 placeholder-gray-500" />
-
-          <button type="submit" class="w-full bg-gray-900 hover:bg-green-600 text-white py-2 rounded transition">
-            Créer un compte
-          </button>
-
-          <!-- Lien vers la connexion -->
-          <p class="text-sm text-center text-gray-600">
-            Déjà inscrit ?
-            <NuxtLink to="/login" class="text-green-600 hover:underline">Connecte-toi ici</NuxtLink>
-          </p>
-        </form>
-      </div>
 
       <!-- Bloc visuel à droite -->
-      <div class="hidden md:flex w-1/2 bg-gray-900 text-white flex-col items-center justify-center p-10 text-center space-y-4 rounded-l-[3rem]">
+      <div class="hidden md:flex w-1/2 bg-gray-900 text-white flex-col items-center justify-center p-10 text-center space-y-4 rounded-l-[3rem] animate-fade-in-up">
         <h2 class="text-3xl font-extrabold">Bienvenue sur Ma Boutique</h2>
         <p class="text-lg text-gray-300">Fais tes achats facilement et en toute confiance. On est là pour t'accompagner 🛍️</p>
       </div>
@@ -70,3 +54,7 @@
     </NuxtLink>
   </div>
 </template>
+
+<script setup>
+import RegisterForm from '~/components/RegisterForm.vue'
+</script>

@@ -29,8 +29,8 @@
           </h2>
 
           <div v-if="product.rating" class="text-sm text-gray-600 flex flex-col gap-2 mb-2">
+            <i class="fas fa-star text-yellow-400 mr-1"></i>
             <p>
-              <i class="fas fa-star text-yellow-400 mr-1"></i>
               {{ product.rating.rate }} / 5
             </p>
             <p>({{ product.rating.count }} avis)</p>

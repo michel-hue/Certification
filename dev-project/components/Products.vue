@@ -19,31 +19,37 @@
         <NuxtLink 
           v-for="product in filteredProducts"
           :key="product.id"
-          :to="`/products/${product.id}`"
-          class="bg-white shadow rounded-[15%] p-4 text-center hover:shadow-lg transition hover:scale-105 transition-all text-center"
+          :to="`/users/products/${product.id}`"
+          class="bg-white shadow rounded-[15%] p-4 text-center hover:shadow-lg hover:scale-105 transform transition duration-300"
+          :aria-label="`Voir les détails de ${product.title}`"
         >
-          <button class="inline-block text-xs text-blue-500 mb-2 border rounded-xl p-2 bg-gray-300">
+          <!-- Catégorie -->
+          <button class="inline-block text-xs text-blue-500 mb-2 border rounded-xl p-2 bg-gray-300 cursor-default">
             <i class="fas fa-tag mr-1"></i>
             {{ product.category }}
           </button>
 
+          <!-- Image produit -->
           <img
             :src="product.image"
             :alt="product.title"
             class="h-40 w-full object-contain mb-4"
           />
 
+          <!-- Titre produit -->
           <p class="font-semibold text-gray-800 mb-1">{{ product.title }}</p>
+
+          <!-- Prix -->
           <p class="text-green-600 font-bold mb-2">
-            <i class="fas fa-dollar-sign mr-1"></i>{{ product.price }} 
+            <i class="fas fa-dollar-sign mr-1"></i>{{ product.price }}
           </p>
 
-          <!-- Note avec étoile -->
+          <!-- Note -->
           <p class="text-yellow-500 font-semibold text-center">
             <i class="fas fa-star mr-1"></i> Note : {{ product.rating.rate }}
           </p>
 
-          <!-- Nombre d’avis avec une icône de commentaire -->
+          <!-- Nombre d’avis -->
           <p class="text-gray-700 text-center">
             <i class="fas fa-comment-alt mr-1 text-gray-500"></i> ({{ product.rating.count }}) Avis
           </p>
@@ -56,7 +62,6 @@
 <script setup>
 import { computed, defineProps } from 'vue'
 
-// Cette ligne EST OBLIGATOIRE pour récupérer la prop searchQuery
 const props = defineProps({
   searchQuery: {
     type: String,
@@ -68,15 +73,13 @@ const { data: products, error, pending } = await useAsyncData('products', () =>
   $fetch('/api/products')
 )
 
-// Utilise props.searchQuery dans le computed, PAS searchQuery seul
 const filteredProducts = computed(() => {
   if (!products.value) return []
 
-  if (!props.searchQuery) return products.value
+  if (!props.searchQuery.trim()) return products.value
 
   return products.value.filter(product =>
     product.title.toLowerCase().includes(props.searchQuery.toLowerCase())
   )
 })
 </script>
-

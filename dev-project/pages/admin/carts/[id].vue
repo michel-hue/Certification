@@ -6,7 +6,7 @@
         class="inline-flex items-center text-sm font-semibold text-gray-700 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 transition"
         aria-label="Retour aux paniers"
       >
-        <i class="fa-solid fa-arrow-left mr-2"></i> Retour 
+        <i class="fa-solid fa-arrow-left mr-2"></i> Retour
       </button>
     </NuxtLink>
   </div>
@@ -67,15 +67,27 @@
         </div>
       </div>
 
-      <!-- Bouton Modifier -->
-      <NuxtLink :to="`/carts/edit/${cart.id}`" class="inline-block">
+      <!-- Boutons actions -->
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <!-- Modifier -->
+        <NuxtLink :to="`/admin/carts/edit/${cart.id}`" class="w-full sm:w-auto">
+          <button
+            class="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-green-600 text-white text-base font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <i class="fa-solid fa-pen-to-square"></i>
+            Modifier
+          </button>
+        </NuxtLink>
+
+        <!-- Supprimer -->
         <button
-          class="mt-8 w-full sm:w-auto flex items-center justify-center gap-2 bg-gray-900 hover:from-green-600 hover:bg-green-600 text-white text-base font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+          @click="supprimerPanier"
+          class="w-full sm:w-auto flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white text-base font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
         >
-          <i class="fa-solid fa-pen-to-square"></i>
-          Modifier
+          <i class="fa-solid fa-trash"></i>
+          Supprimer
         </button>
-      </NuxtLink>
+      </div>
     </div>
 
     <!-- Chargement -->
@@ -94,9 +106,10 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
+const router = useRouter()
 const id = route.params.id
 
 const cart = ref(null)
@@ -112,5 +125,21 @@ try {
   console.error('Erreur chargement panier :', err)
 } finally {
   loading.value = false
+}
+
+const supprimerPanier = async () => {
+  const confirmDelete = confirm("Voulez-vous vraiment supprimer ce panier ?")
+  if (!confirmDelete) return
+
+  try {
+    await $fetch(`/api/carts/${id}`, {
+      method: 'DELETE'
+    })
+    alert('✅ Panier supprimé avec succès.')
+    router.push('/admin/carts')
+  } catch (err) {
+    console.error('❌ Erreur lors de la suppression :', err)
+    alert('Erreur lors de la suppression du panier.')
+  }
 }
 </script>
