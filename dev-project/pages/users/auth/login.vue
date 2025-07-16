@@ -1,60 +1,49 @@
 <template>
-  <section class="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-      <h2 class="text-2xl font-bold text-center text-gray-800 mb-6 flex items-center justify-center gap-2">
-        <i class="fa-solid fa-right-to-bracket text-green-600 text-xl"></i>
+  <div class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+    <div class="w-full max-w-md bg-white p-6 rounded-xl shadow-lg">
+      <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">
         Connexion
-      </h2>
+      </h1>
 
-      <p v-if="erreur" class="text-red-600 text-sm mb-4 text-center">
-        {{ erreur }}
-      </p>
-
-      <form @submit.prevent="seConnecter" class="space-y-5">
-        <!-- Nom d'utilisateur -->
-        <div>
-          <label class="block mb-1 font-medium text-gray-700">Nom d'utilisateur</label>
-          <div class="flex items-center border rounded-xl px-3 bg-gray-50 focus-within:ring-2 focus-within:ring-green-600">
-            <i class="fa-solid fa-user text-gray-400 mr-2"></i>
-            <input
-              v-model="username"
-              type="text"
-              placeholder="john"
-              class="w-full bg-transparent py-2 outline-none"
-              required
-            />
-          </div>
+      <form @submit.prevent="login">
+        <div class="mb-4">
+          <label for="username" class="block text-sm font-medium text-gray-700"> <i class="fas fa-user"></i>Nom d’utilisateur</label>
+          <input
+            id="username"
+            v-model="username"
+            type="text"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-600 focus:border-green-600"
+          />
         </div>
 
-        <!-- Mot de passe -->
-        <div>
-          <label class="block mb-1 font-medium text-gray-700">Mot de passe</label>
-          <div class="flex items-center border rounded-xl px-3 bg-gray-50 focus-within:ring-2 focus-within:ring-green-600">
-            <i class="fa-solid fa-lock text-gray-400 mr-2"></i>
-            <input
-              v-model="password"
-              type="password"
-              placeholder="123456"
-              class="w-full bg-transparent py-2 outline-none"
-              required
-            />
-          </div>
+        <div class="mb-6">
+          <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+          <input
+            id="password"
+            v-model="password"
+            type="password"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-600 focus:border-green-600"
+          />
         </div>
 
-        <!-- Bouton -->
+        <div v-if="erreur" class="text-red-600 text-sm mb-4">
+          {{ erreur }}
+        </div>
+
         <button
           type="submit"
-          class="w-full bg-gray-900 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-xl transition"
+          class="w-full bg-gray-900 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition"
         >
-          <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>
           Se connecter
         </button>
       </form>
     </div>
-  </section>
+  </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -63,26 +52,50 @@ const password = ref('')
 const erreur = ref('')
 const router = useRouter()
 
-// Connexion avec FakeStoreAPI
-const seConnecter = async () => {
+async function login() {
+  erreur.value = ''
+
+  const credentials = { username: username.value, password: password.value }
+
   try {
-    const res = await $fetch('/api/auth/login', {
+    const response = await fetch('https://fakestoreapi.com/auth/login', {
       method: 'POST',
-      body: {
-        username: username.value,
-        password: password.value
-      }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(credentials),
     })
 
-    if (res.token) {
-      localStorage.setItem('token', res.token)
-      router.push('/')
-    } else {
-      erreur.value = "Échec de la connexion."
+    if (!response.ok) {
+      erreur.value = `Erreur HTTP : ${response.status}`
+      return
     }
-  } catch (e) {
-    erreur.value = "Identifiants incorrects ou erreur réseau."
+
+    const data = await response.json()
+
+    if (data.token) {
+      // ✅ Stocker le token
+      localStorage.setItem('token', data.token)
+
+      // 🔍 Rechercher le user par son nom d’utilisateur pour récupérer son ID
+      const users = await $fetch('https://fakestoreapi.com/users')
+      const currentUser = users.find(u => u.username === username.value)
+
+      if (currentUser) {
+        localStorage.setItem('userId', currentUser.id)
+        localStorage.setItem('username', currentUser.username)
+
+        // ✅ Rediriger vers le dashboard
+        router.push('/users/users/dashboard')
+      } else {
+        erreur.value = 'Utilisateur introuvable.'
+      }
+    } else if (data.msg) {
+      erreur.value = data.msg
+    } else {
+      erreur.value = 'Réponse inattendue du serveur.'
+    }
+  } catch (err) {
+    erreur.value = 'Erreur réseau ou serveur : ' + err
+    console.error(err)
   }
 }
-
 </script>

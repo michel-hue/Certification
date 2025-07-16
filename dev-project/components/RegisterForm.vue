@@ -39,6 +39,13 @@
       class="w-full border rounded-xl px-4 py-2 focus:ring-2 focus:ring-green-500"
       required
     />
+      <input
+      v-model="password"
+      type="text"
+      placeholder="Mot de passe"
+      class="w-full border rounded-xl px-4 py-2 focus:ring-2 focus:ring-green-500"
+      required
+    />
     <input
       v-model="phone"
       type="tel"
@@ -76,7 +83,9 @@ const firstname = ref('')
 const lastname = ref('')
 const email = ref('')
 const username = ref('')
+const password= ref('')
 const phone = ref('')
+
 
 const register = async () => {
   try {
@@ -87,6 +96,7 @@ const register = async () => {
         firstname: firstname.value,
         lastname: lastname.value
       },
+      password : password.value,
       phone: phone.value
     }
 

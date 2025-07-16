@@ -37,6 +37,8 @@
           <i class="fas fa-phone-alt text-green-500 text-lg"></i>
           {{ user.phone }}
         </p>
+         <p><i class="fas fa-user-tag mr-2 text-gray-500"></i> Nom d’utilisateur : {{ user.username }}</p>
+          <p><i class="fas fa-user-tag mr-2 text-gray-500"></i> Mot de passe : {{ user.password }}</p>
       </div>
 
       <div class="mt-4 bg-gray-50 rounded-xl p-4">

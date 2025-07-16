@@ -1,5 +1,19 @@
 <template>
   <div class="space-y-8 p-6">
+<NuxtLink to="/" class="fixed top-4 right-4 group z-50">
+  <div class="p-3 rounded-full bg-gray-900 hover:bg-red-600 transition relative cursor-pointer flex items-center gap-2">
+    <!-- Icône déconnexion (utilisation d'un SVG "logout") -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1" />
+    </svg>
+
+    <span class="text-white font-semibold select-none">
+      Déconnexion
+    </span>
+  </div>
+</NuxtLink>
+
     <!-- Titre -->
     <h1 class="text-3xl font-bold text-gray-800 flex items-center gap-3">
       <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="text-green-600" />

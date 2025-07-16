@@ -1,7 +1,7 @@
 <template> 
   <!-- Bouton Retour -->
   <div class="p-4 bg-white shadow-md sticky top-0 z-10">
-    <NuxtLink to="/products/categories">
+    <NuxtLink to="/users/products/categories">
       <button
         class="inline-flex items-center text-sm font-semibold text-gray-700 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 transition"
       >
@@ -25,7 +25,7 @@
         <NuxtLink
           v-for="product in categorie.products"
           :key="product.id"
-          :to="`/products/${product.id}`"
+          :to="`/users/products/${product.id}`"
           class="block bg-white rounded-xl p-4 shadow hover:shadow-lg hover:scale-105 transition-all text-center"
         >
           <img

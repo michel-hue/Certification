@@ -9,71 +9,71 @@
     </h1>
 
     <!-- Barre de recherche -->
-    <form @submit.prevent="rechercherProduit" class="flex flex-1 justify-center gap-2 max-w-lg w-full">
-      <input
-        type="text"
-        v-model="searchQuery"
-        placeholder="Rechercher un produit..."
-        class="w-full px-3 py-2 border rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <button class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-green-500">
-        Rechercher
-      </button>
-    </form>
+<form @submit.prevent="rechercherProduit" class="flex flex-1 justify-center gap-2 max-w-lg w-full">
+  <input
+    type="text"
+    v-model="searchQuery"
+    placeholder="Rechercher un produit..."
+    class="w-full px-3 py-3 border rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <button type="submit" class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-green-500">
+    Rechercher
+  </button>
+</form>
 
     <!-- Navigation -->
 <nav>
-  <ul class="flex gap-6 text-white font-medium">
-    <li>
-      <a href="/users/products" class="flex items-center gap-2 hover:text-green-500 transition">
-        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-600 hover:text-white transition">
-          <i class="fas fa-bag-shopping"></i>
-        </div>
-        Products
-      </a>
-    </li>
+  <ul class="flex gap-6 text-white font-medium items-center">
 
+    <!-- Tes liens habituels -->
     <li>
-      <a href="/users/carts" class="flex items-center gap-2 hover:text-green-500 transition">
-        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-400 hover:text-white transition">
+      <NuxtLink to="/users/carts" class="flex items-center gap-2 hover:text-green-500 transition">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-400 hover:text-white transition" aria-label="Panier">
           <i class="fa-solid fa-cart-shopping"></i>
         </div>
         Panier
-      </a>
+      </NuxtLink>
     </li>
 
     <li>
-      <a href="/users/products/categories" class="flex items-center gap-2 hover:text-green-500 transition">
-        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-500 hover:text-white transition">
+      <NuxtLink to="/users/products/categories" class="flex items-center gap-2 hover:text-green-500 transition">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-500 hover:text-white transition" aria-label="Catégories">
           <i class="fa-solid fa-layer-group"></i>
         </div>
         Catégories
-      </a>
+      </NuxtLink>
     </li>
 
     <li>
-      <a href="/users/users/dashoard" class="flex items-center gap-2 hover:text-green-500 transition">
-        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-500 hover:text-white transition">
+      <NuxtLink to="/users/users/dashboard" class="flex items-center gap-2 hover:text-green-500 transition">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 hover:bg-green-600 text-blue-500 hover:text-white transition" aria-label="Profil">
           <i class="fa-solid fa-user"></i>
         </div>
         Profil
-      </a>
+      </NuxtLink>
+    </li>
+
+    <!-- Bouton logout -->
+    <li>
+      <button
+        @click="logout"
+        class="flex items-center gap-2 text-red-600 hover:text-red-800 transition bg-transparent border-none cursor-pointer"
+        aria-label="Déconnexion"
+      >
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Déconnexion
+      </button>
     </li>
   </ul>
 </nav>
-
-
-  </div>
+</div>
 </header>
-
-
- 
-
 </template>
 
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const searchQuery = ref('')
 const allProducts = ref([])      // Tous les produits récupérés depuis l'API
@@ -95,6 +95,20 @@ function rechercherProduit() {
     )
   }
 }
+
+
+
+const router = useRouter()
+
+function logout() {
+  // Supprime le token et userId (ou autres données liées à la session)
+  localStorage.removeItem('token')
+  localStorage.removeItem('userId')
+
+  // Redirection vers la page de connexion
+  router.push('/users/auth/login')
+}
+
 </script>
 
 
