@@ -15,7 +15,7 @@
   <section class="p-6 bg-gray-100 min-h-screen font-sans">
     <!-- Titre -->
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-10 flex items-center justify-center gap-3">
-      <i class="fas fa-tags text-green-600 text-2xl"></i>
+      <i class="fas fa-tags text-gray-900 text-2xl"></i>
       Toutes les catégories
     </h2>
 
@@ -40,7 +40,7 @@
         class="relative group block bg-white rounded-2xl p-6 shadow hover:shadow-xl hover:scale-105 transition-all"
       >
         <!-- Icône flottante -->
-        <div class="absolute -top-5 -left-5 bg-green-600 text-white rounded-full p-3 shadow-lg group-hover:bg-blue-600 transition">
+        <div class="absolute -top-5 -left-5 bg-gray-900 text-white rounded-full p-3 shadow-lg group-hover:bg-green-600 transition">
           <i class="fas fa-layer-group text-xl"></i>
         </div>
 

@@ -98,16 +98,24 @@ const userStore = useUserStore()
 // Charger le produit
 product.value = await $fetch(`https://fakestoreapi.com/products/${id}`)
 
+// 📦 Importer le store
+import { useCartStore } from '~/stores/useCartStore'
+const cartStore = useCartStore()
+
 function ajouterAuPanier() {
-  if (!userStore.isLoggedIn) {
-    showMessage.value = true
-    setTimeout(() => {
-      showMessage.value = false
-    }, 3000)
+  if (quantity.value < 1) {
+    alert('La quantité doit être au moins de 1.')
     return
   }
 
-  // Ici tu peux appeler ta logique d'ajout panier si besoin
-  alert('Produit ajouté au panier')
+  // Ajouter le produit au panier via le store
+  cartStore.addToCart(product.value, quantity.value)
+
+  alert(`Produit ajouté au panier : ${product.value.title} (Quantité: ${quantity.value})`)
+
+  // Optionnel: reset quantité et cacher le champ
+  quantity.value = 1
+  afficherQuantite.value = false
 }
+
 </script>

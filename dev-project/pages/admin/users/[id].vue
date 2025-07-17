@@ -56,7 +56,7 @@
       <div class="mt-6 flex flex-wrap gap-4">
         <button
           @click="deleteUser(user.id)"
-          class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition flex items-center gap-2"
+          class="bg-gray-900 text-white px-4 py-2 rounded hover:bg-red-600 transition flex items-center gap-2"
         >
           <i class="fa-solid fa-trash"></i>
           Supprimer
@@ -64,7 +64,7 @@
 
         <NuxtLink :to="`/admin/users/edit/${user.id}`">
           <button
-            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition flex items-center gap-2"
+            class="bg-gray-900 text-white px-4 py-2 rounded hover:bg-blue-600 transition flex items-center gap-2"
           >
             <i class="fa-solid fa-pen-to-square"></i>
             Modifier
@@ -76,41 +76,6 @@
     <div v-else class="text-center text-gray-500 italic">
       Chargement de l'utilisateur…
     </div>
-
-    <!-- Section des paniers utilisateur -->
-    <section class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow mt-10">
-      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
-        <i class="fa-solid fa-boxes-stacked text-green-600"></i>
-        Paniers de l'utilisateur
-      </h3>
-
-      <div v-if="loadingCarts" class="text-gray-500 italic flex items-center gap-2">
-        <i class="fa-solid fa-spinner fa-spin"></i> Chargement des paniers…
-      </div>
-
-      <div v-else-if="errorCarts" class="text-red-600 font-semibold">
-        Erreur lors du chargement des paniers.
-      </div>
-
-      <div v-else-if="carts.length === 0" class="text-gray-500 italic">
-        Aucun panier trouvé pour cet utilisateur.
-      </div>
-
-      <div v-else class="space-y-4">
-        <div
-          v-for="cart in carts"
-          :key="cart.id"
-          class="border border-gray-200 rounded-xl p-4"
-        >
-          <p><strong>ID panier :</strong> {{ cart.id }}</p>
-          <p><strong>Date :</strong> {{ new Date(cart.date).toLocaleString() }}</p>
-          <p><strong>Nombre de produits :</strong> {{ cart.products?.length || 0 }}</p>
-          <NuxtLink :to="`/admin/carts/${cart.id}`" class="text-blue-600 hover:underline">
-            Voir détails
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
   </section>
 </template>
 
@@ -132,17 +97,6 @@ try {
   user.value = await $fetch(`/api/users/${id}`)
 } catch (err) {
   console.error('Erreur chargement utilisateur :', err)
-}
-
-// Récupération des paniers de l'utilisateur
-try {
-  const allCarts = await $fetch('/api/carts')
-  carts.value = allCarts.filter(cart => cart.userId === id)
-} catch (err) {
-  console.error('Erreur chargement paniers utilisateur :', err)
-  errorCarts.value = err
-} finally {
-  loadingCarts.value = false
 }
 
 

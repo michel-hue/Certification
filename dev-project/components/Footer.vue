@@ -1,38 +1,47 @@
 <template>
-  <footer class="bg-gray-900 text-white py-6 mt-12">
-     <nav>
-  <ul class="flex justify-center gap-6 text-white font-medium">
-    <li>
-      <a href="/users" class="flex items-center gap-2 hover:text-gray-600">
-        <i class="fa-solid fa-user text-blue-400"></i>
-        Se connecter
-      </a>
-    </li>
+  <footer class="bg-white text-gray-400 py-6 mt-12">
+    <!-- Navigation -->
+    <nav>
+      <ul class="flex justify-center flex-wrap gap-6 font-medium text-sm">
 
-    <li>
-      <a href="/carts" class="flex items-center gap-2 hover:text-gray-600">
-        <i class="fa-solid fa-bag-shopping text-blue-400"></i>
-        <span>Panier</span>
-      </a>
-    </li>
+        <li>
+          <NuxtLink to="/#" class="flex items-center gap-2 text-green-600 transition">
+            Home
+          </NuxtLink>
+        </li>
 
-    <li>
-      <a href="/products/categories" class="flex items-center gap-2 hover:text-gray-600">
-        <i class="fa-solid fa-layer-group text-blue-500"></i>
-        Catégories
-      </a>
-    </li>
+        <li>
+          <NuxtLink to="/#" class="flex items-center gap-2 hover:text-green-600 transition">
+            Products
+          </NuxtLink>
+        </li>
 
-    <li>
-      <a href="#" class="flex items-center gap-2 hover:text-gray-600">
-        <i class="fa-solid fa-envelope text-blue-500"></i>
-        Contact
-      </a>
-    </li>
-  </ul>
-</nav>
+        <li>
+          <NuxtLink to="/#" class="flex items-center gap-2 hover:text-green-600 transition">
+            <i class="fa-solid fa-envelope text-white"></i>
+            Services
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/users/auth/login" class="flex items-center gap-2 hover:text-green-600 transition">
+            <i class="fa-solid fa-user text-gray-400 hover:text-green-600"></i>
+            
+          </NuxtLink>
+        </li>
 
-    <p class="text-center text-sm text-gray-500 mt-4">© {{ year }} Ma Boutique. Tous droits réservés.</p>
+        <li>
+          <NuxtLink to="/users/carts" class="flex items-center gap-2 hover:text-green-600 transition">
+            <i class="fa-solid fa-cart-shopping text-gray-400 hover:text-green-600 "></i>
+          </NuxtLink>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Copyright -->
+    <p class="text-center text-sm text-gray-700 mt-4">
+      © {{ year }} Ma Boutique. Tous droits réservés.
+    </p>
   </footer>
 </template>
 

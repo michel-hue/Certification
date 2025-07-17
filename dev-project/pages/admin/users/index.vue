@@ -18,7 +18,7 @@
 
       <!-- Bouton "Ajouter un utilisateur" -->
       <NuxtLink to="/admin/users/add">
-        <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl text-sm transition flex items-center gap-2">
+        <button class="bg-gray-900 hover:bg-green-600 text-white px-4 py-2 rounded-xl text-sm transition flex items-center gap-2">
           <i class="fas fa-user-plus"></i> Ajouter un utilisateur
         </button>
       </NuxtLink>

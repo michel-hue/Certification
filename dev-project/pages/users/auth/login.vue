@@ -1,4 +1,12 @@
 <template>
+      <!-- Bouton retour -->
+    <NuxtLink
+      to="/"
+      class="inline-flex items-center mb-6 text-sm font-semibold text-gray-700 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 hover:text-white transition"
+    >
+      <i class="fas fa-arrow-left mr-2"></i>
+      Retour
+    </NuxtLink>
   <div class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
     <div class="w-full max-w-md bg-white p-6 rounded-xl shadow-lg">
       <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">

@@ -72,7 +72,7 @@
         <!-- Modifier -->
         <NuxtLink :to="`/admin/carts/edit/${cart.id}`" class="w-full sm:w-auto">
           <button
-            class="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-green-600 text-white text-base font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            class="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-blue-600 text-white text-base font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <i class="fa-solid fa-pen-to-square"></i>
             Modifier
@@ -82,7 +82,7 @@
         <!-- Supprimer -->
         <button
           @click="supprimerPanier"
-          class="w-full sm:w-auto flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white text-base font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+          class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gray-900 hover:bg-red-600 text-white text-base font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
         >
           <i class="fa-solid fa-trash"></i>
           Supprimer

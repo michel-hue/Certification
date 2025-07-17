@@ -1,4 +1,14 @@
 <template>
+    <!-- Bouton Retour -->
+  <div class="p-4 bg-white shadow-md sticky top-0 z-10">
+    <NuxtLink to="/admin/users">
+      <button
+        class="inline-flex items-center text-sm font-semibold text-gray-700 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 transition"
+      >
+        <i class="fa-solid fa-arrow-left mr-2"></i> Retour
+      </button>
+    </NuxtLink>
+  </div>
   <div class="max-w-lg mx-auto p-6 bg-white rounded-xl shadow mt-10">
     <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
       <i class="fas fa-user-plus text-green-600"></i> Ajouter un utilisateur
