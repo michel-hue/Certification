@@ -1,109 +1,83 @@
 <template>
-      <!-- Bouton retour -->
-    <NuxtLink
-      to="/"
-      class="inline-flex items-center mb-6 text-sm font-semibold text-gray-700 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 hover:text-white transition"
-    >
-      <i class="fas fa-arrow-left mr-2"></i>
-      Retour
-    </NuxtLink>
-  <div class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-    <div class="w-full max-w-md bg-white p-6 rounded-xl shadow-lg">
-      <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">
-        Connexion
-      </h1>
+  <!-- Bouton pour retourner à la page d'accueil -->
+  <NuxtLink to="/" class="inline-block text-sm text-white mb-4 bg-gray-900 px-4 py-2 rounded-xl hover:bg-green-600 transition">
+    ← Retour
+  </NuxtLink>
 
-      <form @submit.prevent="login">
-        <div class="mb-4">
-          <label for="username" class="block text-sm font-medium text-gray-700"> <i class="fas fa-user"></i>Nom d’utilisateur</label>
-          <input
-            id="username"
-            v-model="username"
-            type="text"
-            required
-            class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-600 focus:border-green-600"
-          />
-        </div>
+  <!-- Formulaire de connexion -->
+  <section class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md space-y-6">
+      <h1 class="text-2xl font-bold text-center text-gray-800 dark:text-white">Connexion</h1>
 
-        <div class="mb-6">
-          <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
-          <input
-            id="password"
-            v-model="password"
-            type="password"
-            required
-            class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-600 focus:border-green-600"
-          />
-        </div>
+      <!-- Champ pour le nom d'utilisateur -->
+      <div>
+        <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nom d'utilisateur</label>
+        <input type="text" id="username" v-model="username" class="mt-1 block w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-700 dark:text-white focus:ring focus:ring-green-600 focus:outline-none" />
+      </div>
 
-        <div v-if="erreur" class="text-red-600 text-sm mb-4">
-          {{ erreur }}
-        </div>
+      <!-- Champ pour le mot de passe -->
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Mot de passe</label>
+        <input type="password" id="password" v-model="password" class="mt-1 block w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-700 dark:text-white focus:ring focus:ring-green-600 focus:outline-none" />
+      </div>
 
-        <button
-          type="submit"
-          class="w-full bg-gray-900 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition"
-        >
-          Se connecter
-        </button>
-      </form>
+      <!-- Affichage de l'erreur s'il y en a une -->
+      <p v-if="erreur" class="text-red-500 text-sm text-center">{{ erreur }}</p>
+
+      <!-- Bouton de connexion -->
+      <div>
+        <button @click="login" class="w-full bg-gray-900 hover:bg-green-600 text-white py-2 px-4 rounded-md transition">Se connecter</button>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
+//  Importation des outils nécessaires depuis Vue et Vue Router
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+//  Variables pour stocker les données de l'utilisateur
 const username = ref('')
 const password = ref('')
 const erreur = ref('')
 const router = useRouter()
 
+//  Fonction appelée quand l'utilisateur clique sur "Se connecter"
 async function login() {
-  erreur.value = ''
-
-  const credentials = { username: username.value, password: password.value }
+  erreur.value = '' // On vide l'erreur à chaque tentative
 
   try {
-    const response = await fetch('https://fakestoreapi.com/auth/login', {
+    //  Requête pour vérifier les identifiants (POST vers l'API FakeStore)
+    const res = await $fetch('https://fakestoreapi.com/auth/login', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials),
+      body: {
+        username: username.value,
+        password: password.value
+      }
     })
 
-    if (!response.ok) {
-      erreur.value = `Erreur HTTP : ${response.status}`
-      return
-    }
+    //  Si un token est retourné, cela veut dire que la connexion a fonctionné
+    if (res && res.token) {
+      localStorage.setItem('token', res.token) // On stocke le token
 
-    const data = await response.json()
-
-    if (data.token) {
-      // ✅ Stocker le token
-      localStorage.setItem('token', data.token)
-
-      // 🔍 Rechercher le user par son nom d’utilisateur pour récupérer son ID
+      //  Récupération de tous les utilisateurs
       const users = await $fetch('https://fakestoreapi.com/users')
-      const currentUser = users.find(u => u.username === username.value)
+      const user = users.find((u: any) => u.username === username.value)
 
-      if (currentUser) {
-        localStorage.setItem('userId', currentUser.id)
-        localStorage.setItem('username', currentUser.username)
-
-        // ✅ Rediriger vers le dashboard
-        router.push('/users/users/dashboard')
+      //  On garde l'identifiant et le nom de l'utilisateur pour l'utiliser plus tard
+      if (user) {
+        localStorage.setItem('userId', user.id)
+        localStorage.setItem('username', user.username)
+        router.push('/users/users/dashboard') //  Redirection vers le tableau de bord
       } else {
-        erreur.value = 'Utilisateur introuvable.'
+        erreur.value = "Utilisateur non trouvé."
       }
-    } else if (data.msg) {
-      erreur.value = data.msg
     } else {
-      erreur.value = 'Réponse inattendue du serveur.'
+      erreur.value = "Connexion échouée. Vérifiez vos identifiants."
     }
-  } catch (err) {
-    erreur.value = 'Erreur réseau ou serveur : ' + err
-    console.error(err)
+  } catch (e) {
+    erreur.value = "Erreur lors de la connexion. Réessayez plus tard."
   }
 }
 </script>

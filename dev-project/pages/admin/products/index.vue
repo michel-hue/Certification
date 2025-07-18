@@ -1,98 +1,113 @@
 <template>
-  <!-- Nom de l’app -->
-  <div class="flex items-center justify-center gap-3 text-2xl font-bold">
-    <i class="fas fa-user-shield text-green-600"></i>
-    Tableau Admin
-  </div>
+  <!-- Conteneur principal avec fond clair ou sombre selon le mode dark -->
+  <div class="min-h-screen p-6 font-sans bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
-  <div class="flex items-center justify-between gap-4 p-4 bg-white shadow-md sticky top-0 z-10 flex-wrap">
-    <!-- Bouton retour admin -->
-    <NuxtLink to="/admin" aria-label="Retour à l'administration">
-      <button
-        class="inline-flex items-center text-sm font-semibold text-gray-900 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 hover:text-white transition"
-      >
-        <font-awesome-icon :icon="['fas', 'arrow-left']" class="mr-2" /> Retour
-      </button>
-    </NuxtLink>
+    <!--  Titre principal de la page -->
+    <header class="flex items-center justify-center gap-3 text-3xl font-extrabold mb-8 select-none text-gray-900 dark:text-green-600">
+      <i class="fas fa-user-shield"></i>
+      Tableau Admin
+    </header>
 
-    <!-- Formulaire recherche -->
-    <div class="flex-1 flex justify-center">
+    <!--  Barre du haut avec 3 éléments : retour, recherche, ajout -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl sticky top-0 z-20 shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300">
+
+      <!--  Bouton pour retourner à la page admin principale -->
+      <NuxtLink to="/admin" aria-label="Retour à l'administration" class="inline-block">
+        <button class="inline-flex items-center text-sm font-semibold rounded-xl px-5 py-2 transition-shadow shadow-sm hover:shadow-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 hover:bg-green-600 hover:text-white">
+          <i class="fas fa-arrow-left mr-2"></i> Retour
+        </button>
+      </NuxtLink>
+
+      <!--  Formulaire pour rechercher un produit -->
       <form @submit.prevent class="flex w-full max-w-md" role="search" aria-label="Recherche produits">
         <input
           type="text"
           v-model="searchQuery"
           placeholder="Rechercher un produit..."
-          class="w-full px-4 py-2 border border-gray-300 rounded-l-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-600 placeholder-gray-500"
+          class="flex-grow px-4 py-2 rounded-l-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition"
           aria-label="Recherche produit"
         />
         <button
           type="submit"
-          class="bg-gray-900 text-white px-4 py-2 rounded-r-xl hover:bg-green-600 transition"
+          class="px-6 py-2 rounded-r-xl bg-gray-300 dark:bg-gray-700 text-white hover:bg-green-600 transition-shadow shadow-sm hover:shadow-lg"
           aria-label="Lancer la recherche"
         >
           Rechercher
         </button>
       </form>
+
+      <!--  Lien pour ajouter un nouveau produit -->
+      <NuxtLink :to="`/admin/products/add`" aria-label="Ajouter un nouveau produit" class="inline-block">
+        <button class="inline-flex items-center text-sm rounded-xl px-5 py-2 transition-shadow shadow-sm hover:shadow-lg text-black dark:text-white bg-gray-300 dark:bg-gray-700 hover:bg-green-600">
+          <i class="fas fa-plus mr-2"></i> Ajouter un produit
+        </button>
+      </NuxtLink>
     </div>
 
-    <!-- Bouton ajouter produit -->
-    <NuxtLink :to="`/admin/products/add`" aria-label="Ajouter un nouveau produit">
-      <button
-        class="inline-flex items-center text-sm text-white border rounded-xl px-4 py-2 bg-gray-900 hover:bg-green-600 transition"
-      >
-        
-  <i class="fas fa-plus mr-1"></i> Ajouter un produit
-      </button>
-    </NuxtLink>
-  </div>
+    <!--  Section pour afficher tous les produits -->
+    <section class="mt-8 p-6 rounded-xl shadow-lg min-h-[60vh] bg-white dark:bg-gray-800 transition-colors duration-300">
+      <!--  Titre de la section -->
+      <h2 class="text-3xl font-bold text-center mb-8 tracking-wide text-gray-900 dark:text-gray-100">
+        Tous les produits
+      </h2>
 
-  <!-- Liste des produits -->
-  <div class="p-4">
-    <section class="p-6 bg-gray-50 min-h-screen">
-      <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Tous les produits</h2>
-
-      <div v-if="error" class="text-red-600 text-center">
+      <!--  Affichage erreur si la requête échoue -->
+      <div v-if="error" class="text-red-600 text-center text-lg font-semibold">
         <p>Erreur : {{ error.message }}</p>
       </div>
 
-      <div v-else-if="pending" class="text-center text-gray-500">
-        <p>Chargement…</p>
+      <!--  Affichage chargement -->
+      <div v-else-if="pending" class="text-center text-lg italic text-gray-500 dark:text-gray-400">
+        Chargement…
       </div>
 
+      <!--  Résultat des produits filtrés -->
       <div v-else>
-        <div v-if="filteredProducts.length === 0" class="text-center text-gray-500 italic mb-6">
+        <!-- Aucun produit trouvé -->
+        <div v-if="filteredProducts.length === 0" class="text-center italic mb-8 font-medium text-gray-500 dark:text-gray-400">
           Aucun produit ne correspond à votre recherche.
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <NuxtLink 
+        <!-- Grille de produits -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <!--  Carte de chaque produit -->
+          <NuxtLink
             v-for="product in filteredProducts"
             :key="product.id"
             :to="`/admin/products/${product.id}`"
-            class="bg-white shadow rounded-[15%] p-4 text-center hover:shadow-lg transition hover:scale-105"
+            :aria-label="`Voir les détails de ${product.title}`"
+            class="rounded-xl p-5 shadow-md hover:shadow-2xl transition transform hover:scale-[1.03] flex flex-col items-center cursor-pointer select-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
-            <button class="inline-block text-xs text-blue-500 mb-2 border rounded-xl p-2 bg-gray-300">
-              <i class="fas fa-tag mr-1"></i>
+            <!-- Catégorie du produit -->
+            <button class="inline-flex items-center justify-center text-xs text-blue-600 mb-4 border border-blue-300 rounded-xl px-3 py-1 bg-blue-50 select-none cursor-default" tabindex="-1">
+              <i class="fas fa-tag mr-2"></i>
               {{ product.category }}
             </button>
 
-            <img
-              :src="product.image"
-              :alt="product.title"
-              class="h-40 w-full object-contain mb-4"
-            />
+            <!-- Image du produit -->
+            <img :src="product.image" :alt="product.title" class="h-40 w-auto object-contain mb-5 rounded-lg" loading="lazy" decoding="async" />
 
-            <p class="font-semibold text-gray-800 mb-1">{{ product.title }}</p>
-            <p class="text-green-600 font-bold mb-2">
-              <i class="fas fa-dollar-sign mr-1"></i>{{ product.price }}
+            <!-- Titre du produit -->
+            <p class="font-semibold truncate max-w-full mb-3 text-center" :title="product.title">
+              {{ product.title }}
             </p>
-            <!-- Note avec étoile -->
-            <p class="text-yellow-500 font-semibold text-center">
-              <i class="fas fa-star mr-1"></i> Note : {{ product.rating.rate }}
+
+            <!-- Prix -->
+            <p class="text-green-700 dark:text-green-400 font-extrabold mb-3 flex items-center gap-1 text-lg">
+              <i class="fas fa-dollar-sign"></i>
+              {{ product.price.toFixed(2) }}
             </p>
+
+            <!-- Note / Étoiles -->
+            <p class="text-yellow-500 dark:text-yellow-400 font-semibold flex items-center gap-2 mb-2">
+              <i class="fas fa-star"></i>
+              Note : {{ product.rating.rate }}
+            </p>
+
             <!-- Nombre d’avis -->
-            <p class="text-gray-700 text-center">
-              <i class="fas fa-comment-alt mr-1 text-gray-500"></i> ({{ product.rating.count }}) Avis
+            <p class="text-gray-600 dark:text-gray-400 text-sm flex items-center gap-1">
+              <i class="fas fa-comment-alt text-gray-400 dark:text-gray-600"></i>
+              ({{ product.rating.count }}) avis
             </p>
           </NuxtLink>
         </div>
@@ -100,16 +115,18 @@
     </section>
   </div>
 </template>
-
 <script setup>
 import { ref, computed } from 'vue'
 
+// Variable pour stocker ce que l'utilisateur tape dans la recherche
 const searchQuery = ref('')
 
+// Requête pour récupérer les produits depuis l'API
 const { data: products, error, pending } = await useAsyncData('products', () =>
   $fetch('/api/products')
 )
 
+// Fonction qui filtre les produits selon le titre et la recherche
 const filteredProducts = computed(() => {
   if (!products.value) return []
 

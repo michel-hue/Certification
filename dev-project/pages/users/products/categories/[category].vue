@@ -1,22 +1,22 @@
 <template> 
   <!-- Bouton Retour -->
-  <div class="p-4 bg-white shadow-md sticky top-0 z-10">
+  <div class="p-4 bg-white dark:bg-gray-900 shadow-md sticky top-0 z-10">
     <NuxtLink to="/users/products/categories">
       <button
-        class="inline-flex items-center text-sm font-semibold text-gray-700 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 transition"
+        class="inline-flex items-center text-sm font-semibold text-gray-700 dark:text-gray-300 border rounded-xl px-4 py-2 bg-white dark:bg-gray-800 hover:bg-green-600 hover:text-white transition"
       >
         <i class="fa-solid fa-arrow-left mr-2"></i> Retour
       </button>
     </NuxtLink>
   </div>
 
-  <section class="p-6 bg-gray-50 min-h-screen">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+  <section class="p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6 text-center">
       <i class="fas fa-tags mr-2 text-blue-600"></i>Catégorie :
       <span class="capitalize">{{ category }}</span>
     </h2>
 
-    <div v-if="!categorie" class="text-center text-gray-500">
+    <div v-if="!categorie" class="text-center text-gray-500 dark:text-gray-400">
       <i class="fas fa-spinner fa-spin mr-2"></i>Chargement des produits…
     </div>
 
@@ -26,7 +26,7 @@
           v-for="product in categorie.products"
           :key="product.id"
           :to="`/users/products/${product.id}`"
-          class="block bg-white rounded-xl p-4 shadow hover:shadow-lg hover:scale-105 transition-all text-center"
+          class="block bg-white dark:bg-gray-800 rounded-xl p-4 shadow hover:shadow-lg hover:scale-105 transition-all text-center"
         >
           <img
             :src="product.image"
@@ -34,21 +34,21 @@
             class="h-40 w-full object-contain mb-4"
           />
 
-          <p class="font-semibold text-gray-800 mb-1 line-clamp-2">
-            <i class="fas fa-box mr-1 text-gray-500"></i>{{ product.title }}
+          <p class="font-semibold text-gray-800 dark:text-gray-200 mb-1 line-clamp-2">
+            <i class="fas fa-box mr-1 text-gray-500 dark:text-gray-400"></i>{{ product.title }}
           </p>
 
-          <p class="text-blue-600 font-bold mb-1">
+          <p class="text-blue-600 dark:text-blue-400 font-bold mb-1">
             <i class="fas fa-dollar-sign mr-1 text-green-600"></i>{{ product.price }}
           </p>
 
           <p class="text-yellow-500 text-sm flex justify-center items-center gap-1 mb-2">
             <i class="fas fa-star"></i>
             {{ product.rating?.rate || 'N/A' }}
-            <span class="text-gray-600 text-xs">({{ product.rating?.count || 0 }} avis)</span>
+            <span class="text-gray-600 dark:text-gray-400 text-xs">({{ product.rating?.count || 0 }} avis)</span>
           </p>
 
-          <span class="inline-block bg-gray-200 text-xs text-gray-600 px-3 py-1 rounded-full">
+          <span class="inline-block bg-gray-200 dark:bg-gray-700 text-xs text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full">
             <i class="fas fa-tag mr-1"></i>{{ product.category }}
           </span>
         </NuxtLink>
@@ -66,5 +66,8 @@ const category = route.params.category as string
 const categorie = ref<any>(null)
 
 categorie.value = await $fetch(`/api/products/${category}`)
+// 🔐 Active le middleware d’auth
+definePageMeta({
+  middleware: 'auth'
+})
 </script>
-

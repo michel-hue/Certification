@@ -1,55 +1,69 @@
-
-
-
 <template>
   <!-- Bouton Retour -->
-  <div class="p-4 bg-white shadow-md sticky top-0 z-10">
+  <div class="p-4 bg-white dark:bg-gray-900 shadow-md sticky top-0 z-10">
     <NuxtLink :to="`/admin/users/${user.id}`">
       <button
-        class="inline-flex items-center text-sm font-semibold text-gray-700 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 transition"
+        class="inline-flex items-center text-sm font-semibold text-gray-700 dark:text-green-600 border border-gray-300 dark:border-green-600 rounded-xl px-4 py-2 bg-white dark:bg-gray-800 hover:bg-green-600 hover:text-white transition"
       >
         <i class="fa-solid fa-arrow-left mr-2"></i> Retour
       </button>
     </NuxtLink>
   </div>
 
-  <section class="p-6 bg-gray-100 min-h-screen font-sans">
-    <div v-if="user" class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow space-y-6">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+  <section class="p-6 bg-gray-100 dark:bg-gray-800 min-h-screen font-sans">
+    <div
+      v-if="user"
+      class="max-w-xl mx-auto bg-white dark:bg-gray-900 p-6 rounded-xl shadow space-y-6"
+    >
+      <h2
+        class="text-2xl font-bold text-gray-800 dark:text-green-600 mb-4 text-center"
+      >
         ✏️ Modifier l'utilisateur #{{ user.id }}
       </h2>
 
       <form @submit.prevent="updateUser" class="space-y-4">
         <div>
-          <label class="block mb-1 text-sm font-medium">Prénom</label>
-          <input v-model="user.name.firstname" class="w-full border rounded px-3 py-2" />
+          <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-green-300">Prénom</label>
+          <input
+            v-model="user.name.firstname"
+            class="w-full border border-gray-300 dark:border-green-600 rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-green-200"
+          />
         </div>
 
         <div>
-          <label class="block mb-1 text-sm font-medium">Nom</label>
-          <input v-model="user.name.lastname" class="w-full border rounded px-3 py-2" />
+          <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-green-300">Nom</label>
+          <input
+            v-model="user.name.lastname"
+            class="w-full border border-gray-300 dark:border-green-600 rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-green-200"
+          />
         </div>
 
         <div>
-          <label class="block mb-1 text-sm font-medium">Email</label>
-          <input v-model="user.email" class="w-full border rounded px-3 py-2" />
+          <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-green-300">Email</label>
+          <input
+            v-model="user.email"
+            class="w-full border border-gray-300 dark:border-green-600 rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-green-200"
+          />
         </div>
 
         <div>
-          <label class="block mb-1 text-sm font-medium">Téléphone</label>
-          <input v-model="user.phone" class="w-full border rounded px-3 py-2" />
+          <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-green-300">Téléphone</label>
+          <input
+            v-model="user.phone"
+            class="w-full border border-gray-300 dark:border-green-600 rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-green-200"
+          />
         </div>
 
         <button
           type="submit"
-          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+          class="bg-blue-600 hover:bg-green-600 text-white px-4 py-2 rounded transition w-full"
         >
           Enregistrer les modifications
         </button>
       </form>
     </div>
 
-    <div v-else class="text-center text-gray-500 italic">
+    <div class="text-center text-gray-500 dark:text-green-400 italic" v-else>
       Chargement de l'utilisateur…
     </div>
   </section>
@@ -91,5 +105,3 @@ async function updateUser() {
   }
 }
 </script>
-
-

@@ -58,19 +58,28 @@
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+//  On récupère les infos sur la route actuelle
 const route = useRoute()
 const router = useRouter()
 
+//  ID du panier qu'on a cliqué
 const cartId = route.params.id
+
+//  Liste des produits dans le panier
 const products = ref([])
+
+//  Total du panier
 const total = ref(0)
 
+//  Lorsque la page est prête, on va chercher les données du panier
 onMounted(async () => {
-  if (!process.client) return
+  if (!process.client) return // On vérifie qu’on est bien côté client
 
   try {
+    //  On va chercher le panier avec son ID
     const cart = await $fetch(`https://fakestoreapi.com/carts/${cartId}`)
 
+    //  Pour chaque produit du panier, on va chercher les infos complètes
     const allProducts = await Promise.all(
       cart.products.map(async (item) => {
         const product = await $fetch(`https://fakestoreapi.com/products/${item.productId}`)
@@ -81,17 +90,20 @@ onMounted(async () => {
       })
     )
 
+    //  On met à jour la liste des produits et on calcule le total
     products.value = allProducts
     total.value = allProducts.reduce(
       (sum, item) => sum + item.product.price * item.quantity,
       0
     )
   } catch (err) {
+    //  S’il y a une erreur (ex: ID incorrect), on redirige vers la liste
     console.error('Erreur chargement panier :', err)
     router.push('/users/carts')
   }
 })
 
+//  Fonction pour supprimer un panier (ici c'est juste une simulation)
 function supprimerPanier() {
   if (confirm('Voulez-vous vraiment supprimer ce panier ?')) {
     alert('Ce panier a été supprimé (simulation locale).')

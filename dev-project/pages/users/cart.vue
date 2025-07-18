@@ -1,39 +1,39 @@
 <template>
-  <div class="min-h-screen bg-gray-100 p-6 font-sans">
-    <!-- 🔙 Bouton retour -->
+  <div class="min-h-screen bg-gray-100 dark:bg-gray-900 p-6 font-sans text-gray-800 dark:text-gray-100">
+    <!--  Bouton retour -->
     <NuxtLink
-      to="/users/products"
-      class="inline-flex items-center mb-6 text-sm font-semibold text-gray-700 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 hover:text-white transition"
+      to="/users/"
+      class="inline-flex items-center mb-6 text-sm font-semibold text-gray-700 dark:text-gray-200 border dark:border-gray-700 rounded-xl px-4 py-2 bg-white dark:bg-gray-800 hover:bg-green-600 hover:text-white transition"
     >
       <i class="fas fa-arrow-left mr-2"></i> Retour
     </NuxtLink>
 
-    <!-- 🛒 Titre principal -->
-    <h1 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+    <!--  Titre principal -->
+    <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-2">
       <i class="fas fa-shopping-cart text-green-600"></i>
       Mon panier
     </h1>
 
-    <!-- ✅ Affichage des produits du panier -->
+    <!--  Affichage des produits du panier -->
     <div v-if="cartItems.length" class="space-y-6">
       <div
         v-for="(item, index) in cartItems"
         :key="item.id"
-        class="bg-white rounded-xl shadow p-4 flex items-center justify-between"
+        class="bg-white dark:bg-gray-800 rounded-xl shadow p-4 flex items-center justify-between"
       >
-        <!-- 🖼️ Image produit -->
+        <!--  Image produit -->
         <img :src="item.image" alt="image produit" class="w-16 h-16 object-contain" />
 
-        <!-- ℹ️ Infos produit -->
+        <!-- ℹ Infos produit -->
         <div class="flex-1 ml-4">
-          <p class="font-semibold text-gray-800">{{ item.title }}</p>
-          <p class="text-gray-500 text-sm">Quantité : {{ item.quantity }}</p>
+          <p class="font-semibold text-gray-800 dark:text-gray-100">{{ item.title }}</p>
+          <p class="text-gray-500 dark:text-gray-400 text-sm">Quantité : {{ item.quantity }}</p>
           <p class="text-sm text-green-600 font-semibold">
             Prix unitaire : {{ item.price }} $
           </p>
         </div>
 
-        <!-- ❌ Bouton supprimer -->
+        <!--  Bouton supprimer -->
         <button
           @click="removeFromCart(item.id)"
           class="text-red-600 hover:text-red-800 transition text-sm"
@@ -43,7 +43,7 @@
       </div>
 
       <!-- 💰 Total général -->
-      <div class="text-right mt-6 text-xl font-bold text-gray-800">
+      <div class="text-right mt-6 text-xl font-bold text-gray-800 dark:text-gray-100">
         Total : {{ totalPrice.toFixed(2) }} $
       </div>
 
@@ -58,8 +58,8 @@
       </div>
     </div>
 
-    <!-- 🚫 Si le panier est vide -->
-    <div v-else class="text-gray-500 italic flex items-center gap-2 mt-6">
+    <!--  Si le panier est vide -->
+    <div v-else class="text-gray-500 dark:text-gray-400 italic flex items-center gap-2 mt-6">
       <i class="fas fa-info-circle"></i>
       Votre panier est vide.
     </div>
@@ -67,23 +67,20 @@
 </template>
 
 <script setup>
-// 📦 Import du store du panier
 import { useCartStore } from '~/stores/useCartStore'
 import { storeToRefs } from 'pinia'
 
-// 🔁 Récupération des données et méthodes du store
 const cartStore = useCartStore()
 const { items: cartItems } = storeToRefs(cartStore)
 const { removeFromCart, clearCart } = cartStore
 
-// 💸 Calcul du total des produits dans le panier
 const totalPrice = computed(() => {
   return cartItems.value.reduce((total, item) => {
     return total + item.price * item.quantity
   }, 0)
 })
-// 🔐 Active le middleware d’auth
-definePageMeta({
-  middleware: 'auth'
-})
+
+// definePageMeta({
+//   middleware: 'auth'
+// })
 </script>

@@ -1,12 +1,15 @@
-// middleware/auth.ts
-export default defineNuxtRouteMiddleware(() => {
-  if (process.client) {
-    const userId = localStorage.getItem('userId')
+export default defineNuxtRouteMiddleware((to, from) => {
+  if (!process.client) return
+  console.log('Middleware auth appelé')
 
-    // Vérifie s’il y a un utilisateur
-    if (!userId || isNaN(Number(userId))) {
-      alert('⚠️ Vous devez être connecté pour accéder à cette page.')
-      return navigateTo('/users/auth/login')
-    }
+  const userId = localStorage.getItem('userId')
+  console.log('userId dans middleware:', userId)
+
+  if (!userId || isNaN(Number(userId))) {
+    console.log('Redirection vers login')
+    return navigateTo('/users/auth/login')
   }
 })
+
+
+

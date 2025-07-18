@@ -1,14 +1,14 @@
-// tailwind.config.ts
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class', // ✅ pour activer le dark mode via une classe
   content: [
     './components/**/*.{vue,js,ts}',
     './layouts/**/*.vue',
     './pages/**/*.vue',
-    './composables/**/*.{js,ts}',
-    './app.vue',
-    './plugins/**/*.{js,ts}'
+    './stores/**/*.{js,ts}',
+    './middleware/**/*.{js,ts}',
+    './app.vue'
   ],
   theme: {
     extend: {}

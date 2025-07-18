@@ -38,15 +38,14 @@
         <div class="text-center">
           <button
             type="submit"
-            class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition duration-300"
+            class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition duration-300 flex items-center justify-center gap-2 mx-auto"
           >
-            <i class="fa-solid fa-check mr-2"></i>
+            <i class="fa-solid fa-check"></i>
             Enregistrer les modifications
           </button>
         </div>
       </form>
     </div>
-    
   </section>
 </template>
 
@@ -70,7 +69,7 @@ onMounted(async () => {
   try {
     const data = await $fetch(`/api/paniers/${id}`)
     panier.value = data
-    produitsText.value = data.produits.join(', ')
+    produitsText.value = Array.isArray(data.produits) ? data.produits.join(', ') : ''
   } catch (err) {
     console.error('Erreur lors du chargement du panier :', err)
   }
@@ -82,11 +81,14 @@ const modifierPanier = async () => {
     await $fetch(`/api/paniers/${id}`, {
       method: 'PUT',
       body: {
-        nom: panier.value.nom,
-        produits: produitsText.value.split(',').map(p => p.trim())
+        nom: panier.value.nom.trim(),
+        produits: produitsText.value
+          .split(',')
+          .map(p => p.trim())
+          .filter(p => p.length > 0)
       }
     })
-    router.push('/carts') // Redirection vers la liste
+    router.push('/admin/carts') // Redirection vers la liste des paniers (ajusté)
   } catch (err) {
     console.error('Erreur lors de la modification :', err)
   }

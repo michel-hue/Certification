@@ -1,20 +1,20 @@
 <template>
-  <div class="min-h-screen bg-gray-100 p-6 font-sans">
+  <div class="min-h-screen bg-gray-100 dark:bg-gray-900 p-6 font-sans text-gray-900 dark:text-gray-100">
     <!-- Bouton Retour -->
     <NuxtLink
       to="/admin/products"
-      class="inline-flex items-center mb-6 text-sm font-semibold text-gray-700 border rounded-xl px-4 py-2 bg-white hover:bg-green-600 transition"
+      class="inline-flex items-center mb-6 text-sm font-semibold text-gray-700 dark:text-gray-200 border rounded-xl px-4 py-2 bg-white dark:bg-gray-800 hover:bg-green-600 transition"
     >
       <i class="fas fa-arrow-left mr-2"></i>
       Retour
     </NuxtLink>
 
     <!-- Carte principale produit -->
-    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6">
+    <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
       <!-- Catégorie -->
       <div class="mb-4">
         <span
-          class="inline-flex items-center gap-2 text-sm text-blue-600 font-semibold bg-gray-200 px-3 py-1 rounded-full"
+          class="inline-flex items-center gap-2 text-sm text-blue-600 font-semibold bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full"
         >
           <i class="fas fa-tags"></i>
           {{ product.category }}
@@ -24,11 +24,11 @@
       <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
         <!-- Infos -->
         <div class="flex-1">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4">
+          <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
             {{ product.title }}
           </h2>
 
-          <div v-if="product.rating" class="text-sm text-gray-600 flex flex-col gap-2 mb-2">
+          <div v-if="product.rating" class="text-sm text-gray-600 dark:text-gray-300 flex flex-col gap-2 mb-2">
             <i class="fas fa-star text-yellow-400 mr-1"></i>
             <p>
               {{ product.rating.rate }} / 5
@@ -43,7 +43,7 @@
         </div>
 
         <!-- Image -->
-        <div class="bg-gray-100 rounded-xl p-4 shadow-inner w-64 h-64 flex items-center justify-center">
+        <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-4 shadow-inner w-64 h-64 flex items-center justify-center">
           <img :src="product.image" :alt="product.title" class="w-full h-full object-contain rounded" />
         </div>
       </div>
@@ -69,12 +69,12 @@
     </div>
 
     <!-- Carte description -->
-    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6 mt-10">
-      <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2">
+    <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mt-10">
+      <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-center gap-2">
         <i class="fas fa-align-left text-blue-600"></i>
         Description
       </h3>
-      <p class="text-gray-700 leading-relaxed text-justify">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
         {{ product.description }}
       </p>
     </div>
@@ -82,9 +82,12 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter, useHead } from '#imports'
 import { ref } from 'vue'
 
+
+
+// Récupération des données produit
 const route = useRoute()
 const router = useRouter()
 const id = route.params.id as string
@@ -101,6 +104,7 @@ if (error.value) {
   product.value = data.value
 }
 
+// Suppression produit
 async function deleteProduct() {
   if (!confirm('Voulez-vous vraiment supprimer ce produit ?')) return
   try {
