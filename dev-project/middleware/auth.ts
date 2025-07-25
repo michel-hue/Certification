@@ -6,6 +6,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   console.log('userId dans middleware:', userId)
 
   if (!userId || isNaN(Number(userId))) {
+    alert('Connectez vous')
     console.log('Redirection vers login')
     return navigateTo('/users/auth/login')
   }

@@ -84,4 +84,7 @@ onMounted(async () => {
     pending.value = false
   }
 })
+definePageMeta({
+  middleware: 'auth'
+})
 </script>

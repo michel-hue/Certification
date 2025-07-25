@@ -66,21 +66,29 @@
   </div>
 </template>
 
-<script setup>
+<<script setup>
 import { useCartStore } from '~/stores/useCartStore'
-import { storeToRefs } from 'pinia'
+import { storeToRefs } from 'pinia'                 
+import { computed } from 'vue'                      
 
+//  Initialisation du store du panier
 const cartStore = useCartStore()
+
+//  Récupération des données réactives (items) du panier
 const { items: cartItems } = storeToRefs(cartStore)
+
+//  Récupération des actions pour modifier le panier
 const { removeFromCart, clearCart } = cartStore
 
+//  Calcul dynamique du prix total du panier
 const totalPrice = computed(() => {
   return cartItems.value.reduce((total, item) => {
     return total + item.price * item.quantity
   }, 0)
 })
 
-// definePageMeta({
-//   middleware: 'auth'
-// })
+definePageMeta({
+  middleware: 'auth'
+})
 </script>
+

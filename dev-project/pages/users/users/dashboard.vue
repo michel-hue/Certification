@@ -81,18 +81,27 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const user = ref(null)
-const carts = ref([])
-const latestCartDate = ref('Aucune donnée')
+// On crée des variables réactives pour stocker l'utilisateur, ses paniers, et la date du dernier panier
+const user = ref(null)             
+const carts = ref([])              
+const latestCartDate = ref('Aucune donnée')  
+
 
 const userId = process.client ? Number(localStorage.getItem('userId')) : null
 
+
 onMounted(async () => {
   if (!process.client || !userId) return
+
   try {
+    // On récupère les infos de l'utilisateur via l'API
     user.value = await $fetch(`https://fakestoreapi.com/users/${userId}`)
+
+    // On récupère la liste de tous ses paniers
     const response = await $fetch(`https://fakestoreapi.com/carts/user/${userId}`)
     carts.value = response
+
+    // Si l'utilisateur a au moins un panier
     if (response.length > 0) {
       const lastCart = response[response.length - 1]
       latestCartDate.value = new Date(lastCart.date).toLocaleDateString()
@@ -101,7 +110,9 @@ onMounted(async () => {
     console.error('Erreur chargement données utilisateur :', err)
   }
 })
-// definePageMeta({
-//   middleware: 'auth'
-// })
+
+definePageMeta({
+  middleware: 'auth'
+})
 </script>
+

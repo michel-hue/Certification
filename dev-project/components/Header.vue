@@ -2,16 +2,12 @@
   <header
     class="sticky top-0 z-50 border-b-4 border-green-300 bg-white dark:bg-gray-900 shadow p-4 dark:border-green-700"
   >
-    <!-- Conteneur principal : logo + navigation -->
     <div class="flex flex-wrap items-center justify-between gap-4">
-      
-      <!-- Logo de la boutique -->
-      <h1 class="flex items-center gap-2 text-2xl font-bold text-gray-400 dark:text-gray-200">
+      <h1 class="flex items-center gap-2 text-2xl font-bold text-gray-400 dark:text-green-600">
         Ma Boutique
         <img src="/images/logo.png" alt="Logo" class="w-9 h-9 object-contain rounded-full" />
       </h1>
 
-      <!-- Bouton menu hamburger-->
       <button
         class="md:hidden text-2xl text-gray-600 dark:text-gray-300 focus:outline-none"
         @click="mobileMenuOpen = !mobileMenuOpen"
@@ -19,40 +15,30 @@
         <i :class="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
       </button>
 
-      <!-- Navigation principale -->
       <nav :class="['w-full md:w-auto', mobileMenuOpen ? 'block' : 'hidden md:block']">
         <ul
           class="flex flex-col md:flex-row gap-4 md:gap-6 mt-4 md:mt-0 text-gray-400 dark:text-gray-200 font-medium items-start md:items-center"
         >
-          <!-- Accueil -->
           <li>
             <NuxtLink to="/users" class="text-green-600 dark:text-green-400 transition">Home</NuxtLink>
           </li>
-
-          <!-- Produits -->
           <li>
             <NuxtLink to="/users/products" class="hover:text-green-500 transition">Products</NuxtLink>
           </li>
-
-          <!-- Services -->
           <li>
             <NuxtLink to="/users/services" class="hover:text-green-500 transition">Services</NuxtLink>
           </li>
-
-          <!--  panier -->
           <li>
             <NuxtLink to="/users/carts" class="hover:text-green-500 transition" aria-label="Panier">
               <i class="fa-solid fa-cart-shopping text-xl"></i>
             </NuxtLink>
           </li>
 
-          <!-- Recherche -->
           <li class="relative">
             <button @click="toggleSearch" aria-label="Recherche">
               <i class="fa-solid fa-magnifying-glass text-xl hover:text-green-500 transition"></i>
             </button>
 
-            <!-- Champ de recherche affiché dynamiquement -->
             <transition name="fade">
               <form
                 v-if="showSearch"
@@ -68,16 +54,31 @@
                 <button type="submit" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-green-500">OK</button>
               </form>
             </transition>
+
+            <!-- Liste des résultats de recherche -->
+            <transition name="fade">
+              <ul
+                v-if="showSearch && filteredProducts.length && searchQuery.trim() !== ''"
+                class="absolute top-16 right-0 max-h-64 overflow-auto bg-white dark:bg-gray-800 shadow-md rounded-md w-48 z-50"
+              >
+                <li
+                  v-for="product in filteredProducts"
+                  :key="product.id"
+                  class="px-3 py-2 hover:bg-green-100 dark:hover:bg-green-700 cursor-pointer"
+                  @click="goToProduct(product.id)"
+                >
+                  {{ product.title }}
+                </li>
+              </ul>
+            </transition>
           </li>
 
-          <!-- Profil -->
           <li>
             <NuxtLink :to="`/users/users/dashboard`" class="hover:text-green-500 transition" aria-label="Profil">
               <i class="fa-solid fa-user text-xl"></i>
             </NuxtLink>
           </li>
 
-          <!-- Bouton dark mode -->
           <li>
             <button
               @click="toggleDarkMode"
@@ -88,7 +89,6 @@
             </button>
           </li>
 
-          <!-- Déconnexion -->
           <li>
             <button
               @click="logout"
@@ -105,29 +105,39 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
-// Router pour redirection
 const router = useRouter()
 
-// État du menu mobile (ouvert/fermé)
 const mobileMenuOpen = ref(false)
-
-// État du champ de recherche visible ou non
 const showSearch = ref(false)
 function toggleSearch() {
   showSearch.value = !showSearch.value
 }
 
-// Texte saisi dans la recherche
 const searchQuery = ref('')
-
-// Liste complète des produits pour recherche
 const allProducts = ref([])
 const filteredProducts = ref([])
 
-// Fonction qui filtre les produits selon la recherche
+// Charger les produits
+const { data } = await useFetch('/api/products')
+allProducts.value = data.value || []
+filteredProducts.value = data.value || []
+
+// Filtrer automatiquement lors de la saisie
+watch(searchQuery, (newVal) => {
+  const q = newVal.trim().toLowerCase()
+  if (!q) {
+    filteredProducts.value = allProducts.value
+  } else {
+    filteredProducts.value = allProducts.value.filter(product =>
+      product.title.toLowerCase().includes(q)
+    )
+  }
+})
+
+// Soumission du formulaire (utile si tu veux garder bouton OK)
 function rechercherProduit() {
   const q = searchQuery.value.trim().toLowerCase()
   if (!q) {
@@ -139,22 +149,23 @@ function rechercherProduit() {
   }
 }
 
-// Chargement des produits via API interne
-const { data } = await useFetch('/api/products')
-allProducts.value = data.value
-filteredProducts.value = data.value
+// Aller vers la page produit au clic
+function goToProduct(id) {
+  showSearch.value = false
+  searchQuery.value = ''
+  router.push(`/users/products/${id}`)
+}
 
-// Fonction pour déconnecter l'utilisateur
+// Déconnexion
 function logout() {
   localStorage.removeItem('token')
   localStorage.removeItem('userId')
   router.push('/users/auth/login')
 }
 
-// Gestion du mode sombre
+// Mode sombre
 const isDark = ref(false)
 onMounted(() => {
-  // Au chargement, on vérifie si thème sombre était actif
   const theme = localStorage.getItem('theme')
   if (theme === 'dark') {
     document.documentElement.classList.add('dark')
@@ -162,7 +173,6 @@ onMounted(() => {
   }
 })
 
-// Basculer entre mode clair et sombre, en sauvegardant en localStorage
 function toggleDarkMode() {
   isDark.value = !isDark.value
   if (isDark.value) {
@@ -176,7 +186,6 @@ function toggleDarkMode() {
 </script>
 
 <style scoped>
-/* Animation d'apparition/disparition du champ recherche */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;

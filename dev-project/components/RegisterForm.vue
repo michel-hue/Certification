@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-4">
     <!-- Champs du formulaire avec v-model pour récupérer les valeurs -->
-    <input v-model="firstname" type="text" placeholder="Prénom" class="input-field" />
+    <input v-model="firstname" type="text" placeholder="Prénom" class="input-field"  />
     <input v-model="lastname" type="text" placeholder="Nom" class="input-field" />
     <input v-model="email" type="email" placeholder="Email" class="input-field" />
     <input v-model="username" type="text" placeholder="Nom d’utilisateur" class="input-field" />
@@ -9,13 +9,14 @@
     <input v-model="phone" type="tel" placeholder="Téléphone" class="input-field" />
 
     <!-- Bouton pour soumettre la création du compte -->
-    <button
-      @click.prevent="register" <!-- On empêche le submit par défaut et on appelle register -->
-      class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-xl transition hover:scale-105 duration-300"
-    >
-      <i class="fas fa-user-plus mr-2 animate-pulse"></i> <!-- Icône avec animation -->
-      Créer un compte
-    </button>
+   <button
+  @click.prevent="register"
+  class="border-2 border-green-600 rounded-xl px-5 py-2 text-green-600 font-semibold hover:bg-green-600 hover:text-white transition duration-300 flex items-center justify-center"
+>
+  <i class="fas fa-user-plus mr-2 animate-pulse"></i>
+  Créer un compte
+</button>
+
 
     <!-- Lien pour aller vers la page de connexion -->
     <p class="text-sm text-center text-gray-600 dark:text-gray-400 mt-4">
@@ -87,11 +88,12 @@ const register = async () => {
 </script>
 
 <style scoped>
-/* Style des champs input avec Tailwind via @apply */
-/* On met en forme les inputs avec bordure, arrondis, padding et focus */
 .input-field {
-  @apply w-full border rounded-xl px-4 py-2 transition focus:ring-2 focus:ring-green-500;
-  @apply bg-white text-gray-900 placeholder-gray-500 border-gray-300;
-  @apply dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:border-gray-600;
+  @apply w-full rounded-xl px-5 py-3 text-gray-900 placeholder-gray-500
+    bg-white border border-gray-300 shadow-sm
+    transition duration-300
+    focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent;
+
+  @apply dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:border-gray-600 dark:shadow-none;
 }
 </style>

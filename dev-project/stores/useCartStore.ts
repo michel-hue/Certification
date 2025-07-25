@@ -1,15 +1,14 @@
-// Fichier : stores/useCartStore.ts
-// 🎯 Store Pinia pour gérer le panier de l'utilisateur
+//  Store Pinia pour gérer le panier de l'utilisateur
 
 import { defineStore } from 'pinia'
 
 export const useCartStore = defineStore('cart', {
   state: () => ({
-    items: [] as any[]  // 🛍️ Contenu du panier (tableau d'objets produit)
+    items: [] as any[]  //  Contenu du panier (tableau d'objets produit)
   }),
 
   actions: {
-    // ✅ Ajouter un produit au panier
+    //  Ajouter un produit au panier
     addToCart(product: any) {
       const existing = this.items.find(item => item.id === product.id)
 
@@ -25,19 +24,19 @@ export const useCartStore = defineStore('cart', {
       localStorage.setItem('cart', JSON.stringify(this.items))
     },
 
-    // ❌ Supprimer un produit du panier
+    //  Supprimer un produit du panier
     removeFromCart(id: number) {
       this.items = this.items.filter(item => item.id !== id)
       localStorage.setItem('cart', JSON.stringify(this.items))
     },
 
-    // 🔁 Vider complètement le panier
+    //  Vider complètement le panier
     clearCart() {
       this.items = []
       localStorage.removeItem('cart')
     },
 
-    // ♻️ Charger les données du panier depuis localStorage
+    //  Charger les données du panier depuis localStorage
     loadCart() {
       const saved = localStorage.getItem('cart')
       this.items = saved ? JSON.parse(saved) : []
