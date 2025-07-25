@@ -1,18 +1,14 @@
 <template>
-  <!-- Section pleine hauteur avec image de fond -->
-  <section class="relative min-h-screen flex items-center justify-start bg-gray-900">
-
-    <!-- Image de fond (affichée complètement quelle que soit sa taille) -->
-    <img 
-      src="/images/fonds.jpg" 
-      alt="Image de fond" 
-      class="absolute inset-0 w-full h-full object-contain"
-    />
-
+  <!-- Conteneur principal avec image de fond via background-image CSS -->
+  <section
+    :class="isDark ? 'text-gray-100' : 'text-gray-900'"
+    class="relative min-h-screen flex items-center justify-start transition-colors duration-300 bg-cover bg-center"
+    style="background-image: url('/images/fonds.jpg')"
+  >
     <!-- Overlay sombre -->
-    <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-60 pointer-events-none"></div>
 
-    <!-- Bouton retour placé en haut à gauche -->
+    <!-- Bouton retour en haut à gauche -->
     <div class="absolute top-4 left-4 z-20">
       <NuxtLink
         to="/"
@@ -22,17 +18,25 @@
       </NuxtLink>
     </div>
 
-    <!-- Formulaire à gauche -->
-    <div class="relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl w-full max-w-md ml-10 z-10">
+    <!-- Formulaire à gauche et centré verticalement -->
+    <div
+      class="relative z-30 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-2xl w-[90%] max-w-md mx-4 my-auto md:ml-16"
+      style="height: auto;"
+    >
       <h1 class="text-2xl font-bold text-center text-gray-800 dark:text-white">Connexion</h1>
 
       <!-- Champ nom d'utilisateur -->
       <div class="mt-6">
-        <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label
+          for="username"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
           Nom d'utilisateur
         </label>
         <div class="relative">
-          <i class="fas fa-user absolute left-3 top-3 text-gray-500 dark:text-gray-300"></i>
+          <i
+            class="fas fa-user absolute left-3 top-[38%] transform -translate-y-1/2 text-gray-500 dark:text-gray-300"
+          ></i>
           <input
             type="text"
             id="username"
@@ -44,11 +48,16 @@
 
       <!-- Champ mot de passe -->
       <div class="mt-4">
-        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label
+          for="password"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
           Mot de passe
         </label>
         <div class="relative">
-          <i class="fas fa-lock absolute left-3 top-3 text-gray-500 dark:text-gray-300"></i>
+          <i
+            class="fas fa-lock absolute left-3 top-[38%] transform -translate-y-1/2 text-gray-500 dark:text-gray-300"
+          ></i>
           <input
             type="password"
             id="password"
@@ -78,6 +87,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+
+const isDark = ref(false) // si tu veux gérer le thème
 
 const username = ref('')
 const password = ref('')

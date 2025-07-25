@@ -1,7 +1,8 @@
 <template> 
   <!-- Bouton Retour -->
   <div class="p-4 bg-white dark:bg-gray-900 shadow-md sticky top-0 z-10">
-    <NuxtLink to="/">
+    
+    <NuxtLink to="/users">
       <button
         class="inline-flex items-center text-sm font-semibold text-gray-700 dark:text-gray-300 border rounded-xl px-4 py-2 bg-white dark:bg-gray-800 hover:bg-green-600 hover:text-white transition"
       >
