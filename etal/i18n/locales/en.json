@@ -1,0 +1,196 @@
+{
+  "brand": {
+    "tagline": "Thoughtfully displayed."
+  },
+  "a11y": {
+    "skipToContent": "Skip to content"
+  },
+  "demoBanner": {
+    "label": "Notice",
+    "text": "Portfolio project: no real orders or payments.",
+    "close": "Close banner"
+  },
+  "nav": {
+    "home": "Étal — home",
+    "sections": "Sections",
+    "new": "New in",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "featured": "Featured · {name}",
+    "secureCheckout": "Secure checkout · demo mode"
+  },
+  "header": {
+    "search": "Search",
+    "account": "My account",
+    "wishlist": "Wishlist",
+    "cart": "Cart, {count} item | Cart, {count} item | Cart, {count} items",
+    "searchPlaceholder": "Search for a product, a brand…",
+    "searchLabel": "Search for a product",
+    "signIn": "Sign in",
+    "accountOf": "My account ({name})",
+    "wishlistCount": "Wishlist ({count})",
+    "cartCount": "Cart ({count})"
+  },
+  "footer": {
+    "account": "Account",
+    "credits": "Portfolio project, Syabe Technologies, 2026",
+    "disclaimer": "No real sales · Product data: DummyJSON",
+    "shop": "Shop",
+    "demo": "Demo",
+    "preferences": "Preferences",
+    "links": {
+      "catalog": "Full catalogue",
+      "deals": "Gentle prices",
+      "new": "New in",
+      "wishlist": "Wishlist",
+      "login": "Sign in",
+      "myAccount": "My account",
+      "orders": "My orders",
+      "register": "Create an account",
+      "admin": "Back office",
+      "notFound": "404 page",
+      "serverError": "500 error page"
+    }
+  },
+  "preferences": {
+    "language": "Language"
+  },
+  "home": {
+    "seo": {
+      "title": "Thoughtfully displayed",
+      "description": "Étal, an editorial online shop: beauty, fashion, home, tech and grocery. Portfolio project, no real sales."
+    },
+    "hero": {
+      "overline": "Autumn edition · No. 01",
+      "title": "The essentials of the {highlight}",
+      "titleHighlight": "season",
+      "lead": "Thoughtfully displayed. Beauty, home and beautiful everyday things, presented the way you turn the pages of a magazine.",
+      "cta": "Discover the selection",
+      "secondaryCta": "See gentle prices",
+      "caption": "On the cover — Morning rituals"
+    }
+  },
+  "admin": {
+    "nav": {
+      "label": "Back office",
+      "dashboard": "Dashboard",
+      "products": "Products",
+      "users": "Users",
+      "orders": "Orders"
+    }
+  },
+  "sections": {
+    "beaute": {
+      "name": "Beauty",
+      "chapo": "Skincare, fragrance and simple rituals. Formulas chosen for what they do.",
+      "photo": "editorial photo · bottles on linen, morning light"
+    },
+    "mode": {
+      "name": "Fashion",
+      "chapo": "Pieces that outlast the seasons, materials that age well.",
+      "photo": "photo · dress on a wooden hanger"
+    },
+    "maison": {
+      "name": "Home",
+      "chapo": "Fewer things, better looked at. From furniture to fine groceries.",
+      "photo": "photo · vase, raking light"
+    },
+    "tech": {
+      "name": "Tech",
+      "chapo": "Quiet, well-built tools that get out of the way.",
+      "photo": "photo · clean desk, light wood"
+    },
+    "loisirs": {
+      "name": "Leisure",
+      "chapo": "For the outdoors, for moving, for long weekends.",
+      "photo": "photo · bicycle against a whitewashed wall"
+    }
+  },
+  "categories": {
+    "beauty": "Beauty",
+    "fragrances": "Fragrances",
+    "furniture": "Furniture",
+    "groceries": "Groceries",
+    "home-decoration": "Home decor",
+    "kitchen-accessories": "Kitchen",
+    "laptops": "Laptops",
+    "mens-shirts": "Men's shirts",
+    "mens-shoes": "Men's shoes",
+    "mens-watches": "Men's watches",
+    "mobile-accessories": "Mobile accessories",
+    "motorcycle": "Motorcycles",
+    "skincare": "Skincare",
+    "smartphones": "Smartphones",
+    "sports-accessories": "Sports",
+    "sunglasses": "Sunglasses",
+    "tablets": "Tablets",
+    "tops": "Tops",
+    "vehicle": "Vehicles",
+    "womens-bags": "Bags",
+    "womens-dresses": "Dresses",
+    "womens-jewellery": "Jewellery",
+    "womens-shoes": "Women's shoes",
+    "womens-watches": "Women's watches"
+  },
+  "theme": {
+    "toDark": "Switch to dark theme",
+    "toLight": "Switch to light theme"
+  },
+  "price": {
+    "current": "Current price:",
+    "before": "Original price:",
+    "discount": "−{percent}%"
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "added": "Added ✓",
+    "soldOut": "Sold out",
+    "lowStock": "Low stock",
+    "addFavorite": "Add to wishlist",
+    "removeFavorite": "Remove from wishlist"
+  },
+  "ui": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "retry": "Try again",
+    "demo": "DEMO",
+    "breadcrumb": "Breadcrumb",
+    "password": {
+      "show": "Show password",
+      "hide": "Hide password",
+      "strength": "Strength:",
+      "rules": "8 characters, uppercase, digit, symbol",
+      "levels": {
+        "0": "—",
+        "1": "Too weak",
+        "2": "Fair",
+        "3": "Strong",
+        "4": "Excellent"
+      }
+    },
+    "textarea": {
+      "counter": "{count} / {max}"
+    },
+    "quantity": {
+      "label": "Quantity",
+      "decrease": "Decrease quantity",
+      "increase": "Increase quantity"
+    },
+    "rating": {
+      "label": "Rated {value} out of 5",
+      "short": "Rating:"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page",
+      "page": "Page {page}",
+      "status": "Page {page} / {count}"
+    },
+    "toast": {
+      "region": "Notifications",
+      "close": "Close notification"
+    }
+  }
+}

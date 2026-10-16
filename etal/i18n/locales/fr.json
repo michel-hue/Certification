@@ -1,0 +1,196 @@
+{
+  "brand": {
+    "tagline": "Le choix, exposé avec soin."
+  },
+  "a11y": {
+    "skipToContent": "Aller au contenu"
+  },
+  "demoBanner": {
+    "label": "Information",
+    "text": "Projet portfolio : aucune commande ni paiement réel.",
+    "close": "Fermer le bandeau"
+  },
+  "nav": {
+    "home": "Étal — accueil",
+    "sections": "Rubriques",
+    "new": "Nouveautés",
+    "menu": "Menu",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "featured": "À la une · {name}",
+    "secureCheckout": "Commande sécurisée · mode démo"
+  },
+  "header": {
+    "search": "Rechercher",
+    "account": "Mon compte",
+    "wishlist": "Favoris",
+    "cart": "Panier, {count} article | Panier, {count} article | Panier, {count} articles",
+    "searchPlaceholder": "Rechercher un produit, une marque…",
+    "searchLabel": "Rechercher un produit",
+    "signIn": "Se connecter",
+    "accountOf": "Mon compte ({name})",
+    "wishlistCount": "Favoris ({count})",
+    "cartCount": "Panier ({count})"
+  },
+  "footer": {
+    "account": "Compte",
+    "credits": "Projet portfolio, Syabe Technologies, 2026",
+    "disclaimer": "Aucune vente réelle · Données produits : DummyJSON",
+    "shop": "Boutique",
+    "demo": "Démo",
+    "preferences": "Préférences",
+    "links": {
+      "catalog": "Tout le catalogue",
+      "deals": "Prix doux",
+      "new": "Nouveautés",
+      "wishlist": "Favoris",
+      "login": "Connexion",
+      "myAccount": "Mon compte",
+      "orders": "Mes commandes",
+      "register": "Créer un compte",
+      "admin": "Back-office",
+      "notFound": "Page 404",
+      "serverError": "Page erreur 500"
+    }
+  },
+  "preferences": {
+    "language": "Langue"
+  },
+  "home": {
+    "seo": {
+      "title": "Le choix, exposé avec soin",
+      "description": "Étal, boutique en ligne éditoriale : beauté, mode, maison, tech et épicerie. Projet portfolio, aucune vente réelle."
+    },
+    "hero": {
+      "overline": "Édition d'automne · N° 01",
+      "title": "Les essentiels de la {highlight}",
+      "titleHighlight": "saison",
+      "lead": "Le choix, exposé avec soin. Beauté, maison et belles choses du quotidien, présentées comme on tourne les pages d'un magazine.",
+      "cta": "Découvrir la sélection",
+      "secondaryCta": "Voir les prix doux",
+      "caption": "En couverture — Rituels du matin"
+    }
+  },
+  "admin": {
+    "nav": {
+      "label": "Back-office",
+      "dashboard": "Tableau de bord",
+      "products": "Produits",
+      "users": "Utilisateurs",
+      "orders": "Commandes"
+    }
+  },
+  "sections": {
+    "beaute": {
+      "name": "Beauté",
+      "chapo": "Soins, parfums et gestes simples. Des formules choisies pour ce qu'elles font.",
+      "photo": "photo éditoriale · flacons sur lin, lumière du matin"
+    },
+    "mode": {
+      "name": "Mode",
+      "chapo": "Des pièces qui traversent les saisons, des matières qui se patinent.",
+      "photo": "photo · robe sur cintre bois"
+    },
+    "maison": {
+      "name": "Maison",
+      "chapo": "Moins d'objets, mieux regardés. Du mobilier à l'épicerie fine.",
+      "photo": "photo · vase, lumière rasante"
+    },
+    "tech": {
+      "name": "Tech",
+      "chapo": "Des outils sobres, bien construits, qui se font oublier.",
+      "photo": "photo · bureau épuré, bois clair"
+    },
+    "loisirs": {
+      "name": "Loisirs",
+      "chapo": "Pour le dehors, le mouvement et les longs week-ends.",
+      "photo": "photo · vélo contre un mur chaulé"
+    }
+  },
+  "categories": {
+    "beauty": "Beauté",
+    "fragrances": "Parfums",
+    "furniture": "Mobilier",
+    "groceries": "Épicerie",
+    "home-decoration": "Décoration",
+    "kitchen-accessories": "Cuisine",
+    "laptops": "Ordinateurs",
+    "mens-shirts": "Chemises homme",
+    "mens-shoes": "Chaussures homme",
+    "mens-watches": "Montres homme",
+    "mobile-accessories": "Accessoires mobiles",
+    "motorcycle": "Moto",
+    "skincare": "Soin",
+    "smartphones": "Smartphones",
+    "sports-accessories": "Sport",
+    "sunglasses": "Lunettes de soleil",
+    "tablets": "Tablettes",
+    "tops": "Hauts",
+    "vehicle": "Véhicules",
+    "womens-bags": "Sacs",
+    "womens-dresses": "Robes",
+    "womens-jewellery": "Bijoux",
+    "womens-shoes": "Chaussures femme",
+    "womens-watches": "Montres femme"
+  },
+  "theme": {
+    "toDark": "Passer en thème sombre",
+    "toLight": "Passer en thème clair"
+  },
+  "price": {
+    "current": "Prix actuel :",
+    "before": "Prix initial :",
+    "discount": "−{percent} %"
+  },
+  "product": {
+    "addToCart": "Ajouter au panier",
+    "added": "Ajouté ✓",
+    "soldOut": "Épuisé",
+    "lowStock": "Stock faible",
+    "addFavorite": "Ajouter aux favoris",
+    "removeFavorite": "Retirer des favoris"
+  },
+  "ui": {
+    "close": "Fermer",
+    "cancel": "Annuler",
+    "retry": "Réessayer",
+    "demo": "DÉMO",
+    "breadcrumb": "Fil d'Ariane",
+    "password": {
+      "show": "Afficher le mot de passe",
+      "hide": "Masquer le mot de passe",
+      "strength": "Robustesse :",
+      "rules": "8 caractères, majuscule, chiffre, symbole",
+      "levels": {
+        "0": "—",
+        "1": "Trop faible",
+        "2": "Moyen",
+        "3": "Solide",
+        "4": "Excellent"
+      }
+    },
+    "textarea": {
+      "counter": "{count} / {max}"
+    },
+    "quantity": {
+      "label": "Quantité",
+      "decrease": "Diminuer la quantité",
+      "increase": "Augmenter la quantité"
+    },
+    "rating": {
+      "label": "Note : {value} sur 5",
+      "short": "Note :"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Page précédente",
+      "next": "Page suivante",
+      "page": "Page {page}",
+      "status": "Page {page} / {count}"
+    },
+    "toast": {
+      "region": "Notifications",
+      "close": "Fermer la notification"
+    }
+  }
+}

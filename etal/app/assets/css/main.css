@@ -1,0 +1,349 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Étal design tokens — values taken from the home page mockup (Claude Design),
+ * which overrides CAHIER_DES_CHARGES_GRAPHIQUE.md §18 where they differ.
+ * Tailwind's default palette and radii are reset so only these tokens exist (CDC §7.2).
+ */
+@theme {
+  --color-*: initial;
+  --radius-*: initial;
+
+  --font-serif: 'Fraunces', ui-serif, Georgia, serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand palette */
+  --color-ink: #1f1f1f;
+  --color-ivory: #f7f4ee;
+  --color-paper: #ffffff;
+  --color-sand: #eae4d9;
+  --color-stone: #8a8378;
+  --color-stone-dark: #6b655c;
+  --color-terracotta: #b5543c;
+  --color-terracotta-deep: #9a4530;
+
+  /* Semantic tokens — light theme */
+  --color-background: var(--color-ivory);
+  --color-surface: var(--color-paper);
+  --color-surface-muted: var(--color-sand);
+  --color-placeholder: #e1d9cb;
+  --color-foreground: var(--color-ink);
+  --color-foreground-muted: var(--color-stone-dark);
+  --color-border: #ddd6ca;
+  --color-border-strong: var(--color-stone);
+  --color-primary: var(--color-ink);
+  --color-primary-foreground: var(--color-ivory);
+  --color-accent: var(--color-terracotta);
+  --color-accent-foreground: #ffffff;
+  --color-accent-text: var(--color-terracotta-deep);
+  --color-ring: var(--color-terracotta);
+  --color-success: #3f6b4e;
+  --color-danger: #a33a2b;
+  --color-danger-foreground: #ffffff;
+  --color-warning: #8c6a1f;
+  --color-info: #3e5c76;
+  /* Light plate behind product photos; only visible in the dark theme. */
+  --color-plate: transparent;
+
+  /* Inverse surface (footer): ink in both themes */
+  --color-inverse: #1f1f1f;
+  --color-inverse-foreground: #f7f4ee;
+  --color-inverse-muted: #a39c90;
+  --color-inverse-border: #4a453f;
+  --color-inverse-accent: #e08a70;
+  --color-inverse-mark: #d9785e;
+  --color-inverse-success: #7fae8e;
+  --color-inverse-danger: #e07a6a;
+  --color-inverse-info: #8fb0cc;
+
+  /* Typography — fluid scale between 360 and 1280 px */
+  --text-display: clamp(2.75rem, 1.6rem + 4.9vw, 5.5rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.02em;
+  --text-h1: clamp(2.125rem, 1.5rem + 2.7vw, 3.5rem);
+  --text-h1--line-height: 1.05;
+  --text-h1--letter-spacing: -0.015em;
+  --text-h2: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h3: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  --text-h3--line-height: 1.2;
+  --text-h4: clamp(1.125rem, 1.07rem + 0.25vw, 1.25rem);
+  --text-h4--line-height: 1.3;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-ui: 0.9375rem;
+  --text-ui--line-height: 1.4;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.5;
+  --text-meta: 0.8125rem;
+  --text-meta--line-height: 1.4;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.4;
+  --text-overline: 0.75rem;
+  --text-overline--line-height: 1.2;
+  --text-overline--letter-spacing: 0.12em;
+  --text-overline-sm: 0.6875rem;
+  --text-overline-sm--line-height: 1.2;
+  --text-overline-sm--letter-spacing: 0.12em;
+  --text-price: 1.0625rem;
+  --text-price--line-height: 1;
+
+  /* Layout */
+  --container-content: 1360px;
+  --spacing-gutter: clamp(1rem, 4vw, 3rem);
+  --spacing-section: clamp(4rem, 9vw, 8rem);
+  --spacing-header: 72px;
+
+  /* Shapes */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgb(31 31 31 / 0.06);
+  --shadow-md: 0 8px 24px -8px rgb(31 31 31 / 0.12);
+  --shadow-lg: 0 24px 48px -16px rgb(31 31 31 / 0.18);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-spin: spin 700ms linear infinite;
+  --animate-pop: pop 250ms var(--ease-emphasized);
+
+  @keyframes shimmer {
+    0% {
+      background-position: 150% 0;
+    }
+    100% {
+      background-position: -50% 0;
+    }
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes pop {
+    50% {
+      transform: scale(1.15);
+    }
+  }
+}
+
+/* Dark theme — « the same shop, in the evening »: warm, never bluish */
+.dark {
+  --color-background: #121212;
+  --color-surface: #1b1a18;
+  --color-surface-muted: #24221f;
+  --color-placeholder: #2c2925;
+  --color-foreground: #ede8df;
+  --color-foreground-muted: #a39c90;
+  --color-border: #2f2c28;
+  --color-border-strong: #4a453f;
+  --color-primary: #ede8df;
+  --color-primary-foreground: #121212;
+  --color-accent: #d9785e;
+  --color-accent-foreground: #121212;
+  --color-accent-text: #e08a70;
+  --color-ring: #d9785e;
+  --color-success: #7fae8e;
+  --color-danger: #e07a6a;
+  /* White on #e07a6a fails AA; dark text passes (CDC graphique §14). */
+  --color-danger-foreground: #121212;
+  --color-warning: #d4a84a;
+  --color-info: #8fb0cc;
+  --color-plate: #e9e3d8;
+
+  /* Elevation is drawn with hairlines instead of shadows */
+  --shadow-sm: 0 1px 0 #2f2c28;
+  --shadow-md: 0 0 0 1px #2f2c28;
+  --shadow-lg: -1px 0 0 #2f2c28;
+}
+
+:root {
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-reveal: 600ms;
+}
+
+@layer base {
+  html {
+    /* Literal family names so @nuxt/fonts detects and self-hosts them. */
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Fraunces', ui-serif, Georgia, serif;
+    font-weight: 500;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-foreground-muted);
+    opacity: 0.8;
+  }
+
+  mark {
+    background: transparent;
+    color: var(--color-accent-text);
+    font-weight: 600;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+}
+
+/* Editorial link: a hairline underline drawn left to right on hover. */
+@utility link-reveal {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size var(--duration-base) var(--ease-standard);
+
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* Editorial link that is underlined at rest. */
+@utility link-underlined {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  padding-bottom: 2px;
+}
+
+/* Hatched placeholder for editorial photos not yet sourced. */
+@utility bg-hatch {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--color-surface-muted) 0 14px,
+    var(--color-placeholder) 14px 15px
+  );
+}
+
+/* Loading placeholder with a slow sheen (CDC graphique §10.2). */
+@utility skeleton {
+  background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--color-background) 55%, transparent) 50%,
+      transparent 100%
+    )
+    var(--color-surface-muted);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+
+@utility tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Reduced motion: only short fades survive (CDC graphique §10.3). Components still
+ * drop their own translations and zooms with `motion-reduce:` variants.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 150ms !important;
+  }
+}
+
+/*
+ * Overlays: Reka UI unmounts on animationend, so open/close use keyframes.
+ * Drawers slide with the slow emphasized curve (CDC graphique §10.1); modals only fade.
+ */
+.overlay[data-state='open'],
+.modal[data-state='open'] {
+  animation: fade-in var(--duration-base) var(--ease-standard);
+}
+.overlay[data-state='closed'],
+.modal[data-state='closed'] {
+  animation: fade-out var(--duration-fast) var(--ease-standard);
+}
+.sheet[data-state='open'] {
+  animation: var(--sheet-in) var(--duration-slow) var(--ease-emphasized);
+}
+.sheet[data-state='closed'] {
+  animation: var(--sheet-in) var(--duration-base) var(--ease-standard) reverse;
+}
+.sheet[data-side='right'] {
+  --sheet-in: slide-from-right;
+}
+.sheet[data-side='left'] {
+  --sheet-in: slide-from-left;
+}
+.sheet[data-side='bottom'] {
+  --sheet-in: slide-from-bottom;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet[data-state] {
+    animation-name: fade-in;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes slide-from-right {
+  from {
+    transform: translateX(100%);
+  }
+}
+@keyframes slide-from-left {
+  from {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slide-from-bottom {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+/* Lucide ships 2px strokes; Étal draws them at 1.5px (CDC graphique §8). */
+svg.icon [stroke-width] {
+  stroke-width: 1.5;
+}

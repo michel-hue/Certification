@@ -1,0 +1,2 @@
+cd etal
+./node_modules/.bin/lint-staged
