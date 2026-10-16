@@ -322,15 +322,73 @@
   },
   "cart": {
     "added": "Ajouté à votre panier.",
-    "stockLimit": "Stock maximal atteint pour ce produit ({count} disponibles)."
+    "stockLimit": "Stock maximal atteint pour ce produit ({count} disponibles).",
+    "title": "Votre panier",
+    "pageTitle": "Panier",
+    "overline": "Panier",
+    "headingStart": "Votre",
+    "headingEmphasis": "panier",
+    "summary": "Récapitulatif",
+    "removed": "« {title} » retiré du panier.",
+    "undo": "Annuler",
+    "undoAlt": "Remettre « {title} » dans le panier",
+    "remove": "Retirer",
+    "removeAlt": "Retirer « {title} » du panier",
+    "unitPrice": "{price} l'unité",
+    "quantityOf": "Quantité de « {title} »",
+    "freeShippingReached": "Livraison offerte",
+    "freeShippingRemaining": "Plus que {amount} pour la livraison offerte",
+    "freeShippingProgress": "Progression vers la livraison offerte",
+    "subtotal": "Sous-total",
+    "discount": "Remise",
+    "discountWithCode": "Remise {code}",
+    "shippingLine": "Livraison · {method}",
+    "free": "Offerte",
+    "total": "Total",
+    "checkout": "Commander",
+    "seeCart": "Voir le panier",
+    "continue": "Continuer mes achats",
+    "demoNote": "Mode démo : aucun paiement ne sera prélevé.",
+    "empty": {
+      "title": "Votre panier attend sa première trouvaille.",
+      "illustration": "illustration trait fin",
+      "pageIllustration": "illustration trait fin · cabas vide",
+      "cta": "Découvrir la sélection",
+      "suggestions": "Quelques idées pour commencer"
+    },
+    "promo": {
+      "label": "Code promo",
+      "apply": "Appliquer",
+      "empty": "Saisissez un code.",
+      "invalid": "Ce code n'existe pas. Essayez {code}.",
+      "applied": "Code {code} appliqué : −{percent} %.",
+      "badge": "{code} · −{percent} %"
+    }
   },
   "wishlist": {
-    "added": "Ajouté à vos favoris."
+    "added": "Ajouté à vos favoris.",
+    "pageTitle": "Favoris",
+    "overline": "Favoris · {count}",
+    "headingStart": "Mis de",
+    "headingEmphasis": "côté",
+    "see": "Voir",
+    "seeAlt": "Voir vos favoris",
+    "seeCart": "Voir le panier",
+    "addAll": "Tout ajouter au panier",
+    "addedAll": "Aucun article disponible. | {count} article ajouté au panier. | {count} articles ajoutés au panier.",
+    "empty": {
+      "title": "Rien de mis de côté pour l'instant.",
+      "text": "Touchez le cœur d'un produit pour le retrouver ici.",
+      "illustration": "illustration trait fin · cœur à l'encre",
+      "cta": "Parcourir l'étal"
+    }
   },
   "forms": {
     "email": "Adresse e-mail",
     "emailPlaceholder": "vous{'@'}exemple.fr",
-    "emailInvalid": "Saisissez une adresse e-mail valide, par exemple vous{'@'}exemple.fr."
+    "emailInvalid": "Saisissez une adresse e-mail valide, par exemple vous{'@'}exemple.fr.",
+    "required": "Ce champ est requis.",
+    "tooLong": "Ce champ est trop long."
   },
   "search": {
     "suggestions": "Suggestions",
@@ -394,5 +452,90 @@
     "priceRange": "{min} – {max}",
     "remove": "Retirer le filtre {label}",
     "clearAll": "Tout effacer"
+  },
+  "checkout": {
+    "pageTitle": "Commande",
+    "empty": "Votre panier est vide.",
+    "backToCatalog": "Retourner au catalogue",
+    "steps": {
+      "label": "Étapes de commande",
+      "shipping": "Livraison",
+      "payment": "Paiement",
+      "confirmation": "Confirmation"
+    },
+    "methods": {
+      "standard": {
+        "label": "Standard",
+        "description": "3 à 5 jours ouvrés"
+      },
+      "relay": {
+        "label": "Point relais",
+        "description": "4 à 6 jours ouvrés"
+      },
+      "express": {
+        "label": "Express",
+        "description": "Livré demain avant 13 h"
+      }
+    },
+    "shipping": {
+      "title": "Coordonnées & livraison",
+      "method": "Mode de livraison",
+      "back": "Retour au panier",
+      "continue": "Continuer vers le paiement",
+      "guest": "Vous commandez en invité.",
+      "signIn": "Se connecter",
+      "toPrefill": "pour pré-remplir."
+    },
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "E-mail",
+      "address": "Adresse",
+      "addressPlaceholder": "12 rue des Halles",
+      "postalCode": "Code postal",
+      "city": "Ville",
+      "phone": "Téléphone (facultatif)",
+      "phoneHelp": "Uniquement pour le transporteur (fictif).",
+      "cardNumber": "Numéro de carte",
+      "holder": "Titulaire",
+      "expiry": "Expiration",
+      "expiryPlaceholder": "MM/AA",
+      "cvc": "Cryptogramme"
+    },
+    "payment": {
+      "title": "Paiement",
+      "demoNotice": "Formulaire factice. N'entrez aucun vrai numéro de carte. Seule la carte de test est acceptée et rien n'est transmis.",
+      "useTestCard": "Utiliser la carte de test 4242 4242 4242 4242",
+      "demoHolder": "Démo Étal",
+      "back": "Modifier la livraison",
+      "processing": "Paiement en cours…",
+      "pay": "Payer {total}"
+    },
+    "summary": {
+      "quantity": "Quantité : {count}"
+    },
+    "errors": {
+      "fix": "Certains champs sont à corriger.",
+      "postalCode": "Le code postal comporte 5 chiffres.",
+      "phone": "Numéro de téléphone invalide.",
+      "testCardOnly": "Mode démo : seule la carte de test 4242 4242 4242 4242 est acceptée.",
+      "expiry": "Format attendu : MM/AA.",
+      "cvc": "3 chiffres."
+    },
+    "success": {
+      "pageTitle": "Commande confirmée",
+      "overline": "Commande confirmée · démo",
+      "thanks": "Merci,",
+      "text": "Votre commande est enregistrée dans votre historique. Rien ne sera expédié : Étal est un projet portfolio.",
+      "number": "Numéro",
+      "paid": "Total payé",
+      "delivery": "Livraison",
+      "address": "Adresse",
+      "lineDetail": "Qté {count} · {price}",
+      "placedOn": "Commande passée le {date}.",
+      "track": "Suivre ma commande",
+      "home": "Retour à l'accueil",
+      "notFound": "Commande introuvable."
+    }
   }
 }

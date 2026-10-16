@@ -19,7 +19,27 @@ export default withNuxt(
       // Visible text goes through i18n (CDC §7.1).
       'vue/no-bare-strings-in-template': [
         'error',
-        { allowlist: ['Étal', 'É', 'E', 'tal', '/', '·', '—', '(', ')', '01 / 04', '×', '*', '…', '«', '»'] },
+        {
+          allowlist: [
+            'Étal',
+            'É',
+            'E',
+            'tal',
+            '/',
+            '·',
+            '—',
+            '(',
+            ')',
+            '01 / 04',
+            '×',
+            '*',
+            '…',
+            '«',
+            '»',
+            '.',
+            '−',
+          ],
+        },
       ],
     },
   },

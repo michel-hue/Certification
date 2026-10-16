@@ -24,6 +24,7 @@ const theme = useThemeToggle()
 const { y } = useWindowScroll()
 const isDesktop = useMediaQuery('(min-width: 1024px)')
 
+const cartOpen = useCartDrawer()
 const megaId = ref<string | null>(null)
 const mobileNavOpen = ref(false)
 const mobileSearchOpen = ref(false)
@@ -143,10 +144,11 @@ watch(
         />
         <UiIconButton
           icon="lucide:shopping-bag"
-          to="/cart"
+          :aria-expanded="cartOpen"
           :label="t('header.cart', { count: cartCount }, cartCount)"
           :count="cartCount"
           :pulse="cartPulse"
+          @click="cartOpen = true"
         />
       </div>
     </div>

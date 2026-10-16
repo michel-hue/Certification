@@ -322,15 +322,73 @@
   },
   "cart": {
     "added": "Added to your cart.",
-    "stockLimit": "Maximum stock reached for this product ({count} available)."
+    "stockLimit": "Maximum stock reached for this product ({count} available).",
+    "title": "Your cart",
+    "pageTitle": "Cart",
+    "overline": "Cart",
+    "headingStart": "Your",
+    "headingEmphasis": "cart",
+    "summary": "Summary",
+    "removed": "“{title}” removed from your cart.",
+    "undo": "Undo",
+    "undoAlt": "Put “{title}” back in your cart",
+    "remove": "Remove",
+    "removeAlt": "Remove “{title}” from your cart",
+    "unitPrice": "{price} each",
+    "quantityOf": "Quantity of “{title}”",
+    "freeShippingReached": "Free delivery",
+    "freeShippingRemaining": "{amount} more for free delivery",
+    "freeShippingProgress": "Progress towards free delivery",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "discountWithCode": "{code} discount",
+    "shippingLine": "Delivery · {method}",
+    "free": "Free",
+    "total": "Total",
+    "checkout": "Checkout",
+    "seeCart": "View cart",
+    "continue": "Continue shopping",
+    "demoNote": "Demo mode: no payment will be taken.",
+    "empty": {
+      "title": "Your cart is waiting for its first find.",
+      "illustration": "fine-line illustration",
+      "pageIllustration": "fine-line illustration · empty tote",
+      "cta": "Discover the selection",
+      "suggestions": "A few ideas to start with"
+    },
+    "promo": {
+      "label": "Promo code",
+      "apply": "Apply",
+      "empty": "Enter a code.",
+      "invalid": "This code does not exist. Try {code}.",
+      "applied": "Code {code} applied: −{percent}%.",
+      "badge": "{code} · −{percent}%"
+    }
   },
   "wishlist": {
-    "added": "Added to your wishlist."
+    "added": "Added to your wishlist.",
+    "pageTitle": "Wishlist",
+    "overline": "Wishlist · {count}",
+    "headingStart": "Set",
+    "headingEmphasis": "aside",
+    "see": "View",
+    "seeAlt": "View your wishlist",
+    "seeCart": "View cart",
+    "addAll": "Add all to cart",
+    "addedAll": "No item available. | {count} item added to your cart. | {count} items added to your cart.",
+    "empty": {
+      "title": "Nothing set aside yet.",
+      "text": "Tap the heart on a product to find it here.",
+      "illustration": "fine-line illustration · ink heart",
+      "cta": "Browse the stall"
+    }
   },
   "forms": {
     "email": "Email address",
     "emailPlaceholder": "you{'@'}example.com",
-    "emailInvalid": "Enter a valid email address, for example you{'@'}example.com."
+    "emailInvalid": "Enter a valid email address, for example you{'@'}example.com.",
+    "required": "This field is required.",
+    "tooLong": "This field is too long."
   },
   "search": {
     "suggestions": "Suggestions",
@@ -394,5 +452,90 @@
     "priceRange": "{min} – {max}",
     "remove": "Remove the {label} filter",
     "clearAll": "Clear all"
+  },
+  "checkout": {
+    "pageTitle": "Checkout",
+    "empty": "Your cart is empty.",
+    "backToCatalog": "Back to the catalogue",
+    "steps": {
+      "label": "Checkout steps",
+      "shipping": "Delivery",
+      "payment": "Payment",
+      "confirmation": "Confirmation"
+    },
+    "methods": {
+      "standard": {
+        "label": "Standard",
+        "description": "3 to 5 working days"
+      },
+      "relay": {
+        "label": "Pick-up point",
+        "description": "4 to 6 working days"
+      },
+      "express": {
+        "label": "Express",
+        "description": "Delivered tomorrow before 1 pm"
+      }
+    },
+    "shipping": {
+      "title": "Contact & delivery",
+      "method": "Delivery method",
+      "back": "Back to cart",
+      "continue": "Continue to payment",
+      "guest": "You are checking out as a guest.",
+      "signIn": "Sign in",
+      "toPrefill": "to prefill."
+    },
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "address": "Address",
+      "addressPlaceholder": "12 Market Street",
+      "postalCode": "Postcode",
+      "city": "City",
+      "phone": "Phone (optional)",
+      "phoneHelp": "Only for the carrier (fictitious).",
+      "cardNumber": "Card number",
+      "holder": "Cardholder",
+      "expiry": "Expiry",
+      "expiryPlaceholder": "MM/YY",
+      "cvc": "Security code"
+    },
+    "payment": {
+      "title": "Payment",
+      "demoNotice": "Fake form. Do not enter a real card number. Only the test card is accepted and nothing is sent.",
+      "useTestCard": "Use the test card 4242 4242 4242 4242",
+      "demoHolder": "Étal Demo",
+      "back": "Edit delivery",
+      "processing": "Processing payment…",
+      "pay": "Pay {total}"
+    },
+    "summary": {
+      "quantity": "Quantity: {count}"
+    },
+    "errors": {
+      "fix": "Some fields need correcting.",
+      "postalCode": "The postcode has 5 digits.",
+      "phone": "Invalid phone number.",
+      "testCardOnly": "Demo mode: only the test card 4242 4242 4242 4242 is accepted.",
+      "expiry": "Expected format: MM/YY.",
+      "cvc": "3 digits."
+    },
+    "success": {
+      "pageTitle": "Order confirmed",
+      "overline": "Order confirmed · demo",
+      "thanks": "Thank you,",
+      "text": "Your order is saved in your history. Nothing will ship: Étal is a portfolio project.",
+      "number": "Number",
+      "paid": "Total paid",
+      "delivery": "Delivery",
+      "address": "Address",
+      "lineDetail": "Qty {count} · {price}",
+      "placedOn": "Order placed on {date}.",
+      "track": "Track my order",
+      "home": "Back to home",
+      "notFound": "Order not found."
+    }
   }
 }

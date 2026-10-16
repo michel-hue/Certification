@@ -1,8 +1,9 @@
 import type { ProductImage } from '#shared/types/catalog'
 import type { CurrencyCode, Money } from '#shared/types/money'
+import type { ShippingMethod } from '#shared/types/order'
 import { fromEur } from '#shared/utils/money'
 
-export type ShippingMethod = 'standard' | 'relay' | 'express'
+export type { ShippingMethod }
 
 export interface CartItem {
   productId: number

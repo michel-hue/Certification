@@ -31,5 +31,6 @@ const mounted = useMounted()
       <slot />
     </main>
     <LayoutAppFooter v-if="!checkout" />
+    <CartDrawer />
   </div>
 </template>

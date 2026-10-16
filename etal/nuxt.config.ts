@@ -61,6 +61,8 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'fr',
     vueI18n: './i18n.config.ts',
+    // Absolute hreflang/canonical links; overridden in production by NUXT_PUBLIC_I18N_BASE_URL.
+    baseUrl: 'http://localhost:3000',
     strategy: 'prefix_except_default',
     locales: [
       { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr.json' },
