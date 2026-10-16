@@ -2,6 +2,13 @@
 const route = useRoute()
 const { t } = useI18n()
 const checkout = computed(() => route.meta.checkoutChrome === true)
+
+const cart = useCartStore()
+const wishlist = useWishlistStore()
+const { cartPulse } = useProductActions()
+// Both stores restore from localStorage on the client only; counting before mount would
+// make the server and client renders disagree.
+const mounted = useMounted()
 </script>
 
 <template>
@@ -13,7 +20,13 @@ const checkout = computed(() => route.meta.checkoutChrome === true)
       {{ t('a11y.skipToContent') }}
     </a>
     <LayoutDemoBanner />
-    <LayoutAppHeader :overlay="route.meta.headerOverlay === true" :minimal="checkout" />
+    <LayoutAppHeader
+      :overlay="route.meta.headerOverlay === true"
+      :minimal="checkout"
+      :cart-count="mounted ? cart.itemCount : 0"
+      :wishlist-count="mounted ? wishlist.count : 0"
+      :cart-pulse="cartPulse"
+    />
     <main id="main" class="flex-1">
       <slot />
     </main>

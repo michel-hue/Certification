@@ -18,7 +18,8 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "featured": "Featured · {name}",
-    "secureCheckout": "Secure checkout · demo mode"
+    "secureCheckout": "Secure checkout · demo mode",
+    "homeShort": "Home"
   },
   "header": {
     "search": "Search",
@@ -69,6 +70,73 @@
       "cta": "Discover the selection",
       "secondaryCta": "See gentle prices",
       "caption": "On the cover — Morning rituals"
+    },
+    "seeAll": "See all",
+    "previous": "Previous",
+    "next": "Next",
+    "sections": {
+      "title": "Browse",
+      "emphasis": "the stall",
+      "catalog": "Full catalogue",
+      "count": "{count} piece | {count} piece | {count} pieces",
+      "featuredTitle": "Skincare,",
+      "featuredEmphasis": "straight to the point"
+    },
+    "carousels": {
+      "top": {
+        "overline": "Selection",
+        "title": "Top",
+        "emphasis": "rated"
+      },
+      "deals": {
+        "overline": "Gentle prices",
+        "title": "Right now",
+        "emphasis": "on the stall"
+      },
+      "new": {
+        "overline": "New in",
+        "title": "Freshly",
+        "emphasis": "arrived"
+      }
+    },
+    "editorial": {
+      "photo": "editorial photo · interior, natural materials, ceramics",
+      "overline": "The notebook · 03 — Home",
+      "titleStart": "The art of choosing",
+      "emphasis": "well,",
+      "titleEnd": "one piece at a time",
+      "text": "Fewer things, better looked at. Each month we build an interior around a few simple, durable pieces that age well.",
+      "cta": "Explore the Home section"
+    },
+    "reassurance": {
+      "title": "Our promises",
+      "shipping": {
+        "title": "Free delivery from €50",
+        "text": "Ships within 48 h. Fictitious, like everything else."
+      },
+      "returns": {
+        "title": "30-day returns",
+        "text": "Change your mind, no questions asked."
+      },
+      "payment": {
+        "title": "Secure payment",
+        "text": "Demo mode: no real transaction."
+      },
+      "advice": {
+        "title": "Need advice?",
+        "text": "Our team answers Monday to Saturday."
+      }
+    },
+    "newsletter": {
+      "overline": "Newsletter",
+      "title": "The Étal letter,",
+      "emphasis": "once a month",
+      "text": "New arrivals, the notebook and a few good addresses. Nothing more.",
+      "help": "Unsubscribe in one click, any time.",
+      "done": "Thank you. See you in your inbox (demo: nothing is sent).",
+      "submit": "Subscribe",
+      "subscribed": "Subscribed ✓",
+      "toast": "Subscription confirmed. No data was sent."
     }
   },
   "admin": {
@@ -120,7 +188,7 @@
     "mens-watches": "Men's watches",
     "mobile-accessories": "Mobile accessories",
     "motorcycle": "Motorcycles",
-    "skincare": "Skincare",
+    "skin-care": "Skincare",
     "smartphones": "Smartphones",
     "sports-accessories": "Sports",
     "sunglasses": "Sunglasses",
@@ -148,7 +216,66 @@
     "soldOut": "Sold out",
     "lowStock": "Low stock",
     "addFavorite": "Add to wishlist",
-    "removeFavorite": "Remove from wishlist"
+    "removeFavorite": "Remove from wishlist",
+    "addWithTotal": "Add to cart · {total}",
+    "reviewCount": "No reviews | {count} review | {count} reviews",
+    "gallery": {
+      "thumbnails": "Product images",
+      "image": "Image {n}",
+      "zoom": "Enlarge image",
+      "previous": "Previous image",
+      "next": "Next image"
+    },
+    "stock": {
+      "out": "Sold out",
+      "low": "Only {count} left | Only {count} left | Only {count} left",
+      "in": "In stock · ships within 48 h"
+    },
+    "reassure": {
+      "shipping": "Free delivery from €50 (fictitious)",
+      "returns": "Free returns within 30 days",
+      "warranty": "Manufacturer warranty"
+    },
+    "tabs": {
+      "label": "Product information",
+      "description": "Description",
+      "specs": "Specifications",
+      "shipping": "Shipping & returns",
+      "reviews": "Reviews ({count})"
+    },
+    "specs": {
+      "brand": "Brand",
+      "category": "Category",
+      "sku": "SKU",
+      "dimensions": "Dimensions",
+      "dimensionsValue": "{w} × {h} × {d} cm",
+      "weight": "Weight",
+      "weightValue": "{value} kg",
+      "warranty": "Warranty",
+      "minimumOrder": "Minimum order"
+    },
+    "shipping": {
+      "dispatch": "Dispatch",
+      "dispatchDefault": "Within 48 working hours.",
+      "returns": "Returns",
+      "returnsDefault": "30 days to change your mind.",
+      "free": "Free delivery",
+      "freeText": "From €50, mainland France (fictitious)."
+    },
+    "reviews": {
+      "outOf": "out of 5 · no reviews | out of 5 · {count} review | out of 5 · {count} reviews",
+      "distribution": "Rating distribution",
+      "stars": "{count} ★",
+      "none": "No reviews yet."
+    },
+    "error": {
+      "title": "We could not load this product."
+    },
+    "similar": {
+      "overline": "In the same section",
+      "title": "You may also",
+      "emphasis": "like"
+    }
   },
   "ui": {
     "close": "Close",
@@ -192,5 +319,80 @@
       "region": "Notifications",
       "close": "Close notification"
     }
+  },
+  "cart": {
+    "added": "Added to your cart.",
+    "stockLimit": "Maximum stock reached for this product ({count} available)."
+  },
+  "wishlist": {
+    "added": "Added to your wishlist."
+  },
+  "forms": {
+    "email": "Email address",
+    "emailPlaceholder": "you{'@'}example.com",
+    "emailInvalid": "Enter a valid email address, for example you{'@'}example.com."
+  },
+  "search": {
+    "suggestions": "Suggestions",
+    "noMatch": "No product matches “{term}”.",
+    "seeAll": "See all results for “{term}”",
+    "keyboardHint": "↑ ↓ to browse · Enter to open · Esc to close"
+  },
+  "catalog": {
+    "loading": "Loading…",
+    "overline": "Catalogue",
+    "title": "The whole stall",
+    "chapo": "The full selection, section by section. Refine by price, rating or brand.",
+    "sectionOverline": "Section {num} — {name}",
+    "sectionNumber": "Section {num}",
+    "count": "{count} product | {count} product | {count} products",
+    "categoryDescription": "{name}: the Étal selection, thoughtfully displayed. Portfolio project, no real sales.",
+    "search": {
+      "overline": "Search",
+      "title": "“{term}”",
+      "chapo": "No product matches your search. | {count} product matches your search. | {count} products match your search."
+    },
+    "empty": {
+      "title": "Nothing on the stall for these filters.",
+      "searchTitle": "Nothing on the stall for “{term}”.",
+      "text": "Try another word, or remove a few filters.",
+      "illustration": "fine-line illustration · empty stall",
+      "reset": "Reset filters"
+    },
+    "error": {
+      "title": "We could not load the products.",
+      "text": "Check your connection, then try again."
+    },
+    "sort": {
+      "label": "Sort by",
+      "relevance": "Relevance",
+      "priceAsc": "Price, low to high",
+      "priceDesc": "Price, high to low",
+      "rating": "Top rated",
+      "newest": "Newest"
+    }
+  },
+  "filters": {
+    "title": "Filters",
+    "section": "Section",
+    "all": "All",
+    "category": "Category",
+    "wholeSection": "Whole section",
+    "price": "Price",
+    "min": "Min",
+    "max": "Max",
+    "apply": "OK",
+    "rating": "Minimum rating",
+    "ratingAtLeast": "{value} ★ & up",
+    "brand": "Brand",
+    "availability": "Availability",
+    "inStock": "In stock only",
+    "inStockShort": "In stock",
+    "onSale": "On sale",
+    "reset": "Reset",
+    "show": "Show {label}",
+    "priceRange": "{min} – {max}",
+    "remove": "Remove the {label} filter",
+    "clearAll": "Clear all"
   }
 }

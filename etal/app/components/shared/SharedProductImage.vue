@@ -16,7 +16,7 @@ withDefaults(
     /** Scale the image slightly when the parent `.group` is hovered and there is no second image. */
     zoom?: boolean
   }>(),
-  { sizes: '(min-width: 1024px) 25vw, 50vw', rounded: 'md' },
+  { sizes: '50vw sm:33vw lg:25vw', rounded: 'md' },
 )
 
 const failed = ref(false)

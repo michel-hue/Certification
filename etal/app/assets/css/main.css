@@ -347,3 +347,8 @@
 svg.icon [stroke-width] {
   stroke-width: 1.5;
 }
+
+/* The native clear button of search inputs clashes with the design (blue ×). */
+input[type='search']::-webkit-search-cancel-button {
+  appearance: none;
+}

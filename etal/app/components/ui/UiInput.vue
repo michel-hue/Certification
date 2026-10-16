@@ -12,6 +12,8 @@ const props = withDefaults(
     iconLeft?: string
     /** Keyboard shortcut shown inside the field, e.g. `/`. */
     kbd?: string
+    /** Classes for the wrapper (layout); `class` styles the input itself. */
+    wrapperClass?: string
   }>(),
   { type: 'text', size: 'md' },
 )
@@ -24,7 +26,7 @@ const inputType = computed(() => (isPassword.value && revealed.value ? 'text' : 
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative" :class="wrapperClass">
     <Icon
       v-if="iconLeft"
       :name="iconLeft"

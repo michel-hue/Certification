@@ -1,9 +1,10 @@
 <script setup lang="ts">
 /**
  * The editorial signature: overline + Fraunces title with an italic word, over a hairline.
- * `title` may contain `{em}`, replaced by the italic `emphasis`.
+ * The italic `emphasis` goes where `title` has `{em}`, or at the end otherwise (the form
+ * translations use, since vue-i18n reads `{em}` as a variable).
  */
-withDefaults(
+const props = withDefaults(
   defineProps<{
     overline: string
     title: string
@@ -13,6 +14,10 @@ withDefaults(
     large?: boolean
   }>(),
   { level: 2 },
+)
+
+const parts = computed(() =>
+  props.title.includes('{em}') ? props.title.split('{em}') : [`${props.title} `, ''],
 )
 </script>
 
@@ -29,7 +34,7 @@ withDefaults(
             : 'text-h2'
         "
       >
-        <template v-for="(part, index) in title.split('{em}')" :key="index">
+        <template v-for="(part, index) in parts" :key="index">
           <em v-if="index > 0 && emphasis" :class="large ? 'italic' : 'font-normal'">{{ emphasis }}</em
           >{{ part }}
         </template>

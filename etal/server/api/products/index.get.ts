@@ -1,15 +1,13 @@
 import { productListQuerySchema } from '#shared/schemas/catalog'
-import { listProducts } from '../../adapters/dummyjson/catalog'
+import type { CatalogPage } from '#shared/types/catalog'
+import { queryCatalog } from '../../catalog/query'
 
-export default defineCachedEventHandler(
-  async (event) => {
-    const query = await getValidatedQuery(event, productListQuerySchema.parse)
-    const { client, currency } = useCatalogApi(event)
-    try {
-      return await listProducts(client, query, currency)
-    } catch (error) {
-      throw toHttpError(error)
-    }
-  },
-  { maxAge: 60 * 10, swr: true, getKey: (event) => `products:list:${getRequestURL(event).search}` },
-)
+export default defineEventHandler(async (event): Promise<CatalogPage> => {
+  const query = await getValidatedQuery(event, productListQuerySchema.parse)
+  const { sections } = useAppConfig()
+  try {
+    return queryCatalog(await getCatalog(event), query, sections)
+  } catch (error) {
+    throw toHttpError(error)
+  }
+})

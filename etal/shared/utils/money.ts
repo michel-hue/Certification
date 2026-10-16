@@ -19,6 +19,12 @@ export function fromUsd(amountUsd: number, currency: CurrencyCode): Money {
   return { amount: Math.round(amountUsd * USD_EXCHANGE_RATES[currency] * factor), currency }
 }
 
+/** Converts a euro amount from the app config (thresholds, shipping fees) into minor units. */
+export function fromEur(amountEur: number, currency: CurrencyCode): Money {
+  const rate = currency === 'EUR' ? 1 : EUR_TO_XOF
+  return { amount: Math.round(amountEur * rate * 10 ** MINOR_UNIT_DIGITS[currency]), currency }
+}
+
 export function toMajorUnits(money: Money): number {
   return money.amount / 10 ** MINOR_UNIT_DIGITS[money.currency]
 }

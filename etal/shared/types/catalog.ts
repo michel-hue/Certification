@@ -63,6 +63,30 @@ export interface ProductDetail extends Product {
   reviews: ProductReview[]
 }
 
+/** An editorial rubrique and the DummyJSON categories it groups. */
+export interface Section {
+  id: string
+  categories: readonly string[]
+}
+
+/** What the filter panel needs to describe the current result set. */
+export interface CatalogFacets {
+  /** Products per rubrique over the whole catalogue (home tiles). */
+  sectionCounts: Record<string, number>
+  /** Matches of the search term alone, before any other filter. */
+  termTotal: number
+  /** Products of the selected rubrique, within the search term. */
+  sectionTotal: number
+  /** Categories of the selected rubrique, counted within the search term. */
+  categories: { slug: string; count: number }[]
+  /** Brands available before the brand filter itself is applied. */
+  brands: string[]
+}
+
+export interface CatalogPage extends Paginated<Product> {
+  facets: CatalogFacets
+}
+
 export interface Paginated<T> {
   items: T[]
   total: number

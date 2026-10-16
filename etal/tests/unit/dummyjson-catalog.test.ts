@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { productListQuerySchema } from '#shared/schemas/catalog'
-import { getProduct, listCategories, listProducts } from '../../server/adapters/dummyjson/catalog'
+import { getProduct, listAllProducts, listCategories } from '../../server/adapters/dummyjson/catalog'
 import { createDummyJsonClient, UpstreamError, type Fetcher } from '../../server/adapters/dummyjson/client'
 import categories from '../fixtures/dummyjson/categories.json'
 import productList from '../fixtures/dummyjson/product-list.json'
@@ -13,33 +13,15 @@ function clientReturning(body: unknown) {
   return { fetcher, client: createDummyJsonClient(BASE_URL, fetcher) }
 }
 
-describe('listProducts', () => {
-  it('translates page and sort into DummyJSON limit/skip/sortBy', async () => {
+describe('listAllProducts', () => {
+  it('fetches the whole catalogue in one request and maps it', async () => {
     const { client, fetcher } = clientReturning(productList)
-    const query = productListQuerySchema.parse({ page: '3', pageSize: '12', sort: 'price-desc' })
 
-    const page = await listProducts(client, query, 'EUR')
+    const products = await listAllProducts(client, 'EUR')
 
-    expect(fetcher).toHaveBeenCalledWith('/products', {
-      baseURL: BASE_URL,
-      query: { limit: 12, skip: 24, sortBy: 'price', order: 'desc' },
-    })
-    expect(page).toMatchObject({ total: 194, page: 3, pageSize: 12, pageCount: 17 })
-    expect(page.items).toHaveLength(3)
-  })
-
-  it('sorts newest first on the creation date', async () => {
-    const { client, fetcher } = clientReturning(productList)
-    await listProducts(client, productListQuerySchema.parse({ sort: 'newest' }), 'EUR')
-
-    expect(fetcher.mock.calls[0]?.[1].query).toMatchObject({ sortBy: 'meta.createdAt', order: 'desc' })
-  })
-
-  it('scopes the request to a category', async () => {
-    const { client, fetcher } = clientReturning(productList)
-    await listProducts(client, productListQuerySchema.parse({ category: 'beauty' }), 'EUR')
-
-    expect(fetcher.mock.calls[0]?.[0]).toBe('/products/category/beauty')
+    expect(fetcher).toHaveBeenCalledWith('/products', { baseURL: BASE_URL, query: { limit: 0 } })
+    expect(products).toHaveLength(3)
+    expect(products[0]).toMatchObject({ id: 1, price: { currency: 'EUR' } })
   })
 })
 
@@ -76,9 +58,7 @@ describe('createDummyJsonClient errors', () => {
   it('rejects payloads that do not match the expected shape', async () => {
     const { client } = clientReturning({ products: 'nope' })
 
-    await expect(listProducts(client, productListQuerySchema.parse({}), 'EUR')).rejects.toBeInstanceOf(
-      UpstreamError,
-    )
+    await expect(listAllProducts(client, 'EUR')).rejects.toBeInstanceOf(UpstreamError)
   })
 })
 

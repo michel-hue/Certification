@@ -16,7 +16,7 @@ const props = withDefaults(
     eager?: boolean
     sizes?: string
   }>(),
-  { sizes: '(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw' },
+  { sizes: '50vw sm:33vw lg:25vw' },
 )
 const emit = defineEmits<{ add: [product: Product]; 'toggle-favorite': [product: Product] }>()
 
@@ -26,7 +26,8 @@ const localePath = useLocalePath()
 const href = computed(() => localePath(`/products/${toProductParam(props.product)}`))
 const outOfStock = computed(() => props.product.availability === 'out_of_stock')
 const secondImage = computed(() => props.product.images[1]?.src)
-const eyebrow = computed(() => props.product.brand ?? props.product.category.name)
+const categoryName = useCategoryName()
+const eyebrow = computed(() => props.product.brand ?? categoryName(props.product.category))
 const rating = computed(() =>
   n(props.product.rating.average, { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
 )

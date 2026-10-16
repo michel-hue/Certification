@@ -30,7 +30,8 @@ const mobileSearchOpen = ref(false)
 const mobileSearch = useTemplateRef<{ focus: () => void }>('mobileSearch')
 
 const scrolled = computed(() => y.value > 40)
-const transparent = computed(() => props.overlay && isDesktop.value && !scrolled.value && !megaId.value)
+// Transparency only applies from lg up; the breakpoint is in CSS so server and client agree.
+const transparent = computed(() => props.overlay && !scrolled.value && !megaId.value)
 const accountLabel = computed(() =>
   props.userName ? t('header.accountOf', { name: props.userName }) : t('header.signIn'),
 )
@@ -57,7 +58,8 @@ watch(
   <header
     class="sticky top-0 z-30 h-header border-b transition-[background-color,box-shadow,border-color] duration-250 ease-standard"
     :class="[
-      transparent ? 'border-transparent bg-transparent' : 'border-border bg-background',
+      'border-border bg-background',
+      transparent && 'lg:border-transparent lg:bg-transparent',
       scrolled && !transparent && 'shadow-sm',
       overlay && 'lg:-mb-header',
     ]"
@@ -115,6 +117,8 @@ watch(
           @click="toggleMobileSearch"
         />
         <ClientOnly>
+          <!-- Same footprint before mount, so the icons do not shift (CLS). -->
+          <template #fallback><span class="hidden size-11 lg:block" aria-hidden="true" /></template>
           <UiIconButton
             class="hidden lg:flex"
             :icon="theme.isDark.value ? 'lucide:sun' : 'lucide:moon'"
