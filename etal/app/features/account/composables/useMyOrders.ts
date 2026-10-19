@@ -1,7 +1,7 @@
 import type { Order } from '#shared/types/order'
 
 /** Newest first; ids break ties so the order is stable across renders. */
-export function mergeOrders(...sources: readonly (readonly Order[])[]): Order[] {
+export function mergeOrders<T extends Order>(...sources: readonly (readonly T[])[]): T[] {
   return sources.flat().sort((a, b) => b.createdAt.localeCompare(a.createdAt) || a.id.localeCompare(b.id))
 }
 

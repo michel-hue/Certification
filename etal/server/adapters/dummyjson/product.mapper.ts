@@ -1,23 +1,11 @@
-import type { Availability, CategoryRef, Product, ProductDetail, ProductImage } from '#shared/types/catalog'
+import type { CategoryRef, Product, ProductDetail, ProductImage } from '#shared/types/catalog'
 import type { CurrencyCode } from '#shared/types/money'
 import { fromUsd } from '#shared/utils/money'
+import { PROMO_MIN_DISCOUNT, toAvailability } from '#shared/utils/product-rules'
 import { slugify } from '#shared/utils/slug'
 import type { DummyCategory, DummyProduct } from './schemas'
 
-/** Below this stock, cards show a « Stock faible » badge (home page mockup). */
-export const LOW_STOCK_THRESHOLD = 10
-
-/**
- * Almost every DummyJSON product carries a small discount. Below this percentage the
- * product is sold at its list price, so « −20 % » badges keep their meaning.
- */
-export const PROMO_MIN_DISCOUNT = 10
-
-export function toAvailability(stock: number): Availability {
-  if (stock <= 0) return 'out_of_stock'
-  if (stock < LOW_STOCK_THRESHOLD) return 'low_stock'
-  return 'in_stock'
-}
+export { LOW_STOCK_THRESHOLD, PROMO_MIN_DISCOUNT, toAvailability } from '#shared/utils/product-rules'
 
 export function toCategory(raw: DummyCategory): CategoryRef {
   return { slug: raw.slug, name: raw.name }

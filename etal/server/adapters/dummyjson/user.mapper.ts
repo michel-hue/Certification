@@ -1,5 +1,6 @@
+import type { AdminUser } from '#shared/types/admin'
 import type { User } from '#shared/types/user'
-import type { DummyUser } from './schemas'
+import type { DummyAdminUser, DummyUser } from './schemas'
 
 /**
  * Maps a DummyJSON user; passwords, tokens and other personal fields never leave the server.
@@ -25,5 +26,24 @@ export function toUser(raw: DummyUser, adminUserIds: readonly number[]): User {
         country: raw.address.country,
       },
     }),
+  }
+}
+
+/** DummyJSON writes birth dates without padding (`1996-5-30`). */
+export function toIsoDate(value: string): string | undefined {
+  const match = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(value)
+  if (!match) return undefined
+  const [, year, month, day] = match
+  return `${year}-${month!.padStart(2, '0')}-${day!.padStart(2, '0')}`
+}
+
+export function toAdminUser(raw: DummyAdminUser, adminUserIds: readonly number[]): AdminUser {
+  const { address, ...user } = toUser(raw, adminUserIds)
+  const birthDate = raw.birthDate && toIsoDate(raw.birthDate)
+  return {
+    ...user,
+    ...(birthDate && { birthDate }),
+    ...(raw.company && { company: `${raw.company.name} · ${raw.company.title}` }),
+    ...(address && { address: `${address.line1}, ${address.city}, ${address.country}` }),
   }
 }

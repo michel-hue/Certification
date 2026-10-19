@@ -25,6 +25,11 @@ export function fromEur(amountEur: number, currency: CurrencyCode): Money {
   return { amount: Math.round(amountEur * rate * 10 ** MINOR_UNIT_DIGITS[currency]), currency }
 }
 
+/** Integer minor units from a typed amount, e.g. 12.4 → 1240 cents. */
+export function fromMajorUnits(amount: number, currency: CurrencyCode): Money {
+  return { amount: Math.round(amount * 10 ** MINOR_UNIT_DIGITS[currency]), currency }
+}
+
 export function toMajorUnits(money: Money): number {
   return money.amount / 10 ** MINOR_UNIT_DIGITS[money.currency]
 }
@@ -37,4 +42,9 @@ export function formatPrice(money: Money, locale: string): string {
     minimumFractionDigits: MINOR_UNIT_DIGITS[money.currency],
     maximumFractionDigits: MINOR_UNIT_DIGITS[money.currency],
   }).format(toMajorUnits(money))
+}
+
+/** Back to an API price (USD, two decimals), e.g. for a back-office edit sent to DummyJSON. */
+export function toUsd(money: Money): number {
+  return Math.round((toMajorUnits(money) / USD_EXCHANGE_RATES[money.currency]) * 100) / 100
 }

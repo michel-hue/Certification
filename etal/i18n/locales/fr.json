@@ -140,12 +140,196 @@
     }
   },
   "admin": {
+    "demoNote": "mode démo : non persisté côté serveur",
+    "writeFailed": "L'API n'a pas répondu : rien n'a été modifié.",
+    "loadError": "Nous n'arrivons pas à charger ces données.",
+    "resetDone": "Démo réinitialisée : données rechargées depuis l'API.",
     "nav": {
       "label": "Back-office",
+      "home": "Étal — back-office",
+      "sections": "Sections du back-office",
       "dashboard": "Tableau de bord",
       "products": "Produits",
       "users": "Utilisateurs",
-      "orders": "Commandes"
+      "orders": "Commandes",
+      "reset": "Réinitialiser la démo",
+      "shop": "Voir la boutique",
+      "collapse": "Replier la barre latérale",
+      "expand": "Déplier la barre latérale",
+      "collapseShort": "Replier"
+    },
+    "dashboard": {
+      "overline": "Vue d'ensemble",
+      "title": "Tableau de bord",
+      "kpis": {
+        "products": "Produits",
+        "users": "Utilisateurs",
+        "orders": "Commandes",
+        "revenue": "CA simulé"
+      },
+      "notes": {
+        "lowStock": "{count} en stock faible",
+        "admins": "{count} administrateur | {count} administrateur | {count} administrateurs",
+        "checkout": "dont {count} via le checkout",
+        "revenue": "somme de toutes les commandes"
+      },
+      "sales": "Ventes par catégorie",
+      "salesHint": "Toutes les commandes",
+      "otherCategory": "Autres",
+      "ratings": "Répartition des notes",
+      "ratingsHint": "{count} produits",
+      "ratingBucket": "{stars} étoiles : {count} produits",
+      "latestOrders": "Dernières commandes",
+      "seeAll": "Tout voir",
+      "lowStock": "Stock faible",
+      "manage": "Gérer",
+      "units": "{count} u.",
+      "noLowStock": "Aucun produit en stock faible.",
+      "stars": "{count} ★"
+    },
+    "products": {
+      "overline": "Catalogue",
+      "title": "Produits",
+      "new": "Nouveau produit",
+      "search": "Rechercher par titre ou marque",
+      "searchLabel": "Rechercher un produit",
+      "allCategories": "Toutes les catégories",
+      "categoryFilter": "Filtrer par catégorie",
+      "deleteSelection": "Supprimer la sélection ({count})",
+      "count": "{count} produit | {count} produit | {count} produits",
+      "empty": "Aucun produit ne correspond à ces critères.",
+      "columns": {
+        "image": "Image",
+        "product": "Produit",
+        "category": "Catégorie",
+        "price": "Prix",
+        "stock": "Stock",
+        "rating": "Note",
+        "actions": "Actions"
+      },
+      "selectAll": "Sélectionner toute la page",
+      "select": "Sélectionner {title}",
+      "edit": "Modifier {title}",
+      "delete": "Supprimer {title}",
+      "created": "Produit créé",
+      "saved": "Produit enregistré",
+      "deleted": "{count} produit supprimé | {count} produit supprimé | {count} produits supprimés",
+      "confirm": {
+        "titleOne": "Supprimer « {title} » ?",
+        "titleMany": "Supprimer {count} produits ?",
+        "text": "Le produit sera retiré du catalogue de la démo. L'API simule la suppression.",
+        "ok": "Supprimer"
+      },
+      "errors": {
+        "title": "Le titre est requis.",
+        "price": "Indiquez un prix supérieur à 0, par exemple 24,90.",
+        "discount": "Indiquez une remise entre 0 et 90 %.",
+        "stock": "Indiquez un stock en nombre entier.",
+        "image": "Indiquez une URL d'image valide (https://…)."
+      },
+      "form": {
+        "creating": "Création",
+        "editing": "Édition · #{id}",
+        "newTitle": "Nouveau produit",
+        "info": "Informations",
+        "pricing": "Prix & stock",
+        "image": "Image",
+        "title": "Titre",
+        "brand": "Marque",
+        "category": "Catégorie",
+        "description": "Description",
+        "price": "Prix ({currency})",
+        "discount": "Remise (%)",
+        "discountHelp": "Badge promo affiché dès 10 %.",
+        "stock": "Stock",
+        "thumbnail": "URL de l'image",
+        "thumbnailHelp": "Image principale de la carte et de la fiche.",
+        "preview": "Aperçu de la carte · en direct",
+        "previewTitle": "Titre du produit",
+        "cancel": "Annuler",
+        "delete": "Supprimer",
+        "create": "Créer le produit",
+        "save": "Enregistrer",
+        "notFound": "Ce produit n'existe pas ou a été supprimé.",
+        "thumbnailPlaceholder": "https://…"
+      },
+      "reference": "#{id} · {brand}"
+    },
+    "users": {
+      "overline": "Comptes",
+      "title": "Utilisateurs",
+      "search": "Nom ou e-mail",
+      "searchLabel": "Rechercher un utilisateur",
+      "count": "{count} utilisateur | {count} utilisateur | {count} utilisateurs",
+      "empty": "Aucun utilisateur ne correspond.",
+      "notFound": "Cet utilisateur n'existe pas ou a été supprimé.",
+      "columns": {
+        "avatar": "Avatar",
+        "name": "Nom",
+        "email": "E-mail",
+        "role": "Rôle",
+        "birthDate": "Naissance"
+      },
+      "roles": {
+        "customer": "Client",
+        "admin": "Administrateur"
+      },
+      "back": "Tous les utilisateurs",
+      "role": "Rôle",
+      "self": "C'est votre compte : son rôle ne se modifie pas ici.",
+      "delete": "Supprimer l'utilisateur",
+      "fields": {
+        "username": "Identifiant",
+        "email": "E-mail",
+        "phone": "Téléphone",
+        "company": "Société",
+        "address": "Adresse",
+        "birthDate": "Naissance"
+      },
+      "orders": "Commandes ({count})",
+      "roleSaved": "Rôle mis à jour",
+      "deleted": "Utilisateur supprimé",
+      "confirm": {
+        "title": "Supprimer {name} ?",
+        "text": "Le compte sera retiré de la liste de la démo. L'API simule la suppression.",
+        "ok": "Supprimer"
+      }
+    },
+    "orders": {
+      "overline": "Ventes",
+      "title": "Commandes",
+      "search": "Numéro ou client",
+      "searchLabel": "Rechercher une commande",
+      "allStatuses": "Tous les statuts",
+      "statusFilter": "Filtrer par statut",
+      "count": "{count} commande | {count} commande | {count} commandes",
+      "empty": "Aucune commande ne correspond.",
+      "notFound": "Cette commande n'existe pas.",
+      "columns": {
+        "id": "N°",
+        "customer": "Client",
+        "items": "Articles",
+        "total": "Total",
+        "date": "Date",
+        "status": "Statut"
+      },
+      "statusOf": "Statut de {id}",
+      "statusSaved": "Statut mis à jour",
+      "statusNote": "Statut modifiable localement · non persisté côté serveur.",
+      "back": "Toutes les commandes",
+      "lines": "Articles de la commande",
+      "details": "Informations",
+      "meta": {
+        "customer": "Client",
+        "date": "Date",
+        "items": "Articles",
+        "delivery": "Livraison",
+        "source": "Origine"
+      },
+      "sources": {
+        "api": "Panier de l'API",
+        "checkout": "Checkout de démo"
+      }
     }
   },
   "sections": {

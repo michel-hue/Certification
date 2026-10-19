@@ -71,6 +71,14 @@ export const dummyUserSchema = z.object({
     .optional(),
 })
 
+/** Back-office view of a user: a few more public fields, still no credentials. */
+export const dummyAdminUserSchema = dummyUserSchema.extend({
+  birthDate: z.string().optional(),
+  company: z.object({ name: z.string(), title: z.string() }).optional(),
+})
+
+export const dummyUserListSchema = z.object({ users: z.array(dummyAdminUserSchema), total: z.number().int() })
+
 export const dummyCartSchema = z.object({
   id: z.number().int(),
   userId: z.number().int(),
@@ -93,4 +101,5 @@ export type DummyProduct = z.infer<typeof dummyProductSchema>
 export type DummyProductList = z.infer<typeof dummyProductListSchema>
 export type DummyCategory = z.infer<typeof dummyCategorySchema>
 export type DummyUser = z.infer<typeof dummyUserSchema>
+export type DummyAdminUser = z.infer<typeof dummyAdminUserSchema>
 export type DummyCart = z.infer<typeof dummyCartSchema>

@@ -140,12 +140,196 @@
     }
   },
   "admin": {
+    "demoNote": "demo mode: not saved on the server",
+    "writeFailed": "The API did not answer: nothing was changed.",
+    "loadError": "We could not load this data.",
+    "resetDone": "Demo reset: data reloaded from the API.",
     "nav": {
       "label": "Back office",
+      "home": "Étal — back office",
+      "sections": "Back-office sections",
       "dashboard": "Dashboard",
       "products": "Products",
       "users": "Users",
-      "orders": "Orders"
+      "orders": "Orders",
+      "reset": "Reset the demo",
+      "shop": "View the shop",
+      "collapse": "Collapse the sidebar",
+      "expand": "Expand the sidebar",
+      "collapseShort": "Collapse"
+    },
+    "dashboard": {
+      "overline": "Overview",
+      "title": "Dashboard",
+      "kpis": {
+        "products": "Products",
+        "users": "Users",
+        "orders": "Orders",
+        "revenue": "Simulated revenue"
+      },
+      "notes": {
+        "lowStock": "{count} low in stock",
+        "admins": "{count} administrators | {count} administrator | {count} administrators",
+        "checkout": "{count} from the checkout",
+        "revenue": "sum of every order"
+      },
+      "sales": "Sales by category",
+      "salesHint": "All orders",
+      "otherCategory": "Other",
+      "ratings": "Rating distribution",
+      "ratingsHint": "{count} products",
+      "ratingBucket": "{stars} stars: {count} products",
+      "latestOrders": "Latest orders",
+      "seeAll": "See all",
+      "lowStock": "Low stock",
+      "manage": "Manage",
+      "units": "{count} left",
+      "noLowStock": "No product is low in stock.",
+      "stars": "{count} ★"
+    },
+    "products": {
+      "overline": "Catalogue",
+      "title": "Products",
+      "new": "New product",
+      "search": "Search by title or brand",
+      "searchLabel": "Search products",
+      "allCategories": "All categories",
+      "categoryFilter": "Filter by category",
+      "deleteSelection": "Delete selection ({count})",
+      "count": "{count} products | {count} product | {count} products",
+      "empty": "No product matches these filters.",
+      "columns": {
+        "image": "Image",
+        "product": "Product",
+        "category": "Category",
+        "price": "Price",
+        "stock": "Stock",
+        "rating": "Rating",
+        "actions": "Actions"
+      },
+      "selectAll": "Select the whole page",
+      "select": "Select {title}",
+      "edit": "Edit {title}",
+      "delete": "Delete {title}",
+      "created": "Product created",
+      "saved": "Product saved",
+      "deleted": "{count} products deleted | {count} product deleted | {count} products deleted",
+      "confirm": {
+        "titleOne": "Delete “{title}”?",
+        "titleMany": "Delete {count} products?",
+        "text": "The product will be removed from the demo catalogue. The API simulates the deletion.",
+        "ok": "Delete"
+      },
+      "errors": {
+        "title": "A title is required.",
+        "price": "Enter a price above 0, for example 24.90.",
+        "discount": "Enter a discount between 0 and 90%.",
+        "stock": "Enter the stock as a whole number.",
+        "image": "Enter a valid image URL (https://…)."
+      },
+      "form": {
+        "creating": "New",
+        "editing": "Editing · #{id}",
+        "newTitle": "New product",
+        "info": "Details",
+        "pricing": "Price & stock",
+        "image": "Image",
+        "title": "Title",
+        "brand": "Brand",
+        "category": "Category",
+        "description": "Description",
+        "price": "Price ({currency})",
+        "discount": "Discount (%)",
+        "discountHelp": "The promo badge shows from 10%.",
+        "stock": "Stock",
+        "thumbnail": "Image URL",
+        "thumbnailHelp": "Main image of the card and the product page.",
+        "preview": "Card preview · live",
+        "previewTitle": "Product title",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "create": "Create product",
+        "save": "Save",
+        "notFound": "This product does not exist or was deleted.",
+        "thumbnailPlaceholder": "https://…"
+      },
+      "reference": "#{id} · {brand}"
+    },
+    "users": {
+      "overline": "Accounts",
+      "title": "Users",
+      "search": "Name or email",
+      "searchLabel": "Search users",
+      "count": "{count} users | {count} user | {count} users",
+      "empty": "No user matches.",
+      "notFound": "This user does not exist or was deleted.",
+      "columns": {
+        "avatar": "Avatar",
+        "name": "Name",
+        "email": "Email",
+        "role": "Role",
+        "birthDate": "Birth date"
+      },
+      "roles": {
+        "customer": "Customer",
+        "admin": "Administrator"
+      },
+      "back": "All users",
+      "role": "Role",
+      "self": "This is your account: its role cannot be changed here.",
+      "delete": "Delete user",
+      "fields": {
+        "username": "Username",
+        "email": "Email",
+        "phone": "Phone",
+        "company": "Company",
+        "address": "Address",
+        "birthDate": "Birth date"
+      },
+      "orders": "Orders ({count})",
+      "roleSaved": "Role updated",
+      "deleted": "User deleted",
+      "confirm": {
+        "title": "Delete {name}?",
+        "text": "The account will be removed from the demo list. The API simulates the deletion.",
+        "ok": "Delete"
+      }
+    },
+    "orders": {
+      "overline": "Sales",
+      "title": "Orders",
+      "search": "Number or customer",
+      "searchLabel": "Search orders",
+      "allStatuses": "All statuses",
+      "statusFilter": "Filter by status",
+      "count": "{count} orders | {count} order | {count} orders",
+      "empty": "No order matches.",
+      "notFound": "This order does not exist.",
+      "columns": {
+        "id": "No.",
+        "customer": "Customer",
+        "items": "Items",
+        "total": "Total",
+        "date": "Date",
+        "status": "Status"
+      },
+      "statusOf": "Status of {id}",
+      "statusSaved": "Status updated",
+      "statusNote": "Status editable locally · not saved on the server.",
+      "back": "All orders",
+      "lines": "Order items",
+      "details": "Details",
+      "meta": {
+        "customer": "Customer",
+        "date": "Date",
+        "items": "Items",
+        "delivery": "Delivery",
+        "source": "Source"
+      },
+      "sources": {
+        "api": "API cart",
+        "checkout": "Demo checkout"
+      }
     }
   },
   "sections": {
