@@ -6,7 +6,7 @@ import { dummyCategoryListSchema, dummyProductListSchema, dummyProductSchema } f
 
 /** The whole catalogue (~200 products): small enough to filter server-side in one go. */
 export async function listAllProducts(client: DummyJsonClient, currency: CurrencyCode): Promise<Product[]> {
-  const raw = await client.get('/products', dummyProductListSchema, { limit: 0 })
+  const raw = await client.get('/products', dummyProductListSchema, { query: { limit: 0 } })
   return raw.products.map((product) => toProduct(product, currency))
 }
 

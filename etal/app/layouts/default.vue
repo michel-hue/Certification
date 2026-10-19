@@ -9,6 +9,7 @@ const { cartPulse } = useProductActions()
 // Both stores restore from localStorage on the client only; counting before mount would
 // make the server and client renders disagree.
 const mounted = useMounted()
+const { user } = useAuth()
 </script>
 
 <template>
@@ -26,6 +27,7 @@ const mounted = useMounted()
       :cart-count="mounted ? cart.itemCount : 0"
       :wishlist-count="mounted ? wishlist.count : 0"
       :cart-pulse="cartPulse"
+      :user-name="user?.firstName"
     />
     <main id="main" class="flex-1">
       <slot />

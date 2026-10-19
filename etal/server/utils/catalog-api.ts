@@ -30,10 +30,13 @@ export function getCatalog(event: H3Event): Promise<Product[]> {
 /** Converts adapter failures into HTTP errors without leaking upstream details. */
 export function toHttpError(error: unknown): Error {
   if (error instanceof UpstreamError) {
-    return createError({
-      statusCode: error.status,
-      statusMessage: error.status === 404 ? 'Not Found' : 'Bad Gateway',
-    })
+    const messages = {
+      400: 'Bad Request',
+      401: 'Unauthorized',
+      404: 'Not Found',
+      502: 'Bad Gateway',
+    } as const
+    return createError({ statusCode: error.status, statusMessage: messages[error.status] })
   }
   return error instanceof Error ? error : createError({ statusCode: 500 })
 }

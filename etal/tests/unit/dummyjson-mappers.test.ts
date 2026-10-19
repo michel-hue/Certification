@@ -106,8 +106,10 @@ describe('toUser', () => {
     expect(JSON.stringify(toUser(user, []))).not.toContain(rawUser.password)
   })
 
-  it('trusts the API admin role', () => {
-    expect(toUser(user, []).role).toBe('admin')
+  it('ignores the API role: admins come from the server list only', () => {
+    expect(user.role).toBe('admin')
+    expect(toUser(user, []).role).toBe('customer')
+    expect(toUser(user, [1]).role).toBe('admin')
   })
 
   it('promotes configured demo admins and defaults to customer', () => {

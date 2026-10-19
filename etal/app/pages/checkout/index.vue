@@ -11,6 +11,25 @@ const cart = useCartStore()
 const orders = useOrdersStore()
 const mounted = useMounted()
 const { step, details, reset } = useCheckout()
+const { user, loggedIn } = useAuth()
+
+/** Signed-in customers start with their profile; the guest hint is replaced. */
+const initialDetails = computed(() => {
+  if (details.value || !user.value) return details.value
+  const address = user.value.address
+  return {
+    firstName: user.value.firstName,
+    lastName: user.value.lastName,
+    email: user.value.email,
+    phone: user.value.phone ?? '',
+    ...(address &&
+      /^\d{5}$/.test(address.postalCode) && {
+        address: address.line1,
+        postalCode: address.postalCode,
+        city: address.city,
+      }),
+  }
+})
 
 const steps = computed(() => [
   t('checkout.steps.shipping'),
@@ -36,6 +55,7 @@ async function onPaid() {
     totals: cart.totals,
     shippingMethod: cart.shippingMethod,
     details: details.value,
+    userId: user.value?.id,
   })
   cart.clear()
   reset()
@@ -60,8 +80,8 @@ useSeoMeta({ title: () => t('checkout.pageTitle'), robots: 'noindex, nofollow' }
 
     <div v-else class="flex flex-wrap-reverse items-start gap-[clamp(32px,5vw,72px)]">
       <div class="flex min-w-0 flex-[3_1_460px] flex-col">
-        <ShippingStep v-if="step === 1" :initial="details" @done="onShippingDone">
-          <template #hint>
+        <ShippingStep v-if="step === 1" :initial="initialDetails" @done="onShippingDone">
+          <template v-if="!loggedIn" #hint>
             <p class="text-body-sm text-foreground-muted">
               {{ t('checkout.shipping.guest') }}
               <NuxtLinkLocale

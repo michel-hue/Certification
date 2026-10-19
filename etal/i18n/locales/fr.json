@@ -537,5 +537,105 @@
       "home": "Retour à l'accueil",
       "notFound": "Commande introuvable."
     }
+  },
+  "auth": {
+    "photo": "photo éditoriale · main posant un objet sur une table en bois",
+    "taglineStart": "Le choix,",
+    "taglineEmphasis": "exposé avec soin.",
+    "backToShop": "Retour à la boutique",
+    "welcome": "Bonjour, vous êtes connecté.",
+    "forgotDemo": "Mode démo : utilisez un des comptes de démo ci-dessus.",
+    "adminOnly": "Accès réservé aux administrateurs.",
+    "roles": {
+      "customer": "Client",
+      "admin": "Administratrice"
+    },
+    "fields": {
+      "username": "Identifiant",
+      "password": "Mot de passe",
+      "remember": "Se souvenir de moi",
+      "confirm": "Confirmer le mot de passe"
+    },
+    "login": {
+      "pageTitle": "Connexion",
+      "titleStart": "Bon",
+      "titleEmphasis": "retour",
+      "lead": "Connectez-vous pour retrouver vos commandes et vos favoris.",
+      "redirectHint": "Connectez-vous pour accéder à cette page.",
+      "demoAccounts": "Comptes de démo · un clic pour remplir",
+      "useDemo": "Remplir avec le compte de démo {role}",
+      "forgot": "Mot de passe oublié ?",
+      "submit": "Se connecter",
+      "submitting": "Connexion…",
+      "noAccount": "Pas encore de compte ?",
+      "register": "Créer un compte"
+    },
+    "register": {
+      "pageTitle": "Inscription",
+      "titleStart": "Ouvrir un",
+      "titleEmphasis": "compte",
+      "lead": "Le compte est créé en démo : il ne sera pas conservé côté serveur.",
+      "terms": "J'accepte les conditions d'utilisation de cette démo.",
+      "submit": "Créer mon compte",
+      "hasAccount": "Déjà inscrit ?",
+      "login": "Se connecter",
+      "created": "Compte créé en démo : il ne sera pas conservé côté serveur."
+    },
+    "errors": {
+      "username": "Renseignez votre identifiant.",
+      "password": "Renseignez votre mot de passe.",
+      "invalid": "Identifiant ou mot de passe incorrect.",
+      "unavailable": "Le service ne répond pas. Réessayez dans un instant.",
+      "weakPassword": "Choisissez un mot de passe au moins « Solide ».",
+      "terms": "Veuillez accepter les conditions pour continuer.",
+      "mismatch": "Les deux mots de passe ne correspondent pas."
+    }
+  },
+  "account": {
+    "title": "Mon compte",
+    "hello": "Bonjour,",
+    "latestOrders": "Dernières commandes",
+    "allOrders": "Tout l'historique",
+    "noOrders": "Aucune commande pour le moment.",
+    "discover": "Découvrir l'étal",
+    "signedOut": "Vous êtes déconnecté.",
+    "nav": {
+      "label": "Mon compte",
+      "overview": "Vue d'ensemble",
+      "orders": "Commandes",
+      "profile": "Profil",
+      "wishlist": "Favoris",
+      "admin": "Back-office",
+      "signOut": "Déconnexion"
+    },
+    "stats": {
+      "orders": "Commandes",
+      "wishlist": "Favoris",
+      "cart": "Panier"
+    },
+    "orders": {
+      "title": "Mes commandes",
+      "error": "Nous n'arrivons pas à charger vos commandes.",
+      "placedOn": "Commande du {date}",
+      "tracking": "Suivi de la commande",
+      "profileAddress": "Adresse du profil de démo"
+    },
+    "profile": {
+      "title": "Mon profil",
+      "phone": "Téléphone",
+      "preferences": "Préférences",
+      "darkTheme": "Thème sombre",
+      "save": "Enregistrer",
+      "saved": "Profil mis à jour · mode démo : modification non persistée côté serveur."
+    }
+  },
+  "orders": {
+    "items": "{count} article | {count} article | {count} articles",
+    "status": {
+      "pending": "En attente",
+      "preparing": "En préparation",
+      "shipped": "Expédiée",
+      "delivered": "Livrée"
+    }
   }
 }

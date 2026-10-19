@@ -537,5 +537,105 @@
       "home": "Back to home",
       "notFound": "Order not found."
     }
+  },
+  "auth": {
+    "photo": "editorial photo · a hand placing an object on a wooden table",
+    "taglineStart": "Thoughtfully",
+    "taglineEmphasis": "displayed.",
+    "backToShop": "Back to the shop",
+    "welcome": "Hello, you are signed in.",
+    "forgotDemo": "Demo mode: use one of the demo accounts above.",
+    "adminOnly": "Administrators only.",
+    "roles": {
+      "customer": "Customer",
+      "admin": "Administrator"
+    },
+    "fields": {
+      "username": "Username",
+      "password": "Password",
+      "remember": "Remember me",
+      "confirm": "Confirm password"
+    },
+    "login": {
+      "pageTitle": "Sign in",
+      "titleStart": "Welcome",
+      "titleEmphasis": "back",
+      "lead": "Sign in to find your orders and your wishlist.",
+      "redirectHint": "Sign in to access this page.",
+      "demoAccounts": "Demo accounts · one click to fill",
+      "useDemo": "Fill with the {role} demo account",
+      "forgot": "Forgot your password?",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "noAccount": "No account yet?",
+      "register": "Create an account"
+    },
+    "register": {
+      "pageTitle": "Register",
+      "titleStart": "Open an",
+      "titleEmphasis": "account",
+      "lead": "The account is created in demo mode: it is not kept on the server.",
+      "terms": "I accept the terms of use of this demo.",
+      "submit": "Create my account",
+      "hasAccount": "Already registered?",
+      "login": "Sign in",
+      "created": "Demo account created: it is not kept on the server."
+    },
+    "errors": {
+      "username": "Enter your username.",
+      "password": "Enter your password.",
+      "invalid": "Incorrect username or password.",
+      "unavailable": "The service is not responding. Try again in a moment.",
+      "weakPassword": "Choose a password rated at least “Strong”.",
+      "terms": "Please accept the terms to continue.",
+      "mismatch": "The two passwords do not match."
+    }
+  },
+  "account": {
+    "title": "My account",
+    "hello": "Hello,",
+    "latestOrders": "Latest orders",
+    "allOrders": "Full history",
+    "noOrders": "No orders yet.",
+    "discover": "Discover the stall",
+    "signedOut": "You are signed out.",
+    "nav": {
+      "label": "My account",
+      "overview": "Overview",
+      "orders": "Orders",
+      "profile": "Profile",
+      "wishlist": "Wishlist",
+      "admin": "Back office",
+      "signOut": "Sign out"
+    },
+    "stats": {
+      "orders": "Orders",
+      "wishlist": "Wishlist",
+      "cart": "Cart"
+    },
+    "orders": {
+      "title": "My orders",
+      "error": "We could not load your orders.",
+      "placedOn": "Order of {date}",
+      "tracking": "Order tracking",
+      "profileAddress": "Demo profile address"
+    },
+    "profile": {
+      "title": "My profile",
+      "phone": "Phone",
+      "preferences": "Preferences",
+      "darkTheme": "Dark theme",
+      "save": "Save",
+      "saved": "Profile updated · demo mode: the change is not kept on the server."
+    }
+  },
+  "orders": {
+    "items": "{count} item | {count} item | {count} items",
+    "status": {
+      "pending": "Pending",
+      "preparing": "Preparing",
+      "shipped": "Shipped",
+      "delivered": "Delivered"
+    }
   }
 }

@@ -5,6 +5,7 @@ const { t, d } = useI18n()
 const { format } = usePrice()
 const orders = useOrdersStore()
 const mounted = useMounted()
+const { loggedIn } = useAuth()
 
 const order = computed(() => (mounted.value ? orders.find(String(route.params.id)) : undefined))
 const facts = computed(() => {
@@ -76,8 +77,10 @@ useSeoMeta({ title: () => t('checkout.success.pageTitle'), robots: 'noindex, nof
       </p>
 
       <div class="flex flex-wrap gap-4">
-        <!-- « Suivre ma commande » replaces this link once accounts exist (lot 5). -->
-        <UiButton to="/" size="lg">{{ t('checkout.success.home') }}</UiButton>
+        <UiButton v-if="loggedIn" :to="`/account/orders/${order.id}`" size="lg">{{
+          t('checkout.success.track')
+        }}</UiButton>
+        <UiButton v-else to="/" size="lg">{{ t('checkout.success.home') }}</UiButton>
         <UiButton to="/products" size="lg" variant="secondary">{{ t('cart.continue') }}</UiButton>
       </div>
     </template>

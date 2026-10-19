@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { sampleProducts } from '~/design/showcase-products'
 import { useCartStore } from '~/stores/cart'
 import { createOrderId, useOrdersStore } from '~/stores/orders'
+import { mergeOrders } from '~/features/account/composables/useMyOrders'
 
 const details = {
   firstName: 'Emily',
@@ -63,5 +64,23 @@ describe('orders store', () => {
     cart.clear()
 
     expect(orders.find(order.id)?.lines).toHaveLength(1)
+  })
+})
+
+describe('mergeOrders', () => {
+  it('lists checkout and API orders newest first', () => {
+    const cart = useCartStore()
+    const orders = useOrdersStore()
+    cart.add(sampleProducts[0]!, 1)
+    const placed = orders.place({
+      items: cart.items,
+      totals: cart.totals,
+      shippingMethod: 'standard',
+      details,
+    })
+    const older = { ...placed, id: 'C-1', createdAt: '2024-01-01T00:00:00.000Z' }
+    const newer = { ...placed, id: 'C-2', createdAt: '2099-01-01T00:00:00.000Z' }
+
+    expect(mergeOrders([placed], [older, newer]).map((order) => order.id)).toEqual(['C-2', placed.id, 'C-1'])
   })
 })

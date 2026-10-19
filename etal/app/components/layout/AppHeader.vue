@@ -130,7 +130,7 @@ watch(
         <UiIconButton
           class="hidden lg:flex"
           icon="lucide:user"
-          to="/account"
+          :to="userName ? '/account' : '/login'"
           :label="accountLabel"
           :dot="!!userName"
         />

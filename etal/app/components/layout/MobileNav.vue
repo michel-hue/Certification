@@ -6,6 +6,7 @@ const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
 const sections = useSections()
 const theme = useThemeToggle()
+const { user } = useAuth()
 
 const close = () => (open.value = false)
 </script>
@@ -24,9 +25,12 @@ const close = () => (open.value = false)
       </NuxtLinkLocale>
       <ul class="flex flex-col gap-1 pt-6 text-body">
         <li>
-          <NuxtLinkLocale to="/login" class="flex min-h-11 items-center" @click="close">{{
-            t('header.signIn')
-          }}</NuxtLinkLocale>
+          <NuxtLinkLocale
+            :to="user ? '/account' : '/login'"
+            class="flex min-h-11 items-center"
+            @click="close"
+            >{{ user ? t('header.accountOf', { name: user.firstName }) : t('header.signIn') }}</NuxtLinkLocale
+          >
         </li>
         <li>
           <NuxtLinkLocale to="/wishlist" class="flex min-h-11 items-center" @click="close">

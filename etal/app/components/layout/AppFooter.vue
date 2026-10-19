@@ -3,6 +3,7 @@
 const { t } = useI18n()
 const sections = useSections()
 const theme = useThemeToggle()
+const { loggedIn } = useAuth()
 
 const columns = computed(() => [
   {
@@ -21,7 +22,9 @@ const columns = computed(() => [
   {
     title: t('footer.account'),
     links: [
-      { to: '/login', label: t('footer.links.login') },
+      loggedIn.value
+        ? { to: '/account', label: t('footer.links.myAccount') }
+        : { to: '/login', label: t('footer.links.login') },
       { to: '/account/orders', label: t('footer.links.orders') },
       { to: '/register', label: t('footer.links.register') },
       { to: '/admin', label: t('footer.links.admin') },
