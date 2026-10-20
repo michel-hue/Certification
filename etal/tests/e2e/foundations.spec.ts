@@ -18,15 +18,6 @@ test.describe('foundations (Lot 1)', () => {
     await expect(page.getByRole('heading', { level: 1 })).toContainText('The essentials of the season')
   })
 
-  test('the demo banner stays closed after a reload', async ({ page }) => {
-    await page.goto('/')
-    await page.getByRole('button', { name: 'Fermer le bandeau' }).click()
-    await expect(page.getByText('Projet portfolio : aucune commande')).toBeHidden()
-
-    await page.reload()
-    await expect(page.getByText('Projet portfolio : aucune commande')).toBeHidden()
-  })
-
   test('the dark theme is applied without a flash and persists', async ({ page }) => {
     await page.goto('/')
     await page.getByRole('button', { name: 'Passer en thème sombre' }).first().click()

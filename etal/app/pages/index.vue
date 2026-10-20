@@ -9,6 +9,41 @@ useSeoMeta({
   ogTitle: () => t('home.seo.title'),
   ogDescription: () => t('home.seo.description'),
 })
+
+// Structured data (CDC §14.4): the organisation, and the site search for rich results.
+const siteUrl = useRuntimeConfig().public.siteUrl.replace(/\/$/, '')
+const localePath = useLocalePath()
+useHead(() => ({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Organization',
+            '@id': `${siteUrl}/#organization`,
+            name: 'Étal',
+            url: `${siteUrl}/`,
+            logo: `${siteUrl}/favicon.svg`,
+            slogan: t('brand.tagline'),
+          },
+          {
+            '@type': 'WebSite',
+            url: `${siteUrl}${localePath('/')}`,
+            name: 'Étal',
+            publisher: { '@id': `${siteUrl}/#organization` },
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: `${siteUrl}${localePath('/search')}?q={search_term_string}`,
+              'query-input': 'required name=search_term_string',
+            },
+          },
+        ],
+      }),
+    },
+  ],
+}))
 </script>
 
 <template>

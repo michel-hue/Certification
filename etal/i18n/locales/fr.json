@@ -51,8 +51,12 @@
       "register": "Créer un compte",
       "admin": "Back-office",
       "notFound": "Page 404",
-      "serverError": "Page erreur 500"
-    }
+      "serverError": "Page erreur 500",
+      "about": "À propos",
+      "faq": "Aide & FAQ",
+      "legal": "Mentions légales"
+    },
+    "about": "Étal"
   },
   "preferences": {
     "language": "Langue"
@@ -820,6 +824,129 @@
       "preparing": "En préparation",
       "shipped": "Expédiée",
       "delivered": "Livrée"
+    }
+  },
+  "errors": {
+    "home": "Retour à l'accueil",
+    "notFound": {
+      "pageTitle": "Page introuvable",
+      "titleStart": "Cette page n'est plus",
+      "titleEmphasis": "à l'étal.",
+      "text": "Elle a peut-être été retirée, ou l'adresse contient une coquille.",
+      "browse": "Parcourir le catalogue"
+    },
+    "server": {
+      "pageTitle": "Erreur",
+      "overline": "Erreur {code}",
+      "titleStart": "L'étal est momentanément",
+      "titleEmphasis": "fermé.",
+      "text": "Un incident est survenu de notre côté. Vos articles sont toujours dans votre panier."
+    }
+  },
+  "pages": {
+    "about": {
+      "pageTitle": "À propos",
+      "overline": "À propos",
+      "titleStart": "Un étal,",
+      "titleEmphasis": "pas une boutique.",
+      "lead": "Étal est un projet portfolio : la refonte complète d'une application e-commerce, pensée comme un vrai produit, sans aucune vente réelle.",
+      "sections": {
+        "project": {
+          "title": "Le projet",
+          "text": "Une boutique de beauté, de mode et de maison présentée comme un magazine : catalogue filtrable, panier persistant, commande en trois étapes, espace client et back-office complet. Les données viennent de l'API publique DummyJSON ; les écritures y sont simulées."
+        },
+        "architecture": {
+          "title": "Architecture",
+          "text": "Le navigateur ne parle jamais directement à l'API : chaque appel passe par les routes serveur Nitro, qui valident les entrées avec Zod, mettent le catalogue en cache et convertissent les prix. Un adaptateur isole DummyJSON : changer de fournisseur ne touche qu'un dossier."
+        },
+        "security": {
+          "title": "Sécurité",
+          "text": "La session est scellée dans un cookie httpOnly ; les jetons de l'API restent côté serveur et se renouvellent automatiquement. Les routes du back-office vérifient le rôle côté serveur, pas seulement dans l'interface."
+        },
+        "quality": {
+          "title": "Qualité",
+          "text": "TypeScript strict, ESLint et Prettier, tests unitaires et de composants avec Vitest, parcours de bout en bout et audits d'accessibilité avec Playwright et axe, intégration continue sur GitHub Actions."
+        }
+      },
+      "stack": "La stack",
+      "demo": {
+        "title": "Essayer la démo",
+        "text": "Deux comptes de démo sont proposés sur la page de connexion : une cliente et une administratrice.",
+        "login": "Se connecter",
+        "browse": "Parcourir le catalogue"
+      }
+    },
+    "faq": {
+      "pageTitle": "Aide & FAQ",
+      "overline": "Aide",
+      "titleStart": "Questions",
+      "titleEmphasis": "fréquentes",
+      "lead": "Tout ce qu'il faut savoir sur cette boutique de démonstration.",
+      "items": {
+        "order": {
+          "question": "Puis-je vraiment commander ?",
+          "answer": "Non. Étal est un projet portfolio : la commande va jusqu'à la confirmation, mais rien n'est expédié et aucun paiement n'est encaissé."
+        },
+        "payment": {
+          "question": "Quelle carte utiliser au paiement ?",
+          "answer": "Seule la carte de test proposée sur la page de paiement est acceptée. Aucun numéro réel n'est accepté ni transmis."
+        },
+        "promo": {
+          "question": "Existe-t-il un code promo ?",
+          "answer": "Oui : {code} retire {percent} % du sous-total, à saisir dans le panier."
+        },
+        "shipping": {
+          "question": "Comment la livraison est-elle calculée ?",
+          "answer": "La livraison standard et le point relais sont offerts dès {threshold} d'achat ; l'express reste payante. Les délais affichés sont fictifs."
+        },
+        "account": {
+          "question": "Comment me connecter ?",
+          "answer": "Utilisez l'un des comptes de démo affichés sur la page de connexion, ou créez un compte : il est créé en démo et n'est pas conservé côté serveur."
+        },
+        "cart": {
+          "question": "Mon panier est-il conservé ?",
+          "answer": "Oui, dans votre navigateur : il survit au rechargement de la page, tout comme vos favoris et vos commandes de démo."
+        },
+        "admin": {
+          "question": "Que permet le back-office ?",
+          "answer": "Avec le compte administratrice : gérer les produits, les utilisateurs et les commandes. L'API simule chaque modification ; rien n'est enregistré, et « Réinitialiser la démo » remet tout à zéro."
+        },
+        "prices": {
+          "question": "Pourquoi les prix sont-ils en euros ?",
+          "answer": "Les prix de l'API sont en dollars. Ils sont convertis à un taux fixe dans une devise unique et configurable : l'euro par défaut, le franc CFA en option."
+        }
+      },
+      "more": "Envie de savoir comment le site est construit ?",
+      "aboutLink": "Lire la page À propos"
+    },
+    "legal": {
+      "pageTitle": "Mentions légales",
+      "overline": "Informations légales",
+      "titleStart": "Mentions",
+      "titleEmphasis": "légales",
+      "lead": "Version portfolio : ce site est une démonstration technique, sans activité commerciale.",
+      "sections": {
+        "publisher": {
+          "title": "Éditeur",
+          "text": "Projet réalisé par Syabe Technologies en 2026, dans le cadre d'un portfolio. Aucune activité commerciale n'est exercée sur ce site."
+        },
+        "hosting": {
+          "title": "Hébergement",
+          "text": "Le site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis."
+        },
+        "data": {
+          "title": "Données personnelles",
+          "text": "Aucune donnée personnelle n'est collectée ni revendue. Les formulaires (inscription, newsletter, paiement) n'envoient rien à des tiers ; les comptes et les commandes de démonstration proviennent de DummyJSON."
+        },
+        "storage": {
+          "title": "Cookies et stockage local",
+          "text": "Seuls des cookies techniques sont utilisés : la session de connexion (httpOnly, chiffrée), le thème, la langue et l'état de la barre latérale du back-office. Le panier, les favoris et les commandes de démo restent dans le stockage local de votre navigateur. Aucun cookie publicitaire ni de mesure d'audience."
+        },
+        "content": {
+          "title": "Contenus et crédits",
+          "text": "Les produits, photos, avis et utilisateurs proviennent de l'API publique DummyJSON. Les marques citées appartiennent à leurs propriétaires respectifs."
+        }
+      }
     }
   }
 }

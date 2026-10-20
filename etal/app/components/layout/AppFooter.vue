@@ -31,6 +31,14 @@ const columns = computed(() => [
     ],
   },
   {
+    title: t('footer.about'),
+    links: [
+      { to: '/about', label: t('footer.links.about') },
+      { to: '/faq', label: t('footer.links.faq') },
+      { to: '/legal', label: t('footer.links.legal') },
+    ],
+  },
+  {
     title: t('footer.demo'),
     links: [
       { to: '/page-introuvable', label: t('footer.links.notFound') },

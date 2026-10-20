@@ -51,8 +51,12 @@
       "register": "Create an account",
       "admin": "Back office",
       "notFound": "404 page",
-      "serverError": "500 error page"
-    }
+      "serverError": "500 error page",
+      "about": "About",
+      "faq": "Help & FAQ",
+      "legal": "Legal notice"
+    },
+    "about": "Étal"
   },
   "preferences": {
     "language": "Language"
@@ -820,6 +824,129 @@
       "preparing": "Preparing",
       "shipped": "Shipped",
       "delivered": "Delivered"
+    }
+  },
+  "errors": {
+    "home": "Back to the home page",
+    "notFound": {
+      "pageTitle": "Page not found",
+      "titleStart": "This page is no longer",
+      "titleEmphasis": "on the stall.",
+      "text": "It may have been removed, or the address contains a typo.",
+      "browse": "Browse the catalogue"
+    },
+    "server": {
+      "pageTitle": "Error",
+      "overline": "Error {code}",
+      "titleStart": "The stall is closed",
+      "titleEmphasis": "for a moment.",
+      "text": "Something went wrong on our side. Your items are still in your cart."
+    }
+  },
+  "pages": {
+    "about": {
+      "pageTitle": "About",
+      "overline": "About",
+      "titleStart": "A stall,",
+      "titleEmphasis": "not a shop.",
+      "lead": "Étal is a portfolio project: the full redesign of an e-commerce application, built like a real product, with no real sales.",
+      "sections": {
+        "project": {
+          "title": "The project",
+          "text": "A beauty, fashion and home shop presented like a magazine: a filterable catalogue, a persistent cart, a three-step checkout, a customer area and a full back office. The data comes from the public DummyJSON API, which simulates every write."
+        },
+        "architecture": {
+          "title": "Architecture",
+          "text": "The browser never talks to the API directly: every call goes through Nitro server routes, which validate inputs with Zod, cache the catalogue and convert prices. An adapter isolates DummyJSON, so switching providers touches a single folder."
+        },
+        "security": {
+          "title": "Security",
+          "text": "The session is sealed in an httpOnly cookie; the API tokens stay on the server and refresh automatically. Back-office routes check the role on the server, not only in the interface."
+        },
+        "quality": {
+          "title": "Quality",
+          "text": "Strict TypeScript, ESLint and Prettier, unit and component tests with Vitest, end-to-end journeys and accessibility audits with Playwright and axe, continuous integration on GitHub Actions."
+        }
+      },
+      "stack": "The stack",
+      "demo": {
+        "title": "Try the demo",
+        "text": "The sign-in page offers two demo accounts: a customer and an administrator.",
+        "login": "Sign in",
+        "browse": "Browse the catalogue"
+      }
+    },
+    "faq": {
+      "pageTitle": "Help & FAQ",
+      "overline": "Help",
+      "titleStart": "Frequently asked",
+      "titleEmphasis": "questions",
+      "lead": "Everything you need to know about this demo shop.",
+      "items": {
+        "order": {
+          "question": "Can I really place an order?",
+          "answer": "No. Étal is a portfolio project: the checkout goes all the way to the confirmation, but nothing is shipped and no payment is taken."
+        },
+        "payment": {
+          "question": "Which card should I use?",
+          "answer": "Only the test card offered on the payment step is accepted. Real card numbers are neither accepted nor sent."
+        },
+        "promo": {
+          "question": "Is there a promo code?",
+          "answer": "Yes: {code} takes {percent}% off the subtotal; enter it in the cart."
+        },
+        "shipping": {
+          "question": "How is delivery calculated?",
+          "answer": "Standard and pickup-point delivery are free from {threshold}; express delivery is always charged. The delivery times shown are fictitious."
+        },
+        "account": {
+          "question": "How do I sign in?",
+          "answer": "Use one of the demo accounts shown on the sign-in page, or create an account: it is created in demo mode and not kept on the server."
+        },
+        "cart": {
+          "question": "Is my cart kept?",
+          "answer": "Yes, in your browser: it survives a page reload, as do your favourites and your demo orders."
+        },
+        "admin": {
+          "question": "What can I do in the back office?",
+          "answer": "With the administrator account: manage products, users and orders. The API simulates every change; nothing is saved, and “Reset the demo” starts over."
+        },
+        "prices": {
+          "question": "Why are prices in euros?",
+          "answer": "The API prices are in US dollars. They are converted at a fixed rate into a single, configurable currency: euros by default, CFA francs as an option."
+        }
+      },
+      "more": "Curious about how the site is built?",
+      "aboutLink": "Read the About page"
+    },
+    "legal": {
+      "pageTitle": "Legal notice",
+      "overline": "Legal information",
+      "titleStart": "Legal",
+      "titleEmphasis": "notice",
+      "lead": "Portfolio version: this site is a technical demonstration with no commercial activity.",
+      "sections": {
+        "publisher": {
+          "title": "Publisher",
+          "text": "Project made by Syabe Technologies in 2026 as part of a portfolio. No commercial activity takes place on this site."
+        },
+        "hosting": {
+          "title": "Hosting",
+          "text": "The site is hosted by Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, United States."
+        },
+        "data": {
+          "title": "Personal data",
+          "text": "No personal data is collected or sold. The forms (sign-up, newsletter, payment) send nothing to third parties; demo accounts and orders come from DummyJSON."
+        },
+        "storage": {
+          "title": "Cookies and local storage",
+          "text": "Only technical cookies are used: the sign-in session (httpOnly, encrypted), the theme, the language and the back-office sidebar state. The cart, favourites and demo orders stay in your browser’s local storage. No advertising or analytics cookies."
+        },
+        "content": {
+          "title": "Content and credits",
+          "text": "Products, photos, reviews and users come from the public DummyJSON API. The brands mentioned belong to their respective owners."
+        }
+      }
     }
   }
 }

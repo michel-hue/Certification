@@ -19,7 +19,12 @@ export default defineConfig({
   webServer: {
     command: `node .output/server/index.mjs`,
     url: baseURL,
-    env: { PORT: String(port) },
+    env: {
+      PORT: String(port),
+      NUXT_PUBLIC_SITE_URL: baseURL,
+      // The production build needs a session secret; this one only ever seals test cookies.
+      NUXT_SESSION_PASSWORD: process.env.NUXT_SESSION_PASSWORD ?? 'e2e-only-session-password-not-a-secret',
+    },
     reuseExistingServer: !process.env.CI,
   },
 })

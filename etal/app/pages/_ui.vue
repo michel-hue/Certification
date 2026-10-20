@@ -485,6 +485,7 @@ function undoToast() {
     <ShowcaseSection id="etats" overline="Composants" title="Chargement, vide, erreur">
       <div
         class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,220px),1fr))] gap-6"
+        role="status"
         aria-busy="true"
         aria-label="Chargement des produits"
       >

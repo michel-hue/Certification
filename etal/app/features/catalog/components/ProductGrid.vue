@@ -23,6 +23,7 @@ const { t } = useI18n()
   <div
     class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,150px),1fr))] gap-x-4 gap-y-10 sm:grid-cols-[repeat(auto-fill,minmax(min(100%,220px),1fr))] sm:gap-x-6"
     :aria-busy="pending"
+    :role="pending ? 'status' : undefined"
     :aria-label="pending ? t('catalog.loading') : undefined"
   >
     <template v-if="pending">
