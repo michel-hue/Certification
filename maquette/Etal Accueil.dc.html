@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+html,body{margin:0;padding:0}
+.etal{--bg:#F7F4EE;--surface:#FFFFFF;--muted:#EAE4D9;--ph:#E1D9CB;--fg:#1F1F1F;--fg2:#6B655C;--border:#DDD6CA;--border2:#8A8378;--primary:#1F1F1F;--primary-fg:#F7F4EE;--accent:#B5543C;--accent-fg:#FFFFFF;--accent-text:#9A4530;--ring:#B5543C;--warning:#8C6A1F;--shadow-sm:0 1px 2px rgb(31 31 31 / .06);--shadow-lg:0 24px 48px -16px rgb(31 31 31 / .18)}
+.etal.dark{--bg:#121212;--surface:#1B1A18;--muted:#24221F;--ph:#2C2925;--fg:#EDE8DF;--fg2:#A39C90;--border:#2F2C28;--border2:#4A453F;--primary:#EDE8DF;--primary-fg:#121212;--accent:#D9785E;--accent-fg:#121212;--accent-text:#E08A70;--ring:#D9785E;--warning:#D4A84A;--shadow-sm:0 1px 0 #2F2C28;--shadow-lg:-1px 0 0 #2F2C28}
+.etal :focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.etal ::selection{background:var(--accent);color:var(--accent-fg)}
+a{color:var(--accent-text,#9A4530)}a:hover{color:var(--fg,#1F1F1F)}
+</style>
+</helmet>
+<div class="etal {{ themeClass }}" style="background:var(--bg);color:var(--fg);font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased">
+
+<sc-if value="{{ demo }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Bandeau démo" style="background:var(--primary);color:var(--primary-fg);font-size:13px;line-height:1.4;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px 48px;position:relative;text-align:center">
+<span>Étal est un projet portfolio : aucune commande ni paiement réel.</span>
+<button onClick="{{ closeDemo }}" aria-label="Fermer le bandeau" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;color:inherit;cursor:pointer;border-radius:4px">
+<svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+</button>
+</div>
+</sc-if>
+
+<header data-screen-label="Header" style="position:sticky;top:0;z-index:30;height:72px;margin-bottom:-72px;background:{{ headerBg }};box-shadow:{{ headerShadow }};border-bottom:1px solid {{ headerBorder }};transition:background 250ms cubic-bezier(0.2,0,0,1),box-shadow 250ms">
+<div style="height:100%;max-width:1360px;margin:0 auto;padding:0 clamp(16px,4vw,48px);display:grid;grid-template-columns:{{ headerCols }};align-items:center;gap:32px">
+<a href="#" aria-label="Étal — accueil" style="order:{{ logoOrder }};justify-self:{{ logoJustify }};text-decoration:none;color:var(--fg);font-family:Fraunces,Georgia,serif;font-weight:500;font-size:30px;line-height:1;letter-spacing:-0.01em;font-variation-settings:'opsz' 72;display:inline-flex;align-items:flex-end;padding-top:6px">
+<span style="position:relative;display:inline-block">E<span style="position:absolute;left:0.1em;top:-0.2em;width:0.46em;height:0.075em;background:var(--accent);transform:rotate(-12deg);border-radius:1px"></span></span><span>tal</span>
+</a>
+<nav aria-label="Rubriques" style="order:{{ navOrder }};display:flex;gap:28px;font-size:14px;font-weight:500;flex-wrap:wrap;overflow:hidden;max-height:24px">
+<sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+<a href="#" style="color:var(--fg);text-decoration:none;white-space:nowrap;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size 250ms cubic-bezier(0.2,0,0,1);padding-bottom:2px" style-hover="background-size:100% 1px;color:var(--fg)">{{ n }}</a>
+</sc-for>
+</nav>
+<div style="order:3;justify-self:end;display:flex;align-items:center;gap:4px">
+<button aria-label="Rechercher" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;color:var(--fg);cursor:pointer;border-radius:4px" style-hover="background:var(--muted)">
+<svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+</button>
+<button aria-label="Mon compte" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;color:var(--fg);cursor:pointer;border-radius:4px" style-hover="background:var(--muted)">
+<svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+</button>
+<button aria-label="Favoris" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;color:var(--fg);cursor:pointer;border-radius:4px" style-hover="background:var(--muted)">
+<svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+</button>
+<button onClick="{{ openDrawer }}" aria-label="Panier" style="position:relative;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;color:var(--fg);cursor:pointer;border-radius:4px" style-hover="background:var(--muted)">
+<svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+<sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+<span style="position:absolute;top:4px;right:2px;min-width:18px;height:18px;padding:0 5px;box-sizing:border-box;border-radius:9999px;background:var(--accent);color:var(--accent-fg);font-size:11px;font-weight:600;line-height:18px;text-align:center;font-variant-numeric:tabular-nums;transform:{{ badgeTransform }};transition:transform 200ms cubic-bezier(0.16,1,0.3,1)">{{ cartCount }}</span>
+</sc-if>
+</button>
+</div>
+</div>
+</header>
+
+<section data-screen-label="Hero" style="display:flex;flex-wrap:wrap;min-height:min(880px,94vh)">
+<div style="flex:5 1 380px;display:flex;flex-direction:column;justify-content:flex-end;gap:28px;padding:128px clamp(16px,4vw,48px) clamp(48px,6vw,96px) max(clamp(16px,4vw,48px),calc((100vw - 1360px) / 2 + 48px));box-sizing:border-box">
+<div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg2);display:flex;gap:12px;align-items:center"><span style="width:24px;height:1px;background:var(--border2)"></span>Édition d'automne · N° 01</div>
+<h1 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:400;font-variation-settings:'opsz' 144;font-size:clamp(2.75rem,1.6rem + 4.9vw,5.5rem);line-height:1;letter-spacing:-0.02em;text-wrap:balance">Les essentiels de la <em style="font-style:italic;color:var(--accent)">saison</em></h1>
+<p style="margin:0;font-size:18px;line-height:1.6;color:var(--fg2);max-width:30em;text-wrap:pretty">Le choix, exposé avec soin. Une sélection de beauté, de maison et de belles choses du quotidien, présentée comme on tourne les pages d'un magazine.</p>
+<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;padding-top:8px">
+<a href="#selection" style="height:52px;padding:0 28px;display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:var(--primary-fg);font-size:15px;font-weight:500;text-decoration:none;border-radius:4px;transition:opacity 150ms" style-hover="opacity:0.88;color:var(--primary-fg)">Découvrir la sélection
+<svg width="18" height="18" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+<a href="#rubriques" style="color:var(--fg);font-size:15px;font-weight:500;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:2px" style-hover="color:var(--accent-text)">Voir les rubriques</a>
+</div>
+</div>
+<figure style="flex:7 1 480px;min-height:440px;margin:0;position:relative;background:repeating-linear-gradient(135deg,var(--muted) 0 14px,var(--ph) 14px 15px)">
+<span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:12px/1.4 ui-monospace,Menlo,monospace;color:var(--fg2);text-align:center;padding:24px">photo d'ambiance hero · lumière naturelle, tons chauds, grain léger<br>espace négatif à gauche · désaturation −10 %</span>
+<figcaption style="position:absolute;left:24px;bottom:24px;right:24px;display:flex;justify-content:space-between;gap:16px;font-size:12px;font-weight:500;color:var(--fg2)"><span>En couverture — Rituels du matin</span><span style="font-variant-numeric:tabular-nums">01 / 04</span></figcaption>
+</figure>
+</section>
+
+<main style="max-width:1360px;margin:0 auto;padding:0 clamp(16px,4vw,48px)">
+
+<section id="rubriques" data-screen-label="Rubriques" style="padding-top:clamp(64px,9vw,128px);display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:1px solid var(--border);padding-bottom:24px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg2)">Rubriques</div>
+<h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(1.75rem,1.4rem + 1.6vw,2.5rem);line-height:1.1;letter-spacing:-0.01em">Parcourir <em style="font-weight:400">l'étal</em></h2>
+</div>
+<a href="#" style="color:var(--accent-text);font-size:14px;font-weight:500;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size 250ms;padding-bottom:2px" style-hover="background-size:100% 1px;color:var(--accent-text)">Toutes les rubriques</a>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:24px">
+<a href="#" style="flex:1 1 520px;min-height:560px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;color:var(--fg);background:repeating-linear-gradient(135deg,var(--muted) 0 14px,var(--ph) 14px 15px);overflow:hidden">
+<span style="position:absolute;top:24px;left:24px;font:12px/1.4 ui-monospace,Menlo,monospace;color:var(--fg2)">photo éditoriale · beauté, flacons sur lin</span>
+<div style="background:var(--bg);margin:0 0 0 0;padding:24px 28px 0 0;max-width:72%;display:flex;flex-direction:column;gap:8px">
+<span style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg2)">01 — Beauté</span>
+<span style="font-family:Fraunces,Georgia,serif;font-size:clamp(2.125rem,1.5rem + 2.7vw,3.5rem);font-weight:500;line-height:1.05;letter-spacing:-0.015em">Le soin, <em style="font-weight:400">sans détour</em></span>
+<span style="font-size:14px;color:var(--fg2);font-variant-numeric:tabular-nums">{{ catBeauty }}</span>
+</div>
+</a>
+<div style="flex:1 1 480px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px">
+<sc-for list="{{ smallCats }}" as="c" hint-placeholder-count="4">
+<a href="#" style="display:flex;flex-direction:column;gap:12px;text-decoration:none;color:var(--fg)">
+<div style="aspect-ratio:4/5;position:relative;background:repeating-linear-gradient(135deg,var(--muted) 0 14px,var(--ph) 14px 15px);display:flex;align-items:center;justify-content:center;font:11px/1.4 ui-monospace,Menlo,monospace;color:var(--fg2);text-align:center;padding:16px;box-sizing:border-box">{{ c.ph }}</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-top:1px solid var(--border);padding-top:12px">
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg2)">{{ c.num }}</span><span style="font-family:Fraunces,Georgia,serif;font-size:clamp(1.375rem,1.2rem + 0.7vw,1.75rem);font-weight:500;line-height:1.2">{{ c.name }}</span></span>
+<span style="font-size:13px;color:var(--fg2);font-variant-numeric:tabular-nums;white-space:nowrap">{{ c.count }}</span>
+</div>
+</a>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="selection" data-screen-label="Meilleures notes" style="padding-top:clamp(64px,9vw,128px);display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:1px solid var(--border);padding-bottom:24px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg2)">Sélection</div>
+<h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(1.75rem,1.4rem + 1.6vw,2.5rem);line-height:1.1;letter-spacing:-0.01em">Les mieux <em style="font-weight:400">notés</em></h2>
+</div>
+<div style="display:flex;gap:8px">
+<button onClick="{{ topPrev }}" aria-label="Précédent" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--border2);color:var(--fg);border-radius:4px;cursor:pointer" style-hover="background:var(--primary);color:var(--primary-fg);border-color:var(--primary)"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="m15 18-6-6 6-6"></path></svg></button>
+<button onClick="{{ topNext }}" aria-label="Suivant" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--border2);color:var(--fg);border-radius:4px;cursor:pointer" style-hover="background:var(--primary);color:var(--primary-fg);border-color:var(--primary)"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="m9 18 6-6-6-6"></path></svg></button>
+</div>
+</div>
+<sc-if value="{{ error }}" hint-placeholder-val="{{ false }}">
+<div style="padding:48px 0;display:flex;flex-direction:column;align-items:flex-start;gap:16px"><p style="margin:0;font-family:Fraunces,Georgia,serif;font-size:24px">Nous n'arrivons pas à charger les produits.</p><button onClick="{{ retry }}" style="height:44px;padding:0 20px;background:var(--primary);color:var(--primary-fg);border:0;border-radius:4px;font:500 15px Inter,sans-serif;cursor:pointer">Réessayer</button></div>
+</sc-if>
+<div ref="{{ topRef }}" style="display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px">
+<sc-for list="{{ topCards }}" as="p" hint-placeholder-count="4">
+<article onMouseEnter="{{ p.onEnter }}" onMouseLeave="{{ p.onLeave }}" style="flex:0 0 calc((100% - 72px) / 4);min-width:232px;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px">
+<div style="position:relative;aspect-ratio:4/5;background:var(--muted);border-radius:4px;overflow:hidden">
+<sc-if value="{{ p.loaded }}" hint-placeholder-val="{{ false }}"><img src="{{ p.img }}" alt="{{ p.title }}" loading="lazy" style="position:absolute;left:10%;top:10%;width:80%;height:80%;object-fit:contain;mix-blend-mode:{{ blend }};transform:{{ p.imgTransform }};transition:transform 400ms cubic-bezier(0.16,1,0.3,1)"></sc-if>
+<div style="position:absolute;top:12px;left:12px;display:flex;gap:6px">
+<sc-if value="{{ p.badgeAccent }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:var(--accent-fg);font-size:12px;font-weight:600;padding:3px 7px;border-radius:2px;font-variant-numeric:tabular-nums">{{ p.badge }}</span></sc-if>
+<sc-if value="{{ p.badgeWarn }}" hint-placeholder-val="{{ false }}"><span style="background:var(--surface);color:var(--warning);border:1px solid var(--border);font-size:12px;font-weight:500;padding:2px 7px;border-radius:2px">{{ p.badge }}</span></sc-if>
+</div>
+<button onClick="{{ p.onFav }}" aria-label="{{ p.favLabel }}" aria-pressed="{{ p.isFav }}" style="position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:9999px;border:0;background:var(--surface);color:{{ p.heartColor }};display:flex;align-items:center;justify-content:center;cursor:pointer;transform:{{ p.heartTransform }};transition:transform 250ms cubic-bezier(0.16,1,0.3,1),color 150ms">
+<svg width="18" height="18" viewBox="0 0 24 24" style="fill:{{ p.heartFill }};stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+</button>
+<button onClick="{{ p.onAdd }}" style="position:absolute;left:12px;right:12px;bottom:12px;height:44px;border:0;border-radius:4px;background:var(--primary);color:var(--primary-fg);font:500 14px Inter,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;opacity:{{ p.ctaOpacity }};transform:{{ p.ctaTransform }};transition:opacity 250ms cubic-bezier(0.2,0,0,1),transform 250ms cubic-bezier(0.2,0,0,1)">{{ p.ctaLabel }}</button>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg2)">{{ p.brand }}</span>
+<a href="#" style="color:var(--fg);text-decoration:none;font-size:15px;font-weight:500;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.8em" style-hover="color:var(--accent-text)">{{ p.title }}</a>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-top:2px">
+<span style="display:flex;align-items:baseline;gap:8px;font-variant-numeric:tabular-nums"><span style="font-size:17px;font-weight:500;color:{{ p.priceColor }}">{{ p.price }}</span><sc-if value="{{ p.showOld }}" hint-placeholder-val="{{ false }}"><s style="font-size:13px;color:var(--fg2)">{{ p.old }}</s></sc-if></span>
+<span style="display:flex;align-items:center;gap:4px;font-size:13px;color:var(--fg2);font-variant-numeric:tabular-nums"><svg width="14" height="14" viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>{{ p.rating }}</span>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section data-screen-label="Bloc éditorial" style="padding-top:clamp(64px,9vw,128px);display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,96px);align-items:center">
+<figure style="flex:7 1 460px;margin:0;aspect-ratio:7/6;background:repeating-linear-gradient(135deg,var(--muted) 0 14px,var(--ph) 14px 15px);display:flex;align-items:center;justify-content:center;font:12px/1.4 ui-monospace,Menlo,monospace;color:var(--fg2);text-align:center;padding:24px;box-sizing:border-box">photo éditoriale · intérieur, matières naturelles, céramique</figure>
+<div style="flex:4 1 320px;display:flex;flex-direction:column;gap:20px;max-width:440px;padding-right:clamp(0px,6vw,96px)">
+<div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg2)">Le carnet · 02 — Maison</div>
+<h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(1.75rem,1.4rem + 1.6vw,2.5rem);line-height:1.1;letter-spacing:-0.01em;text-wrap:balance">L'art de <em style="font-weight:400">bien</em> choisir, une pièce à la fois</h2>
+<p style="margin:0;font-size:18px;line-height:1.6;color:var(--fg2);text-wrap:pretty">Moins d'objets, mieux regardés. Chaque mois, nous composons un intérieur autour de quelques pièces simples, durables, et qui vieillissent bien.</p>
+<a href="#" style="align-self:flex-start;color:var(--fg);font-size:15px;font-weight:500;text-decoration:none;display:inline-flex;gap:8px;align-items:center;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:3px" style-hover="color:var(--accent-text)">Lire le carnet <svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+</div>
+</section>
+
+<section data-screen-label="Promotions" style="padding-top:clamp(64px,9vw,128px);display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:1px solid var(--border);padding-bottom:24px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg2)">Prix doux</div>
+<h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(1.75rem,1.4rem + 1.6vw,2.5rem);line-height:1.1;letter-spacing:-0.01em">En ce moment <em style="font-weight:400">à l'étal</em></h2>
+</div>
+<div style="display:flex;gap:8px">
+<button onClick="{{ promoPrev }}" aria-label="Précédent" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--border2);color:var(--fg);border-radius:4px;cursor:pointer" style-hover="background:var(--primary);color:var(--primary-fg);border-color:var(--primary)"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="m15 18-6-6 6-6"></path></svg></button>
+<button onClick="{{ promoNext }}" aria-label="Suivant" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--border2);color:var(--fg);border-radius:4px;cursor:pointer" style-hover="background:var(--primary);color:var(--primary-fg);border-color:var(--primary)"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="m9 18 6-6-6-6"></path></svg></button>
+</div>
+</div>
+<div ref="{{ promoRef }}" style="display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px">
+<sc-for list="{{ promoCards }}" as="p" hint-placeholder-count="4">
+<article onMouseEnter="{{ p.onEnter }}" onMouseLeave="{{ p.onLeave }}" style="flex:0 0 calc((100% - 72px) / 4);min-width:232px;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px">
+<div style="position:relative;aspect-ratio:4/5;background:var(--muted);border-radius:4px;overflow:hidden">
+<sc-if value="{{ p.loaded }}" hint-placeholder-val="{{ false }}"><img src="{{ p.img }}" alt="{{ p.title }}" loading="lazy" style="position:absolute;left:10%;top:10%;width:80%;height:80%;object-fit:contain;mix-blend-mode:{{ blend }};transform:{{ p.imgTransform }};transition:transform 400ms cubic-bezier(0.16,1,0.3,1)"></sc-if>
+<div style="position:absolute;top:12px;left:12px;display:flex;gap:6px">
+<sc-if value="{{ p.badgeAccent }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:var(--accent-fg);font-size:12px;font-weight:600;padding:3px 7px;border-radius:2px;font-variant-numeric:tabular-nums">{{ p.badge }}</span></sc-if>
+<sc-if value="{{ p.badgeWarn }}" hint-placeholder-val="{{ false }}"><span style="background:var(--surface);color:var(--warning);border:1px solid var(--border);font-size:12px;font-weight:500;padding:2px 7px;border-radius:2px">{{ p.badge }}</span></sc-if>
+</div>
+<button onClick="{{ p.onFav }}" aria-label="{{ p.favLabel }}" aria-pressed="{{ p.isFav }}" style="position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:9999px;border:0;background:var(--surface);color:{{ p.heartColor }};display:flex;align-items:center;justify-content:center;cursor:pointer;transform:{{ p.heartTransform }};transition:transform 250ms cubic-bezier(0.16,1,0.3,1),color 150ms">
+<svg width="18" height="18" viewBox="0 0 24 24" style="fill:{{ p.heartFill }};stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+</button>
+<button onClick="{{ p.onAdd }}" style="position:absolute;left:12px;right:12px;bottom:12px;height:44px;border:0;border-radius:4px;background:var(--primary);color:var(--primary-fg);font:500 14px Inter,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;opacity:{{ p.ctaOpacity }};transform:{{ p.ctaTransform }};transition:opacity 250ms cubic-bezier(0.2,0,0,1),transform 250ms cubic-bezier(0.2,0,0,1)">{{ p.ctaLabel }}</button>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg2)">{{ p.brand }}</span>
+<a href="#" style="color:var(--fg);text-decoration:none;font-size:15px;font-weight:500;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.8em" style-hover="color:var(--accent-text)">{{ p.title }}</a>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-top:2px">
+<span style="display:flex;align-items:baseline;gap:8px;font-variant-numeric:tabular-nums"><span style="font-size:17px;font-weight:500;color:{{ p.priceColor }}">{{ p.price }}</span><sc-if value="{{ p.showOld }}" hint-placeholder-val="{{ false }}"><s style="font-size:13px;color:var(--fg2)">{{ p.old }}</s></sc-if></span>
+<span style="display:flex;align-items:center;gap:4px;font-size:13px;color:var(--fg2);font-variant-numeric:tabular-nums"><svg width="14" height="14" viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>{{ p.rating }}</span>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section data-screen-label="Réassurance" style="padding-top:clamp(64px,9vw,128px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:24px">
+<sc-for list="{{ reassurance }}" as="r" hint-placeholder-count="4">
+<div style="border-top:1px solid var(--fg);padding-top:20px;display:flex;flex-direction:column;gap:8px">
+<span style="font-family:Fraunces,Georgia,serif;font-size:14px;color:var(--accent-text);font-variant-numeric:tabular-nums">{{ r.n }}</span>
+<span style="font-size:18px;font-weight:600;line-height:1.3">{{ r.t }}</span>
+<span style="font-size:14px;line-height:1.5;color:var(--fg2)">{{ r.d }}</span>
+</div>
+</sc-for>
+</section>
+
+</main>
+
+<section data-screen-label="Newsletter" style="margin-top:clamp(64px,9vw,128px);background:var(--muted)">
+<div style="max-width:1360px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(16px,4vw,48px);display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-end">
+<div style="flex:1 1 380px;display:flex;flex-direction:column;gap:12px;max-width:560px">
+<div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg2)">Lettre d'information</div>
+<h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(1.75rem,1.4rem + 1.6vw,2.5rem);line-height:1.1;letter-spacing:-0.01em">La lettre d'Étal, <em style="font-weight:400">une fois par mois</em></h2>
+<p style="margin:0;color:var(--fg2)">Les nouveautés, le carnet et quelques bonnes adresses. Rien de plus.</p>
+</div>
+<form onSubmit="{{ subscribe }}" style="flex:1 1 380px;max-width:520px;display:flex;flex-direction:column;gap:8px">
+<label for="nl-email" style="font-size:14px;font-weight:500">Adresse e-mail</label>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<input id="nl-email" type="email" required placeholder="vous@exemple.fr" value="{{ email }}" onChange="{{ onEmail }}" style="flex:1 1 220px;height:52px;padding:0 16px;font:400 16px Inter,sans-serif;color:var(--fg);background:var(--surface);border:1px solid var(--border2);border-radius:4px;outline:none;box-sizing:border-box">
+<button type="submit" style="height:52px;padding:0 24px;background:var(--primary);color:var(--primary-fg);border:0;border-radius:4px;font:500 15px Inter,sans-serif;cursor:pointer">{{ subLabel }}</button>
+</div>
+<span style="font-size:12px;color:var(--fg2)">{{ subHelp }}</span>
+</form>
+</div>
+</section>
+
+<footer data-screen-label="Footer" style="background:#1F1F1F;color:#F7F4EE;border-top:1px solid var(--border)">
+<div style="max-width:1360px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(16px,4vw,48px) 32px;display:flex;flex-direction:column;gap:64px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:32px">
+<sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;gap:12px">
+<span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#A39C90">{{ col.title }}</span>
+<sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4"><a href="#" style="color:#F7F4EE;text-decoration:none;font-size:15px" style-hover="color:#E08A70">{{ l }}</a></sc-for>
+</div>
+</sc-for>
+</div>
+<div aria-hidden="true" style="font-family:Fraunces,Georgia,serif;font-weight:500;font-variation-settings:'opsz' 144;font-size:clamp(7rem,24vw,22rem);line-height:0.8;letter-spacing:-0.03em;padding-top:0.18em;border-top:1px solid #4A453F;display:flex;align-items:flex-end;overflow:hidden">
+<span style="position:relative;display:inline-block">E<span style="position:absolute;left:0.1em;top:-0.14em;width:0.46em;height:0.06em;background:#D9785E;transform:rotate(-12deg)"></span></span><span>tal</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:13px;color:#A39C90">
+<span>Le choix, exposé avec soin. · Projet portfolio — Syabe Technologies, 2026</span>
+<span>Aucune vente réelle · Données produits : DummyJSON</span>
+</div>
+</div>
+</footer>
+
+<div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;z-index:40;background:rgb(18 18 18 / 0.4);opacity:{{ overlayOpacity }};pointer-events:{{ overlayEvents }};transition:opacity 400ms cubic-bezier(0.16,1,0.3,1)"></div>
+<aside role="dialog" aria-label="Mini-panier" data-screen-label="Mini-panier" style="position:fixed;top:0;right:0;bottom:0;z-index:50;width:min(440px,100vw);background:var(--surface);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;transform:{{ drawerTransform }};transition:transform 400ms cubic-bezier(0.16,1,0.3,1)">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--border)">
+<span style="font-family:Fraunces,Georgia,serif;font-size:26px;font-weight:500">Votre panier <span style="font-family:Inter,sans-serif;font-size:14px;color:var(--fg2);font-variant-numeric:tabular-nums">({{ cartCount }})</span></span>
+<button onClick="{{ closeDrawer }}" aria-label="Fermer le panier" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;color:var(--fg);cursor:pointer;border-radius:4px" style-hover="background:var(--muted)"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+</div>
+<sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+<div style="padding:16px 24px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:10px">
+<span style="font-size:14px">{{ shipMsg }}</span>
+<div style="height:4px;background:var(--muted);border-radius:2px;overflow:hidden"><div style="height:100%;width:{{ shipPct }};background:var(--accent);transition:width 400ms cubic-bezier(0.16,1,0.3,1)"></div></div>
+</div>
+<div style="flex:1;overflow-y:auto;padding:0 24px">
+<sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="0">
+<div style="display:grid;grid-template-columns:80px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid var(--border)">
+<div style="aspect-ratio:4/5;background:var(--muted);border-radius:4px;position:relative"><img src="{{ l.img }}" alt="" style="position:absolute;left:10%;top:10%;width:80%;height:80%;object-fit:contain;mix-blend-mode:{{ blend }}"></div>
+<div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="font-size:15px;font-weight:500;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ l.title }}</span><span style="font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap">{{ l.total }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div style="display:flex;align-items:center;border:1px solid var(--border2);border-radius:4px;height:36px">
+<button onClick="{{ l.dec }}" aria-label="Diminuer" style="width:36px;height:34px;background:transparent;border:0;color:var(--fg);cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round"><path d="M5 12h14"></path></svg></button>
+<span style="min-width:28px;text-align:center;font-size:14px;font-variant-numeric:tabular-nums">{{ l.qty }}</span>
+<button onClick="{{ l.inc }}" aria-label="Augmenter" style="width:36px;height:34px;background:transparent;border:0;color:var(--fg);cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button>
+</div>
+<button onClick="{{ l.remove }}" style="background:transparent;border:0;color:var(--fg2);font:400 13px Inter,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:8px 0" style-hover="color:var(--fg)">Retirer</button>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="padding:20px 24px 24px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:14px;color:var(--fg2)">Sous-total</span><span style="font-size:20px;font-weight:500;font-variant-numeric:tabular-nums">{{ subtotal }}</span></div>
+<button style="height:52px;background:var(--primary);color:var(--primary-fg);border:0;border-radius:4px;font:500 15px Inter,sans-serif;cursor:pointer">Commander</button>
+<button style="height:52px;background:transparent;color:var(--fg);border:1px solid var(--fg);border-radius:4px;font:500 15px Inter,sans-serif;cursor:pointer" style-hover="background:var(--muted)">Voir le panier</button>
+</div>
+</sc-if>
+<sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ true }}">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:32px;text-align:center">
+<div style="width:120px;height:150px;background:repeating-linear-gradient(135deg,var(--muted) 0 10px,var(--ph) 10px 11px);display:flex;align-items:center;justify-content:center;font:10px/1.3 ui-monospace,Menlo,monospace;color:var(--fg2);padding:8px;box-sizing:border-box">illustration trait fin</div>
+<p style="margin:0;font-family:Fraunces,Georgia,serif;font-size:24px;line-height:1.2;max-width:14em">Votre panier attend sa première trouvaille.</p>
+<button onClick="{{ closeDrawer }}" style="height:44px;padding:0 20px;background:var(--primary);color:var(--primary-fg);border:0;border-radius:4px;font:500 15px Inter,sans-serif;cursor:pointer">Découvrir la sélection</button>
+</div>
+</sc-if>
+</aside>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;dark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Thème&quot;},&quot;logoCentered&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Header&quot;},&quot;blendMultiply&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Vignettes produit&quot;}}">
+class Component extends DCLogic {
+  state = { top: [], promo: [], counts: {}, error: false, scrolled: false, hover: null, favs: {}, favPop: null, added: null, cart: [], drawer: false, pulse: false, email: '', subscribed: false, demo: true, touch: false };
+  topRef = React.createRef();
+  promoRef = React.createRef();
+  componentDidMount() {
+    this.onScroll = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.setState({ touch: window.matchMedia('(hover: none)').matches });
+    this.load();
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); }
+  async load() {
+    this.setState({ error: false });
+    const sel = 'select=title,price,discountPercentage,rating,thumbnail,brand,category,stock';
+    try {
+      const [a, b] = await Promise.all([
+        fetch(`https://dummyjson.com/products?sortBy=rating&order=desc&limit=10&${sel}`).then(r => r.json()),
+        fetch(`https://dummyjson.com/products?sortBy=discountPercentage&order=desc&limit=10&${sel}`).then(r => r.json())
+      ]);
+      this.setState({ top: a.products || [], promo: b.products || [] });
+    } catch (e) { this.setState({ error: true }); }
+    const cats = ['beauty', 'womens-dresses', 'home-decoration', 'laptops', 'groceries'];
+    Promise.all(cats.map(c => fetch(`https://dummyjson.com/products/category/${c}?limit=1&select=id`).then(r => r.json()).then(j => [c, j.total]).catch(() => [c, null])))
+      .then(p => this.setState({ counts: Object.fromEntries(p) }));
+  }
+  eur(n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n); }
+  add(p) {
+    this.setState(s => {
+      const cart = s.cart.slice(); const i = cart.findIndex(l => l.id === p.id);
+      if (i >= 0) cart[i] = { ...cart[i], qty: cart[i].qty + 1 }; else cart.push({ id: p.id, title: p.title, img: p.thumbnail, price: p.price, qty: 1 });
+      return { cart, added: p.id, pulse: true };
+    });
+    setTimeout(() => this.setState({ pulse: false }), 220);
+    setTimeout(() => this.setState({ drawer: true }), 550);
+    setTimeout(() => this.setState(s => s.added === p.id ? { added: null } : null), 1600);
+  }
+  qty(id, d) { this.setState(s => ({ cart: s.cart.map(l => l.id === id ? { ...l, qty: l.qty + d } : l).filter(l => l.qty > 0) })); }
+  card(p, list) {
+    const s = this.state, key = list + p.id, hov = s.hover === key, fav = !!s.favs[p.id], d = p.discountPercentage || 0;
+    const promo = list === 'promo' && d >= 5, low = !promo && p.stock < 10;
+    const oldP = p.price / (1 - d / 100);
+    return {
+      loaded: true, title: p.title, img: p.thumbnail, brand: p.brand || p.category.replace(/-/g, ' '),
+      price: this.eur(p.price), old: this.eur(oldP), showOld: promo, priceColor: promo ? 'var(--accent-text)' : 'var(--fg)',
+      rating: p.rating.toFixed(1).replace('.', ','),
+      badge: promo ? `−${Math.round(d)} %` : (low ? 'Stock faible' : ''), badgeAccent: promo, badgeWarn: low,
+      isFav: fav, favLabel: fav ? 'Retirer des favoris' : 'Ajouter aux favoris',
+      heartColor: fav ? 'var(--accent)' : 'var(--fg)', heartFill: fav ? 'currentColor' : 'none',
+      heartTransform: s.favPop === p.id ? 'scale(1.15)' : 'scale(1)',
+      imgTransform: hov ? 'scale(1.03)' : 'scale(1)',
+      ctaOpacity: (hov || s.touch || s.added === p.id) ? 1 : 0,
+      ctaTransform: (hov || s.touch || s.added === p.id) ? 'translateY(0)' : 'translateY(8px)',
+      ctaLabel: s.added === p.id ? 'Ajouté ✓' : 'Ajouter au panier',
+      onEnter: () => this.setState({ hover: key }), onLeave: () => this.setState(st => st.hover === key ? { hover: null } : null),
+      onAdd: () => this.add(p),
+      onFav: () => { this.setState(st => ({ favs: { ...st.favs, [p.id]: !st.favs[p.id] }, favPop: p.id })); setTimeout(() => this.setState({ favPop: null }), 200); }
+    };
+  }
+  scroll(ref, dir) { const el = ref.current; if (el) el.scrollBy({ left: dir * el.clientWidth * 0.75, behavior: 'smooth' }); }
+  renderVals() {
+    const s = this.state, P = this.props, dark = !!P.dark, centered = !!P.logoCentered;
+    const cnt = c => s.counts[c] != null ? `${s.counts[c]} pièces` : '';
+    const count = s.cart.reduce((a, l) => a + l.qty, 0), sub = s.cart.reduce((a, l) => a + l.qty * l.price, 0), rest = Math.max(0, 50 - sub);
+    const skel = n => Array.from({ length: n }, () => ({ loaded: false, title: '', brand: '', price: '', old: '', showOld: false, rating: '', img: '', badge: '', badgeAccent: false, badgeWarn: false, ctaLabel: '', favLabel: 'Favori', isFav: false, imgTransform: 'scale(1)', onEnter: null, onLeave: null, onAdd: null, onFav: null, ctaOpacity: 0, ctaTransform: 'translateY(8px)', heartTransform: 'scale(1)', heartColor: 'var(--fg)', heartFill: 'none', priceColor: 'var(--fg)' }));
+    return {
+      themeClass: dark ? 'dark' : '',
+      blend: (P.blendMultiply ?? true) && !dark ? 'multiply' : 'normal',
+      demo: s.demo, closeDemo: () => this.setState({ demo: false }),
+      headerBg: s.scrolled ? 'var(--bg)' : 'transparent', headerShadow: s.scrolled ? 'var(--shadow-sm)' : 'none', headerBorder: s.scrolled ? 'var(--border)' : 'transparent',
+      headerCols: centered ? 'minmax(0,1fr) auto minmax(0,1fr)' : 'auto minmax(0,1fr) auto',
+      logoOrder: centered ? 2 : 1, navOrder: centered ? 1 : 2, logoJustify: centered ? 'center' : 'start',
+      navItems: ['Nouveautés', 'Beauté', 'Mode', 'Maison', 'Tech', 'Épicerie'],
+      catBeauty: cnt('beauty'),
+      smallCats: [
+        { num: '02', name: 'Mode', count: cnt('womens-dresses'), ph: 'photo · robe sur cintre bois' },
+        { num: '03', name: 'Maison', count: cnt('home-decoration'), ph: 'photo · vase, lumière rasante' },
+        { num: '04', name: 'Tech', count: cnt('laptops'), ph: 'photo · bureau épuré' },
+        { num: '05', name: 'Épicerie', count: cnt('groceries'), ph: 'photo · fruits sur étal' }
+      ],
+      error: s.error, retry: () => this.load(),
+      topCards: s.top.length ? s.top.map(p => this.card(p, 'top')) : skel(4),
+      promoCards: s.promo.length ? s.promo.map(p => this.card(p, 'promo')) : skel(4),
+      topRef: this.topRef, promoRef: this.promoRef,
+      topPrev: () => this.scroll(this.topRef, -1), topNext: () => this.scroll(this.topRef, 1),
+      promoPrev: () => this.scroll(this.promoRef, -1), promoNext: () => this.scroll(this.promoRef, 1),
+      reassurance: [
+        { n: '01', t: 'Livraison offerte dès 50 €', d: 'Expédition sous 48 h, emballage sans plastique.' },
+        { n: '02', t: 'Retours sous 30 jours', d: 'Changez d\'avis sans vous justifier.' },
+        { n: '03', t: 'Paiement sécurisé', d: 'Mode démo : aucune transaction réelle.' },
+        { n: '04', t: 'Un conseil ?', d: 'Notre équipe répond du lundi au samedi.' }
+      ],
+      email: s.email, onEmail: e => this.setState({ email: e.target.value }),
+      subscribe: e => { e.preventDefault(); this.setState({ subscribed: true }); },
+      subLabel: s.subscribed ? 'Inscrit ✓' : 'S\'inscrire',
+      subHelp: s.subscribed ? 'Merci. Rendez-vous dans votre boîte (démo, rien n\'est envoyé).' : 'Désinscription en un clic, à tout moment.',
+      footerCols: [
+        { title: 'Rubriques', links: ['Beauté', 'Mode', 'Maison', 'Tech', 'Épicerie'] },
+        { title: 'Aide', links: ['Livraison', 'Retours', 'Questions fréquentes', 'Contact'] },
+        { title: 'Étal', links: ['Le carnet', 'À propos', 'Le projet'] },
+        { title: 'Compte', links: ['Connexion', 'Mes commandes', 'Favoris'] }
+      ],
+      hasCart: count > 0, cartEmpty: count === 0, cartCount: count,
+      badgeTransform: s.pulse ? 'scale(1.35)' : 'scale(1)',
+      drawer: s.drawer, openDrawer: () => this.setState({ drawer: true }), closeDrawer: () => this.setState({ drawer: false }),
+      drawerTransform: s.drawer ? 'translateX(0)' : 'translateX(105%)',
+      overlayOpacity: s.drawer ? 1 : 0, overlayEvents: s.drawer ? 'auto' : 'none',
+      shipMsg: rest > 0 ? `Plus que ${this.eur(rest)} pour la livraison offerte` : 'Livraison offerte ✓',
+      shipPct: Math.min(100, sub / 50 * 100) + '%',
+      subtotal: this.eur(sub),
+      cartLines: s.cart.map(l => ({ ...l, total: this.eur(l.price * l.qty), inc: () => this.qty(l.id, 1), dec: () => this.qty(l.id, -1), remove: () => this.qty(l.id, -l.qty) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

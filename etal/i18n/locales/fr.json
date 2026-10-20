@@ -1,0 +1,952 @@
+{
+  "brand": {
+    "tagline": "Le choix, exposé avec soin."
+  },
+  "a11y": {
+    "skipToContent": "Aller au contenu"
+  },
+  "demoBanner": {
+    "label": "Information",
+    "text": "Projet portfolio : aucune commande ni paiement réel.",
+    "close": "Fermer le bandeau"
+  },
+  "nav": {
+    "home": "Étal — accueil",
+    "sections": "Rubriques",
+    "new": "Nouveautés",
+    "menu": "Menu",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "featured": "À la une · {name}",
+    "secureCheckout": "Commande sécurisée · mode démo",
+    "homeShort": "Accueil"
+  },
+  "header": {
+    "search": "Rechercher",
+    "account": "Mon compte",
+    "wishlist": "Favoris",
+    "cart": "Panier, {count} article | Panier, {count} article | Panier, {count} articles",
+    "searchPlaceholder": "Rechercher un produit, une marque…",
+    "searchLabel": "Rechercher un produit",
+    "signIn": "Se connecter",
+    "accountOf": "Mon compte ({name})",
+    "wishlistCount": "Favoris ({count})",
+    "cartCount": "Panier ({count})"
+  },
+  "footer": {
+    "account": "Compte",
+    "credits": "Projet portfolio, Syabe Technologies, 2026",
+    "disclaimer": "Aucune vente réelle · Données produits : DummyJSON",
+    "shop": "Boutique",
+    "demo": "Démo",
+    "preferences": "Préférences",
+    "links": {
+      "catalog": "Tout le catalogue",
+      "deals": "Prix doux",
+      "new": "Nouveautés",
+      "wishlist": "Favoris",
+      "login": "Connexion",
+      "myAccount": "Mon compte",
+      "orders": "Mes commandes",
+      "register": "Créer un compte",
+      "admin": "Back-office",
+      "notFound": "Page 404",
+      "serverError": "Page erreur 500",
+      "about": "À propos",
+      "faq": "Aide & FAQ",
+      "legal": "Mentions légales"
+    },
+    "about": "Étal"
+  },
+  "preferences": {
+    "language": "Langue"
+  },
+  "home": {
+    "seo": {
+      "title": "Le choix, exposé avec soin",
+      "description": "Étal, boutique en ligne éditoriale : beauté, mode, maison, tech et épicerie. Projet portfolio, aucune vente réelle."
+    },
+    "hero": {
+      "overline": "Édition d'automne · N° 01",
+      "title": "Les essentiels de la {highlight}",
+      "titleHighlight": "saison",
+      "lead": "Le choix, exposé avec soin. Beauté, maison et belles choses du quotidien, présentées comme on tourne les pages d'un magazine.",
+      "cta": "Découvrir la sélection",
+      "secondaryCta": "Voir les prix doux",
+      "caption": "En couverture — Rituels du matin"
+    },
+    "seeAll": "Tout voir",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "sections": {
+      "title": "Parcourir",
+      "emphasis": "l'étal",
+      "catalog": "Tout le catalogue",
+      "count": "{count} pièce | {count} pièce | {count} pièces",
+      "featuredTitle": "Le soin,",
+      "featuredEmphasis": "sans détour"
+    },
+    "carousels": {
+      "top": {
+        "overline": "Sélection",
+        "title": "Les mieux",
+        "emphasis": "notés"
+      },
+      "deals": {
+        "overline": "Prix doux",
+        "title": "En ce moment",
+        "emphasis": "à l'étal"
+      },
+      "new": {
+        "overline": "Nouveautés",
+        "title": "Fraîchement",
+        "emphasis": "arrivés"
+      }
+    },
+    "editorial": {
+      "photo": "photo éditoriale · intérieur, matières naturelles, céramique",
+      "overline": "Le carnet · 03 — Maison",
+      "titleStart": "L'art de",
+      "emphasis": "bien",
+      "titleEnd": "choisir, une pièce à la fois",
+      "text": "Moins d'objets, mieux regardés. Chaque mois, nous composons un intérieur autour de quelques pièces simples, durables, et qui vieillissent bien.",
+      "cta": "Explorer la rubrique Maison"
+    },
+    "reassurance": {
+      "title": "Nos engagements",
+      "shipping": {
+        "title": "Livraison offerte dès 50 €",
+        "text": "Expédition sous 48 h. Fictive, comme tout le reste."
+      },
+      "returns": {
+        "title": "Retours sous 30 jours",
+        "text": "Changez d'avis sans vous justifier."
+      },
+      "payment": {
+        "title": "Paiement sécurisé",
+        "text": "Mode démo : aucune transaction réelle."
+      },
+      "advice": {
+        "title": "Un conseil ?",
+        "text": "Notre équipe répond du lundi au samedi."
+      }
+    },
+    "newsletter": {
+      "overline": "Lettre d'information",
+      "title": "La lettre d'Étal,",
+      "emphasis": "une fois par mois",
+      "text": "Les nouveautés, le carnet et quelques bonnes adresses. Rien de plus.",
+      "help": "Désinscription en un clic, à tout moment.",
+      "done": "Merci. Rendez-vous dans votre boîte (démo : rien n'est envoyé).",
+      "submit": "S'inscrire",
+      "subscribed": "Inscrit ✓",
+      "toast": "Inscription confirmée. Aucune donnée n'a été envoyée."
+    }
+  },
+  "admin": {
+    "demoNote": "mode démo : non persisté côté serveur",
+    "writeFailed": "L'API n'a pas répondu : rien n'a été modifié.",
+    "loadError": "Nous n'arrivons pas à charger ces données.",
+    "resetDone": "Démo réinitialisée : données rechargées depuis l'API.",
+    "nav": {
+      "label": "Back-office",
+      "home": "Étal — back-office",
+      "sections": "Sections du back-office",
+      "dashboard": "Tableau de bord",
+      "products": "Produits",
+      "users": "Utilisateurs",
+      "orders": "Commandes",
+      "reset": "Réinitialiser la démo",
+      "shop": "Voir la boutique",
+      "collapse": "Replier la barre latérale",
+      "expand": "Déplier la barre latérale",
+      "collapseShort": "Replier"
+    },
+    "dashboard": {
+      "overline": "Vue d'ensemble",
+      "title": "Tableau de bord",
+      "kpis": {
+        "products": "Produits",
+        "users": "Utilisateurs",
+        "orders": "Commandes",
+        "revenue": "CA simulé"
+      },
+      "notes": {
+        "lowStock": "{count} en stock faible",
+        "admins": "{count} administrateur | {count} administrateur | {count} administrateurs",
+        "checkout": "dont {count} via le checkout",
+        "revenue": "somme de toutes les commandes"
+      },
+      "sales": "Ventes par catégorie",
+      "salesHint": "Toutes les commandes",
+      "otherCategory": "Autres",
+      "ratings": "Répartition des notes",
+      "ratingsHint": "{count} produits",
+      "ratingBucket": "{stars} étoiles : {count} produits",
+      "latestOrders": "Dernières commandes",
+      "seeAll": "Tout voir",
+      "lowStock": "Stock faible",
+      "manage": "Gérer",
+      "units": "{count} u.",
+      "noLowStock": "Aucun produit en stock faible.",
+      "stars": "{count} ★"
+    },
+    "products": {
+      "overline": "Catalogue",
+      "title": "Produits",
+      "new": "Nouveau produit",
+      "search": "Rechercher par titre ou marque",
+      "searchLabel": "Rechercher un produit",
+      "allCategories": "Toutes les catégories",
+      "categoryFilter": "Filtrer par catégorie",
+      "deleteSelection": "Supprimer la sélection ({count})",
+      "count": "{count} produit | {count} produit | {count} produits",
+      "empty": "Aucun produit ne correspond à ces critères.",
+      "columns": {
+        "image": "Image",
+        "product": "Produit",
+        "category": "Catégorie",
+        "price": "Prix",
+        "stock": "Stock",
+        "rating": "Note",
+        "actions": "Actions"
+      },
+      "selectAll": "Sélectionner toute la page",
+      "select": "Sélectionner {title}",
+      "edit": "Modifier {title}",
+      "delete": "Supprimer {title}",
+      "created": "Produit créé",
+      "saved": "Produit enregistré",
+      "deleted": "{count} produit supprimé | {count} produit supprimé | {count} produits supprimés",
+      "confirm": {
+        "titleOne": "Supprimer « {title} » ?",
+        "titleMany": "Supprimer {count} produits ?",
+        "text": "Le produit sera retiré du catalogue de la démo. L'API simule la suppression.",
+        "ok": "Supprimer"
+      },
+      "errors": {
+        "title": "Le titre est requis.",
+        "price": "Indiquez un prix supérieur à 0, par exemple 24,90.",
+        "discount": "Indiquez une remise entre 0 et 90 %.",
+        "stock": "Indiquez un stock en nombre entier.",
+        "image": "Indiquez une URL d'image valide (https://…)."
+      },
+      "form": {
+        "creating": "Création",
+        "editing": "Édition · #{id}",
+        "newTitle": "Nouveau produit",
+        "info": "Informations",
+        "pricing": "Prix & stock",
+        "image": "Image",
+        "title": "Titre",
+        "brand": "Marque",
+        "category": "Catégorie",
+        "description": "Description",
+        "price": "Prix ({currency})",
+        "discount": "Remise (%)",
+        "discountHelp": "Badge promo affiché dès 10 %.",
+        "stock": "Stock",
+        "thumbnail": "URL de l'image",
+        "thumbnailHelp": "Image principale de la carte et de la fiche.",
+        "preview": "Aperçu de la carte · en direct",
+        "previewTitle": "Titre du produit",
+        "cancel": "Annuler",
+        "delete": "Supprimer",
+        "create": "Créer le produit",
+        "save": "Enregistrer",
+        "notFound": "Ce produit n'existe pas ou a été supprimé.",
+        "thumbnailPlaceholder": "https://…"
+      },
+      "reference": "#{id} · {brand}"
+    },
+    "users": {
+      "overline": "Comptes",
+      "title": "Utilisateurs",
+      "search": "Nom ou e-mail",
+      "searchLabel": "Rechercher un utilisateur",
+      "count": "{count} utilisateur | {count} utilisateur | {count} utilisateurs",
+      "empty": "Aucun utilisateur ne correspond.",
+      "notFound": "Cet utilisateur n'existe pas ou a été supprimé.",
+      "columns": {
+        "avatar": "Avatar",
+        "name": "Nom",
+        "email": "E-mail",
+        "role": "Rôle",
+        "birthDate": "Naissance"
+      },
+      "roles": {
+        "customer": "Client",
+        "admin": "Administrateur"
+      },
+      "back": "Tous les utilisateurs",
+      "role": "Rôle",
+      "self": "C'est votre compte : son rôle ne se modifie pas ici.",
+      "delete": "Supprimer l'utilisateur",
+      "fields": {
+        "username": "Identifiant",
+        "email": "E-mail",
+        "phone": "Téléphone",
+        "company": "Société",
+        "address": "Adresse",
+        "birthDate": "Naissance"
+      },
+      "orders": "Commandes ({count})",
+      "roleSaved": "Rôle mis à jour",
+      "deleted": "Utilisateur supprimé",
+      "confirm": {
+        "title": "Supprimer {name} ?",
+        "text": "Le compte sera retiré de la liste de la démo. L'API simule la suppression.",
+        "ok": "Supprimer"
+      }
+    },
+    "orders": {
+      "overline": "Ventes",
+      "title": "Commandes",
+      "search": "Numéro ou client",
+      "searchLabel": "Rechercher une commande",
+      "allStatuses": "Tous les statuts",
+      "statusFilter": "Filtrer par statut",
+      "count": "{count} commande | {count} commande | {count} commandes",
+      "empty": "Aucune commande ne correspond.",
+      "notFound": "Cette commande n'existe pas.",
+      "columns": {
+        "id": "N°",
+        "customer": "Client",
+        "items": "Articles",
+        "total": "Total",
+        "date": "Date",
+        "status": "Statut"
+      },
+      "statusOf": "Statut de {id}",
+      "statusSaved": "Statut mis à jour",
+      "statusNote": "Statut modifiable localement · non persisté côté serveur.",
+      "back": "Toutes les commandes",
+      "lines": "Articles de la commande",
+      "details": "Informations",
+      "meta": {
+        "customer": "Client",
+        "date": "Date",
+        "items": "Articles",
+        "delivery": "Livraison",
+        "source": "Origine"
+      },
+      "sources": {
+        "api": "Panier de l'API",
+        "checkout": "Checkout de démo"
+      }
+    }
+  },
+  "sections": {
+    "beaute": {
+      "name": "Beauté",
+      "chapo": "Soins, parfums et gestes simples. Des formules choisies pour ce qu'elles font.",
+      "photo": "photo éditoriale · flacons sur lin, lumière du matin"
+    },
+    "mode": {
+      "name": "Mode",
+      "chapo": "Des pièces qui traversent les saisons, des matières qui se patinent.",
+      "photo": "photo · robe sur cintre bois"
+    },
+    "maison": {
+      "name": "Maison",
+      "chapo": "Moins d'objets, mieux regardés. Du mobilier à l'épicerie fine.",
+      "photo": "photo · vase, lumière rasante"
+    },
+    "tech": {
+      "name": "Tech",
+      "chapo": "Des outils sobres, bien construits, qui se font oublier.",
+      "photo": "photo · bureau épuré, bois clair"
+    },
+    "loisirs": {
+      "name": "Loisirs",
+      "chapo": "Pour le dehors, le mouvement et les longs week-ends.",
+      "photo": "photo · vélo contre un mur chaulé"
+    }
+  },
+  "categories": {
+    "beauty": "Beauté",
+    "fragrances": "Parfums",
+    "furniture": "Mobilier",
+    "groceries": "Épicerie",
+    "home-decoration": "Décoration",
+    "kitchen-accessories": "Cuisine",
+    "laptops": "Ordinateurs",
+    "mens-shirts": "Chemises homme",
+    "mens-shoes": "Chaussures homme",
+    "mens-watches": "Montres homme",
+    "mobile-accessories": "Accessoires mobiles",
+    "motorcycle": "Moto",
+    "skin-care": "Soin",
+    "smartphones": "Smartphones",
+    "sports-accessories": "Sport",
+    "sunglasses": "Lunettes de soleil",
+    "tablets": "Tablettes",
+    "tops": "Hauts",
+    "vehicle": "Véhicules",
+    "womens-bags": "Sacs",
+    "womens-dresses": "Robes",
+    "womens-jewellery": "Bijoux",
+    "womens-shoes": "Chaussures femme",
+    "womens-watches": "Montres femme"
+  },
+  "theme": {
+    "toDark": "Passer en thème sombre",
+    "toLight": "Passer en thème clair"
+  },
+  "price": {
+    "current": "Prix actuel :",
+    "before": "Prix initial :",
+    "discount": "−{percent} %"
+  },
+  "product": {
+    "addToCart": "Ajouter au panier",
+    "added": "Ajouté ✓",
+    "soldOut": "Épuisé",
+    "lowStock": "Stock faible",
+    "addFavorite": "Ajouter aux favoris",
+    "removeFavorite": "Retirer des favoris",
+    "addWithTotal": "Ajouter au panier · {total}",
+    "reviewCount": "{count} avis | {count} avis | {count} avis",
+    "gallery": {
+      "thumbnails": "Images du produit",
+      "image": "Image {n}",
+      "zoom": "Agrandir l'image",
+      "previous": "Image précédente",
+      "next": "Image suivante"
+    },
+    "stock": {
+      "out": "Épuisé",
+      "low": "Plus que {count} en stock | Plus que {count} en stock | Plus que {count} en stock",
+      "in": "En stock · expédié sous 48 h"
+    },
+    "reassure": {
+      "shipping": "Livraison offerte dès 50 € (fictive)",
+      "returns": "Retours gratuits sous 30 jours",
+      "warranty": "Garantie constructeur"
+    },
+    "tabs": {
+      "label": "Informations produit",
+      "description": "Description",
+      "specs": "Caractéristiques",
+      "shipping": "Livraison & retours",
+      "reviews": "Avis ({count})"
+    },
+    "specs": {
+      "brand": "Marque",
+      "category": "Catégorie",
+      "sku": "Référence",
+      "dimensions": "Dimensions",
+      "dimensionsValue": "{w} × {h} × {d} cm",
+      "weight": "Poids",
+      "weightValue": "{value} kg",
+      "warranty": "Garantie",
+      "minimumOrder": "Commande minimum"
+    },
+    "shipping": {
+      "dispatch": "Expédition",
+      "dispatchDefault": "Sous 48 h ouvrées.",
+      "returns": "Retours",
+      "returnsDefault": "30 jours pour changer d'avis.",
+      "free": "Livraison offerte",
+      "freeText": "Dès 50 € d'achat, en France métropolitaine (fictif)."
+    },
+    "reviews": {
+      "outOf": "sur 5 · aucun avis | sur 5 · {count} avis | sur 5 · {count} avis",
+      "distribution": "Répartition des notes",
+      "stars": "{count} ★",
+      "none": "Aucun avis pour le moment."
+    },
+    "error": {
+      "title": "Nous n'arrivons pas à charger ce produit."
+    },
+    "similar": {
+      "overline": "Dans la même rubrique",
+      "title": "Vous aimerez",
+      "emphasis": "aussi"
+    }
+  },
+  "ui": {
+    "close": "Fermer",
+    "cancel": "Annuler",
+    "retry": "Réessayer",
+    "demo": "DÉMO",
+    "breadcrumb": "Fil d'Ariane",
+    "password": {
+      "show": "Afficher le mot de passe",
+      "hide": "Masquer le mot de passe",
+      "strength": "Robustesse :",
+      "rules": "8 caractères, majuscule, chiffre, symbole",
+      "levels": {
+        "0": "—",
+        "1": "Trop faible",
+        "2": "Moyen",
+        "3": "Solide",
+        "4": "Excellent"
+      }
+    },
+    "textarea": {
+      "counter": "{count} / {max}"
+    },
+    "quantity": {
+      "label": "Quantité",
+      "decrease": "Diminuer la quantité",
+      "increase": "Augmenter la quantité"
+    },
+    "rating": {
+      "label": "Note : {value} sur 5",
+      "short": "Note :"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Page précédente",
+      "next": "Page suivante",
+      "page": "Page {page}",
+      "status": "Page {page} / {count}"
+    },
+    "toast": {
+      "region": "Notifications",
+      "close": "Fermer la notification"
+    }
+  },
+  "cart": {
+    "added": "Ajouté à votre panier.",
+    "stockLimit": "Stock maximal atteint pour ce produit ({count} disponibles).",
+    "title": "Votre panier",
+    "pageTitle": "Panier",
+    "overline": "Panier",
+    "headingStart": "Votre",
+    "headingEmphasis": "panier",
+    "summary": "Récapitulatif",
+    "removed": "« {title} » retiré du panier.",
+    "undo": "Annuler",
+    "undoAlt": "Remettre « {title} » dans le panier",
+    "remove": "Retirer",
+    "removeAlt": "Retirer « {title} » du panier",
+    "unitPrice": "{price} l'unité",
+    "quantityOf": "Quantité de « {title} »",
+    "freeShippingReached": "Livraison offerte",
+    "freeShippingRemaining": "Plus que {amount} pour la livraison offerte",
+    "freeShippingProgress": "Progression vers la livraison offerte",
+    "subtotal": "Sous-total",
+    "discount": "Remise",
+    "discountWithCode": "Remise {code}",
+    "shippingLine": "Livraison · {method}",
+    "free": "Offerte",
+    "total": "Total",
+    "checkout": "Commander",
+    "seeCart": "Voir le panier",
+    "continue": "Continuer mes achats",
+    "demoNote": "Mode démo : aucun paiement ne sera prélevé.",
+    "empty": {
+      "title": "Votre panier attend sa première trouvaille.",
+      "illustration": "illustration trait fin",
+      "pageIllustration": "illustration trait fin · cabas vide",
+      "cta": "Découvrir la sélection",
+      "suggestions": "Quelques idées pour commencer"
+    },
+    "promo": {
+      "label": "Code promo",
+      "apply": "Appliquer",
+      "empty": "Saisissez un code.",
+      "invalid": "Ce code n'existe pas. Essayez {code}.",
+      "applied": "Code {code} appliqué : −{percent} %.",
+      "badge": "{code} · −{percent} %"
+    }
+  },
+  "wishlist": {
+    "added": "Ajouté à vos favoris.",
+    "pageTitle": "Favoris",
+    "overline": "Favoris · {count}",
+    "headingStart": "Mis de",
+    "headingEmphasis": "côté",
+    "see": "Voir",
+    "seeAlt": "Voir vos favoris",
+    "seeCart": "Voir le panier",
+    "addAll": "Tout ajouter au panier",
+    "addedAll": "Aucun article disponible. | {count} article ajouté au panier. | {count} articles ajoutés au panier.",
+    "empty": {
+      "title": "Rien de mis de côté pour l'instant.",
+      "text": "Touchez le cœur d'un produit pour le retrouver ici.",
+      "illustration": "illustration trait fin · cœur à l'encre",
+      "cta": "Parcourir l'étal"
+    }
+  },
+  "forms": {
+    "email": "Adresse e-mail",
+    "emailPlaceholder": "vous{'@'}exemple.fr",
+    "emailInvalid": "Saisissez une adresse e-mail valide, par exemple vous{'@'}exemple.fr.",
+    "required": "Ce champ est requis.",
+    "tooLong": "Ce champ est trop long."
+  },
+  "search": {
+    "suggestions": "Suggestions",
+    "noMatch": "Aucun produit ne correspond à « {term} ».",
+    "seeAll": "Voir tous les résultats pour « {term} »",
+    "keyboardHint": "↑ ↓ pour naviguer · Entrée pour ouvrir · Échap pour fermer"
+  },
+  "catalog": {
+    "loading": "Chargement…",
+    "overline": "Catalogue",
+    "title": "Tout l'étal",
+    "chapo": "Toute la sélection, rubrique par rubrique. Affinez par prix, note ou marque.",
+    "sectionOverline": "Rubrique {num} — {name}",
+    "sectionNumber": "Rubrique {num}",
+    "count": "{count} produit | {count} produit | {count} produits",
+    "categoryDescription": "{name} : la sélection Étal, présentée avec soin. Projet portfolio, aucune vente réelle.",
+    "search": {
+      "overline": "Recherche",
+      "title": "« {term} »",
+      "chapo": "Aucun produit ne correspond à votre recherche. | {count} produit correspond à votre recherche. | {count} produits correspondent à votre recherche."
+    },
+    "empty": {
+      "title": "Rien à l'étal pour ces critères.",
+      "searchTitle": "Rien à l'étal pour « {term} ».",
+      "text": "Essayez un autre terme, ou retirez quelques filtres.",
+      "illustration": "illustration trait fin · étal vide",
+      "reset": "Réinitialiser les filtres"
+    },
+    "error": {
+      "title": "Nous n'arrivons pas à charger les produits.",
+      "text": "Vérifiez votre connexion, puis réessayez."
+    },
+    "sort": {
+      "label": "Trier par",
+      "relevance": "Pertinence",
+      "priceAsc": "Prix croissant",
+      "priceDesc": "Prix décroissant",
+      "rating": "Meilleures notes",
+      "newest": "Nouveautés"
+    }
+  },
+  "filters": {
+    "title": "Filtres",
+    "section": "Rubrique",
+    "all": "Tout",
+    "category": "Catégorie",
+    "wholeSection": "Toute la rubrique",
+    "price": "Prix",
+    "min": "Min",
+    "max": "Max",
+    "apply": "OK",
+    "rating": "Note minimale",
+    "ratingAtLeast": "{value} ★ et +",
+    "brand": "Marque",
+    "availability": "Disponibilité",
+    "inStock": "En stock uniquement",
+    "inStockShort": "En stock",
+    "onSale": "En promotion",
+    "reset": "Réinitialiser",
+    "show": "Voir {label}",
+    "priceRange": "{min} – {max}",
+    "remove": "Retirer le filtre {label}",
+    "clearAll": "Tout effacer"
+  },
+  "checkout": {
+    "pageTitle": "Commande",
+    "empty": "Votre panier est vide.",
+    "backToCatalog": "Retourner au catalogue",
+    "steps": {
+      "label": "Étapes de commande",
+      "shipping": "Livraison",
+      "payment": "Paiement",
+      "confirmation": "Confirmation"
+    },
+    "methods": {
+      "standard": {
+        "label": "Standard",
+        "description": "3 à 5 jours ouvrés"
+      },
+      "relay": {
+        "label": "Point relais",
+        "description": "4 à 6 jours ouvrés"
+      },
+      "express": {
+        "label": "Express",
+        "description": "Livré demain avant 13 h"
+      }
+    },
+    "shipping": {
+      "title": "Coordonnées & livraison",
+      "method": "Mode de livraison",
+      "back": "Retour au panier",
+      "continue": "Continuer vers le paiement",
+      "guest": "Vous commandez en invité.",
+      "signIn": "Se connecter",
+      "toPrefill": "pour pré-remplir."
+    },
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "E-mail",
+      "address": "Adresse",
+      "addressPlaceholder": "12 rue des Halles",
+      "postalCode": "Code postal",
+      "city": "Ville",
+      "phone": "Téléphone (facultatif)",
+      "phoneHelp": "Uniquement pour le transporteur (fictif).",
+      "cardNumber": "Numéro de carte",
+      "holder": "Titulaire",
+      "expiry": "Expiration",
+      "expiryPlaceholder": "MM/AA",
+      "cvc": "Cryptogramme"
+    },
+    "payment": {
+      "title": "Paiement",
+      "demoNotice": "Formulaire factice. N'entrez aucun vrai numéro de carte. Seule la carte de test est acceptée et rien n'est transmis.",
+      "useTestCard": "Utiliser la carte de test 4242 4242 4242 4242",
+      "demoHolder": "Démo Étal",
+      "back": "Modifier la livraison",
+      "processing": "Paiement en cours…",
+      "pay": "Payer {total}"
+    },
+    "summary": {
+      "quantity": "Quantité : {count}"
+    },
+    "errors": {
+      "fix": "Certains champs sont à corriger.",
+      "postalCode": "Le code postal comporte 5 chiffres.",
+      "phone": "Numéro de téléphone invalide.",
+      "testCardOnly": "Mode démo : seule la carte de test 4242 4242 4242 4242 est acceptée.",
+      "expiry": "Format attendu : MM/AA.",
+      "cvc": "3 chiffres."
+    },
+    "success": {
+      "pageTitle": "Commande confirmée",
+      "overline": "Commande confirmée · démo",
+      "thanks": "Merci,",
+      "text": "Votre commande est enregistrée dans votre historique. Rien ne sera expédié : Étal est un projet portfolio.",
+      "number": "Numéro",
+      "paid": "Total payé",
+      "delivery": "Livraison",
+      "address": "Adresse",
+      "lineDetail": "Qté {count} · {price}",
+      "placedOn": "Commande passée le {date}.",
+      "track": "Suivre ma commande",
+      "home": "Retour à l'accueil",
+      "notFound": "Commande introuvable."
+    }
+  },
+  "auth": {
+    "photo": "photo éditoriale · main posant un objet sur une table en bois",
+    "taglineStart": "Le choix,",
+    "taglineEmphasis": "exposé avec soin.",
+    "backToShop": "Retour à la boutique",
+    "welcome": "Bonjour, vous êtes connecté.",
+    "forgotDemo": "Mode démo : utilisez un des comptes de démo ci-dessus.",
+    "adminOnly": "Accès réservé aux administrateurs.",
+    "roles": {
+      "customer": "Client",
+      "admin": "Administratrice"
+    },
+    "fields": {
+      "username": "Identifiant",
+      "password": "Mot de passe",
+      "remember": "Se souvenir de moi",
+      "confirm": "Confirmer le mot de passe"
+    },
+    "login": {
+      "pageTitle": "Connexion",
+      "titleStart": "Bon",
+      "titleEmphasis": "retour",
+      "lead": "Connectez-vous pour retrouver vos commandes et vos favoris.",
+      "redirectHint": "Connectez-vous pour accéder à cette page.",
+      "demoAccounts": "Comptes de démo · un clic pour remplir",
+      "useDemo": "Remplir avec le compte de démo {role}",
+      "forgot": "Mot de passe oublié ?",
+      "submit": "Se connecter",
+      "submitting": "Connexion…",
+      "noAccount": "Pas encore de compte ?",
+      "register": "Créer un compte"
+    },
+    "register": {
+      "pageTitle": "Inscription",
+      "titleStart": "Ouvrir un",
+      "titleEmphasis": "compte",
+      "lead": "Le compte est créé en démo : il ne sera pas conservé côté serveur.",
+      "terms": "J'accepte les conditions d'utilisation de cette démo.",
+      "submit": "Créer mon compte",
+      "hasAccount": "Déjà inscrit ?",
+      "login": "Se connecter",
+      "created": "Compte créé en démo : il ne sera pas conservé côté serveur."
+    },
+    "errors": {
+      "username": "Renseignez votre identifiant.",
+      "password": "Renseignez votre mot de passe.",
+      "invalid": "Identifiant ou mot de passe incorrect.",
+      "unavailable": "Le service ne répond pas. Réessayez dans un instant.",
+      "weakPassword": "Choisissez un mot de passe au moins « Solide ».",
+      "terms": "Veuillez accepter les conditions pour continuer.",
+      "mismatch": "Les deux mots de passe ne correspondent pas."
+    }
+  },
+  "account": {
+    "title": "Mon compte",
+    "hello": "Bonjour,",
+    "latestOrders": "Dernières commandes",
+    "allOrders": "Tout l'historique",
+    "noOrders": "Aucune commande pour le moment.",
+    "discover": "Découvrir l'étal",
+    "signedOut": "Vous êtes déconnecté.",
+    "nav": {
+      "label": "Mon compte",
+      "overview": "Vue d'ensemble",
+      "orders": "Commandes",
+      "profile": "Profil",
+      "wishlist": "Favoris",
+      "admin": "Back-office",
+      "signOut": "Déconnexion"
+    },
+    "stats": {
+      "orders": "Commandes",
+      "wishlist": "Favoris",
+      "cart": "Panier"
+    },
+    "orders": {
+      "title": "Mes commandes",
+      "error": "Nous n'arrivons pas à charger vos commandes.",
+      "placedOn": "Commande du {date}",
+      "tracking": "Suivi de la commande",
+      "profileAddress": "Adresse du profil de démo"
+    },
+    "profile": {
+      "title": "Mon profil",
+      "phone": "Téléphone",
+      "preferences": "Préférences",
+      "darkTheme": "Thème sombre",
+      "save": "Enregistrer",
+      "saved": "Profil mis à jour · mode démo : modification non persistée côté serveur."
+    }
+  },
+  "orders": {
+    "items": "{count} article | {count} article | {count} articles",
+    "status": {
+      "pending": "En attente",
+      "preparing": "En préparation",
+      "shipped": "Expédiée",
+      "delivered": "Livrée"
+    }
+  },
+  "errors": {
+    "home": "Retour à l'accueil",
+    "notFound": {
+      "pageTitle": "Page introuvable",
+      "titleStart": "Cette page n'est plus",
+      "titleEmphasis": "à l'étal.",
+      "text": "Elle a peut-être été retirée, ou l'adresse contient une coquille.",
+      "browse": "Parcourir le catalogue"
+    },
+    "server": {
+      "pageTitle": "Erreur",
+      "overline": "Erreur {code}",
+      "titleStart": "L'étal est momentanément",
+      "titleEmphasis": "fermé.",
+      "text": "Un incident est survenu de notre côté. Vos articles sont toujours dans votre panier."
+    }
+  },
+  "pages": {
+    "about": {
+      "pageTitle": "À propos",
+      "overline": "À propos",
+      "titleStart": "Un étal,",
+      "titleEmphasis": "pas une boutique.",
+      "lead": "Étal est un projet portfolio : la refonte complète d'une application e-commerce, pensée comme un vrai produit, sans aucune vente réelle.",
+      "sections": {
+        "project": {
+          "title": "Le projet",
+          "text": "Une boutique de beauté, de mode et de maison présentée comme un magazine : catalogue filtrable, panier persistant, commande en trois étapes, espace client et back-office complet. Les données viennent de l'API publique DummyJSON ; les écritures y sont simulées."
+        },
+        "architecture": {
+          "title": "Architecture",
+          "text": "Le navigateur ne parle jamais directement à l'API : chaque appel passe par les routes serveur Nitro, qui valident les entrées avec Zod, mettent le catalogue en cache et convertissent les prix. Un adaptateur isole DummyJSON : changer de fournisseur ne touche qu'un dossier."
+        },
+        "security": {
+          "title": "Sécurité",
+          "text": "La session est scellée dans un cookie httpOnly ; les jetons de l'API restent côté serveur et se renouvellent automatiquement. Les routes du back-office vérifient le rôle côté serveur, pas seulement dans l'interface."
+        },
+        "quality": {
+          "title": "Qualité",
+          "text": "TypeScript strict, ESLint et Prettier, tests unitaires et de composants avec Vitest, parcours de bout en bout et audits d'accessibilité avec Playwright et axe, intégration continue sur GitHub Actions."
+        }
+      },
+      "stack": "La stack",
+      "demo": {
+        "title": "Essayer la démo",
+        "text": "Deux comptes de démo sont proposés sur la page de connexion : une cliente et une administratrice.",
+        "login": "Se connecter",
+        "browse": "Parcourir le catalogue"
+      }
+    },
+    "faq": {
+      "pageTitle": "Aide & FAQ",
+      "overline": "Aide",
+      "titleStart": "Questions",
+      "titleEmphasis": "fréquentes",
+      "lead": "Tout ce qu'il faut savoir sur cette boutique de démonstration.",
+      "items": {
+        "order": {
+          "question": "Puis-je vraiment commander ?",
+          "answer": "Non. Étal est un projet portfolio : la commande va jusqu'à la confirmation, mais rien n'est expédié et aucun paiement n'est encaissé."
+        },
+        "payment": {
+          "question": "Quelle carte utiliser au paiement ?",
+          "answer": "Seule la carte de test proposée sur la page de paiement est acceptée. Aucun numéro réel n'est accepté ni transmis."
+        },
+        "promo": {
+          "question": "Existe-t-il un code promo ?",
+          "answer": "Oui : {code} retire {percent} % du sous-total, à saisir dans le panier."
+        },
+        "shipping": {
+          "question": "Comment la livraison est-elle calculée ?",
+          "answer": "La livraison standard et le point relais sont offerts dès {threshold} d'achat ; l'express reste payante. Les délais affichés sont fictifs."
+        },
+        "account": {
+          "question": "Comment me connecter ?",
+          "answer": "Utilisez l'un des comptes de démo affichés sur la page de connexion, ou créez un compte : il est créé en démo et n'est pas conservé côté serveur."
+        },
+        "cart": {
+          "question": "Mon panier est-il conservé ?",
+          "answer": "Oui, dans votre navigateur : il survit au rechargement de la page, tout comme vos favoris et vos commandes de démo."
+        },
+        "admin": {
+          "question": "Que permet le back-office ?",
+          "answer": "Avec le compte administratrice : gérer les produits, les utilisateurs et les commandes. L'API simule chaque modification ; rien n'est enregistré, et « Réinitialiser la démo » remet tout à zéro."
+        },
+        "prices": {
+          "question": "Pourquoi les prix sont-ils en euros ?",
+          "answer": "Les prix de l'API sont en dollars. Ils sont convertis à un taux fixe dans une devise unique et configurable : l'euro par défaut, le franc CFA en option."
+        }
+      },
+      "more": "Envie de savoir comment le site est construit ?",
+      "aboutLink": "Lire la page À propos"
+    },
+    "legal": {
+      "pageTitle": "Mentions légales",
+      "overline": "Informations légales",
+      "titleStart": "Mentions",
+      "titleEmphasis": "légales",
+      "lead": "Version portfolio : ce site est une démonstration technique, sans activité commerciale.",
+      "sections": {
+        "publisher": {
+          "title": "Éditeur",
+          "text": "Projet réalisé par Syabe Technologies en 2026, dans le cadre d'un portfolio. Aucune activité commerciale n'est exercée sur ce site."
+        },
+        "hosting": {
+          "title": "Hébergement",
+          "text": "Le site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis."
+        },
+        "data": {
+          "title": "Données personnelles",
+          "text": "Aucune donnée personnelle n'est collectée ni revendue. Les formulaires (inscription, newsletter, paiement) n'envoient rien à des tiers ; les comptes et les commandes de démonstration proviennent de DummyJSON."
+        },
+        "storage": {
+          "title": "Cookies et stockage local",
+          "text": "Seuls des cookies techniques sont utilisés : la session de connexion (httpOnly, chiffrée), le thème, la langue et l'état de la barre latérale du back-office. Le panier, les favoris et les commandes de démo restent dans le stockage local de votre navigateur. Aucun cookie publicitaire ni de mesure d'audience."
+        },
+        "content": {
+          "title": "Contenus et crédits",
+          "text": "Les produits, photos, avis et utilisateurs proviennent de l'API publique DummyJSON. Les marques citées appartiennent à leurs propriétaires respectifs."
+        }
+      }
+    }
+  }
+}
