@@ -8,7 +8,7 @@
 ![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
 ![Couverture 89 %](https://img.shields.io/badge/couverture-89%25-brightgreen)
 
-**Démo en ligne :** _lien Vercel à ajouter après le déploiement_
+**Démo en ligne : [etal-ten.vercel.app](https://etal-ten.vercel.app)**
 
 ![Accueil d'Étal](docs/screenshots/home.jpg)
 
@@ -181,7 +181,7 @@ Les commits suivent [Conventional Commits](https://www.conventionalcommits.org),
 | Variable                       | Valeur                                                                                         |
 | ------------------------------ | ---------------------------------------------------------------------------------------------- |
 | `NUXT_SESSION_PASSWORD`        | Secret d'au moins 32 caractères (obligatoire en production)                                    |
-| `NUXT_PUBLIC_SITE_URL`         | URL publique, par exemple `https://etal.vercel.app` (canonical, sitemap, données structurées)  |
+| `NUXT_PUBLIC_SITE_URL`         | URL publique, ici `https://etal-ten.vercel.app` (canonical, sitemap, données structurées)      |
 | `NUXT_PUBLIC_I18N_BASE_URL`    | Même URL (liens `hreflang`)                                                                    |
 | `NUXT_ADMIN_USER_IDS`          | Identifiants DummyJSON administrateurs, `1` par défaut (compte `emilys`)                       |
 | `NUXT_API_BASE_URL`            | Optionnel, `https://dummyjson.com` par défaut                                                  |
